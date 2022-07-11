@@ -1,0 +1,690 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D0387026287836E30036A11F /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0387025287836E30036A11F /* Palette.swift */; };
+		D038702828783D8B0036A11F /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = D038702728783D8B0036A11F /* Log.swift */; };
+		D03870342878A5E10036A11F /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03870332878A5E10036A11F /* PersistenceTests.swift */; };
+		D03870362878BF200036A11F /* jsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03870352878BF200036A11F /* jsonData.swift */; };
+		D038703828798C8F0036A11F /* CardAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D038703728798C8F0036A11F /* CardAdd.swift */; };
+		D038703B287C29940036A11F /* TextFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D038703A287C29940036A11F /* TextFile.swift */; };
+		D038703D287C7C550036A11F /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D038703C287C7C550036A11F /* ShareView.swift */; };
+		D04F74332874396400978D84 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F74322874396400978D84 /* CardRow.swift */; };
+		D04F743628743BCC00978D84 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F743528743BCC00978D84 /* CardList.swift */; };
+		D04F743828743DD100978D84 /* CardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F743728743DD100978D84 /* CardDetail.swift */; };
+		D04F743A287448EC00978D84 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F7439287448EC00978D84 /* FavoriteButton.swift */; };
+		D04F743E28744BFA00978D84 /* CardTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F743D28744BFA00978D84 /* CardTile.swift */; };
+		D06EF35F287596CA00489D4E /* Tiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06EF35E287596CA00489D4E /* Tiles.swift */; };
+		D0A8850C28736ADA0021A376 /* initial_cards.json in Resources */ = {isa = PBXBuildFile; fileRef = D0A8850B28736ADA0021A376 /* initial_cards.json */; };
+		D0D886B7286DA64F0074506C /* FresscardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D886B6286DA64F0074506C /* FresscardsApp.swift */; };
+		D0D886B9286DA64F0074506C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D886B8286DA64F0074506C /* ContentView.swift */; };
+		D0D886BB286DA6500074506C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0D886BA286DA6500074506C /* Assets.xcassets */; };
+		D0D886BE286DA6500074506C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0D886BD286DA6500074506C /* Preview Assets.xcassets */; };
+		D0D886C8286DA6500074506C /* FresscardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D886C7286DA6500074506C /* FresscardsTests.swift */; };
+		D0D886D2286DA6500074506C /* FresscardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D886D1286DA6500074506C /* FresscardsUITests.swift */; };
+		D0D886D4286DA6500074506C /* FresscardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D886D3286DA6500074506C /* FresscardsUITestsLaunchTests.swift */; };
+		D0DB5E1F2872F911003BF3A1 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB5E1E2872F911003BF3A1 /* Card.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D0D886C4286DA6500074506C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0D886AB286DA64F0074506C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0D886B2286DA64F0074506C;
+			remoteInfo = Fresscards;
+		};
+		D0D886CE286DA6500074506C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0D886AB286DA64F0074506C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0D886B2286DA64F0074506C;
+			remoteInfo = Fresscards;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D0387025287836E30036A11F /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		D038702728783D8B0036A11F /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		D03870332878A5E10036A11F /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
+		D03870352878BF200036A11F /* jsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonData.swift; sourceTree = "<group>"; };
+		D038703728798C8F0036A11F /* CardAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAdd.swift; sourceTree = "<group>"; };
+		D0387039287C24E80036A11F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D038703A287C29940036A11F /* TextFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFile.swift; sourceTree = "<group>"; };
+		D038703C287C7C550036A11F /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
+		D04F74322874396400978D84 /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
+		D04F743528743BCC00978D84 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
+		D04F743728743DD100978D84 /* CardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetail.swift; sourceTree = "<group>"; };
+		D04F7439287448EC00978D84 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
+		D04F743D28744BFA00978D84 /* CardTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTile.swift; sourceTree = "<group>"; };
+		D06EF35E287596CA00489D4E /* Tiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tiles.swift; sourceTree = "<group>"; };
+		D0A8850B28736ADA0021A376 /* initial_cards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = initial_cards.json; sourceTree = "<group>"; };
+		D0D886B3286DA64F0074506C /* Fresscards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fresscards.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0D886B6286DA64F0074506C /* FresscardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FresscardsApp.swift; sourceTree = "<group>"; };
+		D0D886B8286DA64F0074506C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D0D886BA286DA6500074506C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D0D886BD286DA6500074506C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D0D886C3286DA6500074506C /* FresscardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FresscardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0D886C7286DA6500074506C /* FresscardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FresscardsTests.swift; sourceTree = "<group>"; };
+		D0D886CD286DA6500074506C /* FresscardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FresscardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0D886D1286DA6500074506C /* FresscardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FresscardsUITests.swift; sourceTree = "<group>"; };
+		D0D886D3286DA6500074506C /* FresscardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FresscardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D0DB5E1E2872F911003BF3A1 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D0D886B0286DA64F0074506C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0D886C0286DA6500074506C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0D886CA286DA6500074506C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D038702E287860540036A11F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D0DB5E1E2872F911003BF3A1 /* Card.swift */,
+				D03870352878BF200036A11F /* jsonData.swift */,
+				D0A8850B28736ADA0021A376 /* initial_cards.json */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D04F743428743BB900978D84 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D04F743C2874491600978D84 /* Misc */,
+				D04F743B2874490A00978D84 /* Cards */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D04F743B2874490A00978D84 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				D04F74322874396400978D84 /* CardRow.swift */,
+				D038703728798C8F0036A11F /* CardAdd.swift */,
+				D04F743728743DD100978D84 /* CardDetail.swift */,
+				D04F743528743BCC00978D84 /* CardList.swift */,
+				D04F743D28744BFA00978D84 /* CardTile.swift */,
+				D06EF35E287596CA00489D4E /* Tiles.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		D04F743C2874491600978D84 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				D0387025287836E30036A11F /* Palette.swift */,
+				D04F7439287448EC00978D84 /* FavoriteButton.swift */,
+				D038702728783D8B0036A11F /* Log.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		D0D886AA286DA64F0074506C = {
+			isa = PBXGroup;
+			children = (
+				D0D886B5286DA64F0074506C /* Fresscards */,
+				D0D886C6286DA6500074506C /* FresscardsTests */,
+				D0D886B4286DA64F0074506C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D0D886B4286DA64F0074506C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0D886B3286DA64F0074506C /* Fresscards.app */,
+				D0D886C3286DA6500074506C /* FresscardsTests.xctest */,
+				D0D886CD286DA6500074506C /* FresscardsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D0D886B5286DA64F0074506C /* Fresscards */ = {
+			isa = PBXGroup;
+			children = (
+				D0387039287C24E80036A11F /* Info.plist */,
+				D0D886B6286DA64F0074506C /* FresscardsApp.swift */,
+				D038702E287860540036A11F /* Models */,
+				D04F743428743BB900978D84 /* Views */,
+				D0D886B8286DA64F0074506C /* ContentView.swift */,
+				D038703A287C29940036A11F /* TextFile.swift */,
+				D038703C287C7C550036A11F /* ShareView.swift */,
+				D0D886BA286DA6500074506C /* Assets.xcassets */,
+				D0D886BC286DA6500074506C /* Preview Content */,
+			);
+			path = Fresscards;
+			sourceTree = "<group>";
+		};
+		D0D886BC286DA6500074506C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D0D886BD286DA6500074506C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D0D886C6286DA6500074506C /* FresscardsTests */ = {
+			isa = PBXGroup;
+			children = (
+				D0D886C7286DA6500074506C /* FresscardsTests.swift */,
+				D03870332878A5E10036A11F /* PersistenceTests.swift */,
+				D0D886D0286DA6500074506C /* FresscardsUITests */,
+			);
+			path = FresscardsTests;
+			sourceTree = "<group>";
+		};
+		D0D886D0286DA6500074506C /* FresscardsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D0D886D1286DA6500074506C /* FresscardsUITests.swift */,
+				D0D886D3286DA6500074506C /* FresscardsUITestsLaunchTests.swift */,
+			);
+			path = FresscardsUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D0D886B2286DA64F0074506C /* Fresscards */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0D886D7286DA6500074506C /* Build configuration list for PBXNativeTarget "Fresscards" */;
+			buildPhases = (
+				D0D886AF286DA64F0074506C /* Sources */,
+				D0D886B0286DA64F0074506C /* Frameworks */,
+				D0D886B1286DA64F0074506C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Fresscards;
+			packageProductDependencies = (
+			);
+			productName = Fresscards;
+			productReference = D0D886B3286DA64F0074506C /* Fresscards.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D0D886C2286DA6500074506C /* FresscardsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0D886DA286DA6500074506C /* Build configuration list for PBXNativeTarget "FresscardsTests" */;
+			buildPhases = (
+				D0D886BF286DA6500074506C /* Sources */,
+				D0D886C0286DA6500074506C /* Frameworks */,
+				D0D886C1286DA6500074506C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0D886C5286DA6500074506C /* PBXTargetDependency */,
+			);
+			name = FresscardsTests;
+			productName = FresscardsTests;
+			productReference = D0D886C3286DA6500074506C /* FresscardsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D0D886CC286DA6500074506C /* FresscardsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0D886DD286DA6500074506C /* Build configuration list for PBXNativeTarget "FresscardsUITests" */;
+			buildPhases = (
+				D0D886C9286DA6500074506C /* Sources */,
+				D0D886CA286DA6500074506C /* Frameworks */,
+				D0D886CB286DA6500074506C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0D886CF286DA6500074506C /* PBXTargetDependency */,
+			);
+			name = FresscardsUITests;
+			productName = FresscardsUITests;
+			productReference = D0D886CD286DA6500074506C /* FresscardsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D0D886AB286DA64F0074506C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					D0D886B2286DA64F0074506C = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					D0D886C2286DA6500074506C = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = D0D886B2286DA64F0074506C;
+					};
+					D0D886CC286DA6500074506C = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = D0D886B2286DA64F0074506C;
+					};
+				};
+			};
+			buildConfigurationList = D0D886AE286DA64F0074506C /* Build configuration list for PBXProject "Fresscards" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D0D886AA286DA64F0074506C;
+			packageReferences = (
+			);
+			productRefGroup = D0D886B4286DA64F0074506C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D0D886B2286DA64F0074506C /* Fresscards */,
+				D0D886C2286DA6500074506C /* FresscardsTests */,
+				D0D886CC286DA6500074506C /* FresscardsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D0D886B1286DA64F0074506C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0A8850C28736ADA0021A376 /* initial_cards.json in Resources */,
+				D0D886BE286DA6500074506C /* Preview Assets.xcassets in Resources */,
+				D0D886BB286DA6500074506C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0D886C1286DA6500074506C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0D886CB286DA6500074506C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D0D886AF286DA64F0074506C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D038703D287C7C550036A11F /* ShareView.swift in Sources */,
+				D04F743828743DD100978D84 /* CardDetail.swift in Sources */,
+				D0387026287836E30036A11F /* Palette.swift in Sources */,
+				D038703828798C8F0036A11F /* CardAdd.swift in Sources */,
+				D038702828783D8B0036A11F /* Log.swift in Sources */,
+				D06EF35F287596CA00489D4E /* Tiles.swift in Sources */,
+				D0D886B9286DA64F0074506C /* ContentView.swift in Sources */,
+				D038703B287C29940036A11F /* TextFile.swift in Sources */,
+				D0DB5E1F2872F911003BF3A1 /* Card.swift in Sources */,
+				D04F743A287448EC00978D84 /* FavoriteButton.swift in Sources */,
+				D03870362878BF200036A11F /* jsonData.swift in Sources */,
+				D04F743628743BCC00978D84 /* CardList.swift in Sources */,
+				D04F743E28744BFA00978D84 /* CardTile.swift in Sources */,
+				D04F74332874396400978D84 /* CardRow.swift in Sources */,
+				D0D886B7286DA64F0074506C /* FresscardsApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0D886BF286DA6500074506C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0D886C8286DA6500074506C /* FresscardsTests.swift in Sources */,
+				D03870342878A5E10036A11F /* PersistenceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0D886C9286DA6500074506C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0D886D4286DA6500074506C /* FresscardsUITestsLaunchTests.swift in Sources */,
+				D0D886D2286DA6500074506C /* FresscardsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D0D886C5286DA6500074506C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0D886B2286DA64F0074506C /* Fresscards */;
+			targetProxy = D0D886C4286DA6500074506C /* PBXContainerItemProxy */;
+		};
+		D0D886CF286DA6500074506C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0D886B2286DA64F0074506C /* Fresscards */;
+			targetProxy = D0D886CE286DA6500074506C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D0D886D5286DA6500074506C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D0D886D6286DA6500074506C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D0D886D8286DA6500074506C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Fresscards/Preview Content\"";
+				DEVELOPMENT_TEAM = 7R7Q2CDK95;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Fresscards/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ress.Fresscards;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D0D886D9286DA6500074506C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Fresscards/Preview Content\"";
+				DEVELOPMENT_TEAM = 7R7Q2CDK95;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Fresscards/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ress.Fresscards;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D0D886DB286DA6500074506C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7R7Q2CDK95;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ress.FresscardsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fresscards.app/Fresscards";
+			};
+			name = Debug;
+		};
+		D0D886DC286DA6500074506C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7R7Q2CDK95;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ress.FresscardsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fresscards.app/Fresscards";
+			};
+			name = Release;
+		};
+		D0D886DE286DA6500074506C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7R7Q2CDK95;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ress.FresscardsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Fresscards;
+			};
+			name = Debug;
+		};
+		D0D886DF286DA6500074506C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7R7Q2CDK95;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ress.FresscardsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Fresscards;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D0D886AE286DA64F0074506C /* Build configuration list for PBXProject "Fresscards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0D886D5286DA6500074506C /* Debug */,
+				D0D886D6286DA6500074506C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0D886D7286DA6500074506C /* Build configuration list for PBXNativeTarget "Fresscards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0D886D8286DA6500074506C /* Debug */,
+				D0D886D9286DA6500074506C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0D886DA286DA6500074506C /* Build configuration list for PBXNativeTarget "FresscardsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0D886DB286DA6500074506C /* Debug */,
+				D0D886DC286DA6500074506C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0D886DD286DA6500074506C /* Build configuration list for PBXNativeTarget "FresscardsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0D886DE286DA6500074506C /* Debug */,
+				D0D886DF286DA6500074506C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D0D886AB286DA64F0074506C /* Project object */;
+}
