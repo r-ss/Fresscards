@@ -19,6 +19,8 @@ struct CardTile: View {
     //    @State private var cardIndex = 0 // Current card's index
     @State var isTapped:Bool = false
     
+    @State private var confirmationShown = false
+    
     
     private var card: Card
     private var onRemove: (_ card: Card) -> Void
@@ -82,15 +84,34 @@ struct CardTile: View {
                                 }
                                 .onEnded { value in
                                     
-                                    let dir = self.judgeGesture(geometry, from: value)
-                                    log("Direction: \(dir)")
-                                    if (dir == .none){
+                                    let direction = self.judgeGesture(geometry, from: value)
+                                    log("Direction: \(direction)")
+                                    
+                                    switch direction {
+                                    case .none:
+                                        // if drag distance threshold is not reached, return tile to initial position
                                         withAnimation(.interactiveSpring()) {
                                             self.translation = .zero
                                         }
-                                    } else {
+                                    case .up:
+                                        log("UP UP")
+                                        self.confirmationShown = true
+                                        withAnimation(.interactiveSpring()) {
+                                            self.translation = .zero
+                                        }
+                                        
+                                    default:
+                                        // in other cases we assume that drag threshold distance is reached and card swiped
                                         self.onRemove(self.card)
                                     }
+                                    
+                                    //                                    if (dir == .none){
+                                    //                                        withAnimation(.interactiveSpring()) {
+                                    //                                            self.translation = .zero
+                                    //                                        }
+                                    //                                    } else {
+                                    //                                        self.onRemove(self.card)
+                                    //                                    }
                                     
                                 }
                         )
@@ -107,6 +128,18 @@ struct CardTile: View {
                             
                         }
                     }.offset(x: self.translation.width, y: self.translation.height)
+                }
+                .confirmationDialog(
+                    "Are you sure?",
+                    isPresented: $confirmationShown
+                ) {
+                    Button("Delete this card?", role: .destructive) {
+                        log("Removing card")
+                        jsonData.removeCard(withId: card.id)
+                        withAnimation {
+                            self.onRemove(self.card)
+                        }
+                    }
                 }
                 //                .border(Color.red)
                 //                .offset(x: self.translation.width, y: self.translation.height)
