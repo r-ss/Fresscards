@@ -24,6 +24,8 @@ struct Palette {
     static let d: Color = Color(hex: 0xF38630)
     static let e: Color = Color(hex: 0xFA6900)
     
+    static let background = a
+    
     
 //    struct Gray {
 //        static let Light = UIColor(netHex: 0x595959)

@@ -9,20 +9,21 @@ import SwiftUI
 
 
 struct CardTile: View {
-//    static let gradientStart = Color(red: 239.0 / 255, green: 120.0 / 255, blue: 221.0 / 255)
-//    static let gradientEnd = Color(red: 239.0 / 255, green: 172.0 / 255, blue: 120.0 / 255)
-//
+    //    static let gradientStart = Color(red: 239.0 / 255, green: 120.0 / 255, blue: 221.0 / 255)
+    //    static let gradientEnd = Color(red: 239.0 / 255, green: 172.0 / 255, blue: 120.0 / 255)
+    //
     @EnvironmentObject var jsonData: jsonData
     
     
     @State private var translation: CGSize = .zero
-//    @State private var cardIndex = 0 // Current card's index
+    //    @State private var cardIndex = 0 // Current card's index
     @State var isTapped:Bool = false
     
     
     private var card: Card
     private var onRemove: (_ card: Card) -> Void
-    private var thresholdPercentage: CGFloat = 0.3 // when the user has draged 50% the width of the screen in either direction
+    //    private var thresholdDragDistance: CGFloat = 220
+    private var thresholdPercentage: CGFloat = 0.5 // when the user has draged 50% the width of the screen in either direction
     
     
     init(card: Card, onRemove: @escaping (_ card: Card) -> Void) {
@@ -30,9 +31,31 @@ struct CardTile: View {
         self.onRemove = onRemove
     }
     
-    private func getGesturePercentage(_ geometry: GeometryProxy, from gesture: DragGesture.Value) -> CGFloat {
-        gesture.translation.width / geometry.size.width
+    //    private var handler: ((Directions) -> Void)?
+    private enum Directions: Int {
+        case up, down, left, right, none
     }
+    
+    private func judgeGesture(_ geometry: GeometryProxy, from gesture: DragGesture.Value) -> Directions {
+        
+        let hDelta = gesture.translation.width
+        let vDelta = gesture.translation.height
+        
+        let thresholdDistance = geometry.size.width * self.thresholdPercentage
+        
+        if (abs(hDelta) + abs(vDelta)) > thresholdDistance {
+            //            log("distance: \(abs(hDelta) + abs(vDelta))")
+            if abs(hDelta) > abs(vDelta) {
+                return (hDelta < 0 ? .left : .right)
+            } else {
+                return (vDelta < 0 ? .up : .down)
+            }
+        } else {
+            return .none
+        }
+    }
+    
+    
     
     var body: some View {
         
@@ -47,42 +70,31 @@ struct CardTile: View {
                         .offset(x: self.translation.width, y: self.translation.height)
                         .gesture(
                             TapGesture().onEnded {
-
-
                                 isTapped = !isTapped
-
                             })
                         .gesture(
-                            DragGesture()
+                            DragGesture(minimumDistance: 3, coordinateSpace: .local)
                                 .onChanged { value in
-//                                    log(s:"aa")
                                     self.translation = value.translation
                                     if !self.isTapped {
                                         self.isTapped = true
                                     }
                                 }
                                 .onEnded { value in
-//                                    log(s:"zzzzz")
-                                    //                                if -value.predictedEndTranslation.width > geometry.size.width / 2, self.cardIndex < 5 {
-                                    //                                    cardIndex += 1
-                                    ////                                    currentCard = modelData.cards[cardIndex]
-                                    //                                }
-                                    //                                if value.predictedEndTranslation.width > geometry.size.width / 2, self.cardIndex > 0 {
-                                    //                                    cardIndex -= 1
-                                    ////                                    currentCard = modelData.cards[cardIndex]
-                                    //                                }
                                     
-                                    if abs(self.getGesturePercentage(geometry, from: value)) > self.thresholdPercentage {
-                                        self.onRemove(self.card)
-                                    } else {
+                                    let dir = self.judgeGesture(geometry, from: value)
+                                    log("Direction: \(dir)")
+                                    if (dir == .none){
                                         withAnimation(.interactiveSpring()) {
                                             self.translation = .zero
                                         }
-    //                                    self.offset = .zero
+                                    } else {
+                                        self.onRemove(self.card)
                                     }
+                                    
                                 }
                         )
-                        
+                    
                     
                     //                Text(card.side_a).offset(x: viewState.width, y: viewState.height)
                     VStack {
@@ -91,14 +103,14 @@ struct CardTile: View {
                         Divider()
                         if (isTapped){
                             
-                                Text(card.side_b)
+                            Text(card.side_b)
                             
                         }
                     }.offset(x: self.translation.width, y: self.translation.height)
                 }
-//                .border(Color.red)
-//                .offset(x: self.translation.width, y: self.translation.height)
-//                .animation(nil, value: UUID())
+                //                .border(Color.red)
+                //                .offset(x: self.translation.width, y: self.translation.height)
+                //                .animation(nil, value: UUID())
             }
         }
     }

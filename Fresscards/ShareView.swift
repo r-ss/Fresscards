@@ -25,6 +25,9 @@ struct ShareView: View {
                 .filter({$0.isKeyWindow}).first
         
         
+//        UIActivityCategoryShare
+        // https://nshipster.com/uiactivityviewcontroller/
+        
         let activityVC = UIActivityViewController(
                 activityItems: [jsonURL],
                 applicationActivities: nil
@@ -34,7 +37,7 @@ struct ShareView: View {
     
     var body: some View {
         
-        Button("sss", action: actionSheet)
+        Button("Export words database", action: actionSheet)
         .padding()
         
     }

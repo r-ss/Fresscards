@@ -14,6 +14,9 @@
 		D038703828798C8F0036A11F /* CardAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D038703728798C8F0036A11F /* CardAdd.swift */; };
 		D038703B287C29940036A11F /* TextFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D038703A287C29940036A11F /* TextFile.swift */; };
 		D038703D287C7C550036A11F /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D038703C287C7C550036A11F /* ShareView.swift */; };
+		D0387058287C87450036A11F /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0387057287C87450036A11F /* ShareViewController.swift */; };
+		D038705B287C87450036A11F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0387059287C87450036A11F /* MainInterface.storyboard */; };
+		D038705F287C87450036A11F /* FresscardsShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D0387055287C87450036A11F /* FresscardsShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D04F74332874396400978D84 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F74322874396400978D84 /* CardRow.swift */; };
 		D04F743628743BCC00978D84 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F743528743BCC00978D84 /* CardList.swift */; };
 		D04F743828743DD100978D84 /* CardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F743728743DD100978D84 /* CardDetail.swift */; };
@@ -32,6 +35,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D038705D287C87450036A11F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0D886AB286DA64F0074506C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0387054287C87450036A11F;
+			remoteInfo = FresscardsShareExtension;
+		};
 		D0D886C4286DA6500074506C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D0D886AB286DA64F0074506C /* Project object */;
@@ -48,6 +58,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D0387050287C868D0036A11F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D038705F287C87450036A11F /* FresscardsShareExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		D0387025287836E30036A11F /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		D038702728783D8B0036A11F /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -57,6 +81,12 @@
 		D0387039287C24E80036A11F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D038703A287C29940036A11F /* TextFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFile.swift; sourceTree = "<group>"; };
 		D038703C287C7C550036A11F /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
+		D0387055287C87450036A11F /* FresscardsShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FresscardsShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0387057287C87450036A11F /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		D038705A287C87450036A11F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		D038705C287C87450036A11F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0387063287CA9F40036A11F /* FresscardsShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FresscardsShareExtension.entitlements; sourceTree = "<group>"; };
+		D0387064287CAA280036A11F /* Fresscards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fresscards.entitlements; sourceTree = "<group>"; };
 		D04F74322874396400978D84 /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
 		D04F743528743BCC00978D84 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
 		D04F743728743DD100978D84 /* CardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetail.swift; sourceTree = "<group>"; };
@@ -78,6 +108,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D0387052287C87450036A11F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0D886B0286DA64F0074506C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -110,6 +147,17 @@
 				D0A8850B28736ADA0021A376 /* initial_cards.json */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D0387056287C87450036A11F /* FresscardsShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				D0387063287CA9F40036A11F /* FresscardsShareExtension.entitlements */,
+				D0387057287C87450036A11F /* ShareViewController.swift */,
+				D0387059287C87450036A11F /* MainInterface.storyboard */,
+				D038705C287C87450036A11F /* Info.plist */,
+			);
+			path = FresscardsShareExtension;
 			sourceTree = "<group>";
 		};
 		D04F743428743BB900978D84 /* Views */ = {
@@ -149,6 +197,7 @@
 			children = (
 				D0D886B5286DA64F0074506C /* Fresscards */,
 				D0D886C6286DA6500074506C /* FresscardsTests */,
+				D0387056287C87450036A11F /* FresscardsShareExtension */,
 				D0D886B4286DA64F0074506C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -159,6 +208,7 @@
 				D0D886B3286DA64F0074506C /* Fresscards.app */,
 				D0D886C3286DA6500074506C /* FresscardsTests.xctest */,
 				D0D886CD286DA6500074506C /* FresscardsUITests.xctest */,
+				D0387055287C87450036A11F /* FresscardsShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,6 +216,7 @@
 		D0D886B5286DA64F0074506C /* Fresscards */ = {
 			isa = PBXGroup;
 			children = (
+				D0387064287CAA280036A11F /* Fresscards.entitlements */,
 				D0387039287C24E80036A11F /* Info.plist */,
 				D0D886B6286DA64F0074506C /* FresscardsApp.swift */,
 				D038702E287860540036A11F /* Models */,
@@ -209,6 +260,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D0387054287C87450036A11F /* FresscardsShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0387060287C87450036A11F /* Build configuration list for PBXNativeTarget "FresscardsShareExtension" */;
+			buildPhases = (
+				D0387051287C87450036A11F /* Sources */,
+				D0387052287C87450036A11F /* Frameworks */,
+				D0387053287C87450036A11F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FresscardsShareExtension;
+			productName = FresscardsShareExtension;
+			productReference = D0387055287C87450036A11F /* FresscardsShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		D0D886B2286DA64F0074506C /* Fresscards */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0D886D7286DA6500074506C /* Build configuration list for PBXNativeTarget "Fresscards" */;
@@ -216,10 +284,12 @@
 				D0D886AF286DA64F0074506C /* Sources */,
 				D0D886B0286DA64F0074506C /* Frameworks */,
 				D0D886B1286DA64F0074506C /* Resources */,
+				D0387050287C868D0036A11F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D038705E287C87450036A11F /* PBXTargetDependency */,
 			);
 			name = Fresscards;
 			packageProductDependencies = (
@@ -274,6 +344,9 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					D0387054287C87450036A11F = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					D0D886B2286DA64F0074506C = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -305,11 +378,20 @@
 				D0D886B2286DA64F0074506C /* Fresscards */,
 				D0D886C2286DA6500074506C /* FresscardsTests */,
 				D0D886CC286DA6500074506C /* FresscardsUITests */,
+				D0387054287C87450036A11F /* FresscardsShareExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D0387053287C87450036A11F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D038705B287C87450036A11F /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0D886B1286DA64F0074506C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -337,6 +419,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D0387051287C87450036A11F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0387058287C87450036A11F /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0D886AF286DA64F0074506C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -380,6 +470,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D038705E287C87450036A11F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0387054287C87450036A11F /* FresscardsShareExtension */;
+			targetProxy = D038705D287C87450036A11F /* PBXContainerItemProxy */;
+		};
 		D0D886C5286DA6500074506C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D0D886B2286DA64F0074506C /* Fresscards */;
@@ -392,7 +487,70 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		D0387059287C87450036A11F /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D038705A287C87450036A11F /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		D0387061287C87450036A11F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FresscardsShareExtension/FresscardsShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7R7Q2CDK95;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FresscardsShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FresscardsShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ress.Fresscards.FresscardsShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D0387062287C87450036A11F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FresscardsShareExtension/FresscardsShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7R7Q2CDK95;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FresscardsShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FresscardsShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ress.Fresscards.FresscardsShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		D0D886D5286DA6500074506C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -510,8 +668,10 @@
 		D0D886D8286DA6500074506C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Fresscards/Fresscards.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fresscards/Preview Content\"";
@@ -541,8 +701,10 @@
 		D0D886D9286DA6500074506C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Fresscards/Fresscards.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fresscards/Preview Content\"";
@@ -648,6 +810,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D0387060287C87450036A11F /* Build configuration list for PBXNativeTarget "FresscardsShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0387061287C87450036A11F /* Debug */,
+				D0387062287C87450036A11F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D0D886AE286DA64F0074506C /* Build configuration list for PBXProject "Fresscards" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

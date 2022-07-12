@@ -16,6 +16,8 @@ struct CardAdd: View {
     @State var side_a: String = ""
     @State var side_b: String = ""
     
+    @FocusState private var keyboardFocused: Bool
+    
     private func createCardFromFields() {
         log("WOW")
         let new:Card = Card(id:UUID(), side_a: self.side_a, side_b: self.side_b)
@@ -28,20 +30,23 @@ struct CardAdd: View {
         VStack {
             Text("Side A:")
             TextField("Enter text...", text: $side_a)
-//            .onSubmit {
-//                createCardFromFields()
-//            }
+                .focused($keyboardFocused)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        keyboardFocused = true
+                    }
+                }
             Divider()
             Text("Side B:")
             TextField("Enter text...", text: $side_b)
-//            .onSubmit {
-//                createCardFromFields()
-//            }
+                .focused($keyboardFocused)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        keyboardFocused = true
+                    }
+                }
             
-            Button(
-                        "Save",
-                        action: { self.createCardFromFields() }
-                    )
+            Button("Save", action: { self.createCardFromFields() })
         }.padding()
         }
 }

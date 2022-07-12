@@ -17,69 +17,59 @@ struct ContentView: View {
     
     var body: some View {
         //let _ = print(ModelData().cards)
-        ZStack {
-            
-            Palette.e.edgesIgnoringSafeArea(.all)
-            
-//            CardView()
-            
-            VStack {
-                Text("Fresscards")
-                    .font(Font.system(Font.TextStyle.title))
-                    .bold()
-                    .padding()
+        
+
+        
+        VStack {
+            Text("Fresscards")
+                .font(Font.system(Font.TextStyle.title))
 //                Divider()
 //
-                NavigationView {
+            NavigationView {
+                
+                VStack {
                     
-                    VStack {
-                        
-                        ShareView()
+                    Rectangle().fill(Palette.a).frame(width: 200, height: 30)
+                    Rectangle().fill(Palette.b).frame(width: 200, height: 30)
+                    Rectangle().fill(Palette.c).frame(width: 200, height: 30)
+                    Rectangle().fill(Palette.d).frame(width: 200, height: 30)
+                    Rectangle().fill(Palette.e).frame(width: 200, height: 30)
                     
-                        NavigationLink {
-                            Tiles(withCards: jsonData.cards)
-                        } label: {
-                            Text("Tiles")
-                        }
-                        
-                        .padding()
-                        
-                        NavigationLink {
-                            CardList()
-                        } label: {
-                            Text("CardList")
-                        }
-                        
-                        .padding()
-                        
+                    ShareView()
+                
+                    NavigationLink {
+                        Tiles(withCards: jsonData.cards)
+                    } label: {
+                        Text("Tiles")
                     }
+                    .padding()
                     
+                    
+                    NavigationLink {
+                        CardList()
+                    } label: {
+                        Text("CardList")
+                    }
+                    .padding()
                     
                     
                 }
                 
+                
+                
+            }
+                
 
                 
-                
-//                .environmentObject(modelData)
-//                Divider()
-                
-//                CardList()
-//                Tiles()
-//                        ReferenceContentView()
-                
-                
-                
-//                CardView()
-                
+
   
-            }
-        }
+    
+        }.background(Palette.background)
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView().environmentObject(ModelData())
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView().environmentObject(jsonData())
+    }
+}

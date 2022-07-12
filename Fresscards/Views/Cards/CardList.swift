@@ -26,16 +26,11 @@ struct CardList: View {
     }
     
     private func deleteCard(at offsets: IndexSet) {
-//        modelData.cards.remove(atOffsets: offsets)
-        
-        
-        
         jsonData.removeCards(atIndexes: offsets)
     }
     
     var body: some View {
         
-        NavigationView {
             VStack {
                 List {
                     ForEach(filteredCards) { card in
@@ -44,9 +39,8 @@ struct CardList: View {
                         } label: {
                             CardRow(card: card)
                         }.listRowSeparator(.hidden)
-                    }.onDelete(perform: deleteCard)
-                        .padding(0)
-                }
+                    }.onDelete(perform: deleteCard).listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
+                }.listStyle(PlainListStyle())
 
                 .navigationBarTitle(Text("Cards"), displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {
@@ -59,47 +53,10 @@ struct CardList: View {
                 // invisible link inside NavigationView for add mode
                 NavigationLink(destination: CardAdd(),
                     isActive: $addMode) { EmptyView() }
-            }
-        }
+            }.padding(0)
     }
 }
         
-        
-        
-        
-        
-//        NavigationView {
-//
-//            VStack {
-//                HStack {
-//                    Spacer()
-//                    AddButton()
-//                }
-//                List {
-//    //                Toggle(isOn: $showFavoritesOnly) {
-//    //                                    Text("Favorites only")
-//    //                                }
-//
-//
-//                    ForEach(filteredCards) { card in
-//                    NavigationLink {
-//                        CardDetail(with_card: card)
-//                    } label: {
-//                        CardRow(card: card)
-//                    }
-//                }
-//                .onDelete(perform: deleteCard)
-//
-//
-//                }
-//            }
-//
-//
-//        }
-//        .navigationTitle("Cards")
-//    }
-    
-
 struct CardList_Previews: PreviewProvider {
     static var previews: some View {
         // ["iPhone SE (2nd generation)", "iPhone XS Max"]
