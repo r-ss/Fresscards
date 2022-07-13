@@ -8,12 +8,18 @@
 import SwiftUI
 
 
+
+
 @main
 struct FresscardsApp: App {
+    
+    let persistenceController = PersistenceController.shared
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(jsonData()) // necessary
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//                .environmentObject(jsonData()) // necessary
         }
     }
 }
