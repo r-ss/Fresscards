@@ -22,10 +22,13 @@ struct RawJsonView: View {
 //
     
     var content: String {
+        
+//        let zz = jsonData()
+        
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first! // Initializing the url for the location where we store our data in filemanager
         
         let jsonURL = documentDirectory // appending the file name to the url
-            .appendingPathComponent("initial_cards")
+            .appendingPathComponent("db")
             .appendingPathExtension("json")
         
         return try! String(contentsOf: jsonURL, encoding: .utf8)

@@ -12,7 +12,7 @@ import SwiftUI
 
 class PersistenceTests: XCTestCase {
     
-    var data:jsonData = jsonData()
+    var data:jsonData = jsonData(testMode: true)
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -23,18 +23,20 @@ class PersistenceTests: XCTestCase {
     }
     
     func testPersistenceOperations() throws {
-        log("--- testPersistenceOperations ---")
+//        log("--- testPersistenceOperations ---")
         let initial_count: Int = data.cards.count
-        log(String(initial_count))
+//        log(String(initial_count))
 
         let new:Card = Card(id:UUID(), a: "new_a", b: "new_b")
 
         data.add(card: new)
-        log(String(data.cards.count))
+//        log(String(data.cards.count))
         
         var last:Card = data.cards.last!
-        log("Last ID: \(last.id)")
-        log("Last side_a: \(last.a)")
+        
+//        let uuid_to_check = UUID(uuidString: last.id)
+        XCTAssertNotEqual(last.id, nil, "item UUID is wrong")
+//        log("Last side_a: \(last.a)")
         XCTAssertEqual(last.a, "new_a", "last_a is wrong")
         
         last.b = "edited"
@@ -47,7 +49,7 @@ class PersistenceTests: XCTestCase {
         data.removeCard(withId: last.id)
         
         
-        log(String(data.cards.count))
+//        log(String(data.cards.count))
         XCTAssertEqual(data.cards.count, initial_count, "cards count is wrong")
     }
 

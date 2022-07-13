@@ -15,7 +15,7 @@ struct ShareView: View {
         
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first! // Initializing the url for the location where we store our data in filemanager
         
-        let jsonURL = documentDirectory.appendingPathComponent("initial_cards").appendingPathExtension("json")
+        let jsonURL = documentDirectory.appendingPathComponent("exported_cards").appendingPathExtension("json")
     //    let file = Bundle.load("initial_cards")
         
         let keyWindow = UIApplication.shared.connectedScenes

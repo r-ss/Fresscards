@@ -19,7 +19,7 @@ struct CardAdd: View {
     @FocusState private var keyboardFocused: Bool
     
     private func createCardFromFields() {
-        log("WOW")
+        log("> createCardFromFields")
         let new:Card = Card(id:UUID(), a: self.side_a, b: self.side_b, added: Date())
 //        self.card.side_b = text
         jsonData.add(card: new)

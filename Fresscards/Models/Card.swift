@@ -7,6 +7,12 @@
 
 import Foundation
 
+struct CardWireframe: Codable {
+    // Used only to parse initial cards with just 2 text fields
+    var a: String
+    var b: String
+}
+
 struct Card: Codable, Hashable, Identifiable {
     var id: UUID
     var a: String
