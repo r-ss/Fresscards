@@ -16,6 +16,7 @@ class jsonData: ObservableObject {
     }
     
     public func add(card: Card){
+        log("--- aaaa ddddddddd ----")
         self.cards.append(card)
         self.saveJSON()
     }

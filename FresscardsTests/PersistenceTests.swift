@@ -23,6 +23,7 @@ class PersistenceTests: XCTestCase {
     }
     
     func testPersistenceOperations() throws {
+        log("--- testPersistenceOperations ---")
         let initial_count: Int = data.cards.count
         log(String(initial_count))
 

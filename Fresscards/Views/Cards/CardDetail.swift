@@ -65,6 +65,8 @@ struct CardDetail: View {
                 
 //                FavoriteButton(isSet: $modelData.cards[cardIndex].isFavorite)
                                 
+                Text($card.id)
+                Text($card.added)
                 
                 Text("Side A:")
                 TextField("Enter text...", text: $card.a)

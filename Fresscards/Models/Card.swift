@@ -11,4 +11,5 @@ struct Card: Codable, Hashable, Identifiable {
     var id: UUID
     var a: String
     var b: String
+    var added: Date?
 }
