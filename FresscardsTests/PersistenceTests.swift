@@ -26,21 +26,21 @@ class PersistenceTests: XCTestCase {
         let initial_count: Int = data.cards.count
         log(String(initial_count))
 
-        let new:Card = Card(id:UUID(), side_a: "new_a", side_b: "new_b")
+        let new:Card = Card(id:UUID(), a: "new_a", b: "new_b")
 
         data.add(card: new)
         log(String(data.cards.count))
         
         var last:Card = data.cards.last!
         log("Last ID: \(last.id)")
-        log("Last side_a: \(last.side_a)")
-        XCTAssertEqual(last.side_a, "new_a", "last_a is wrong")
+        log("Last side_a: \(last.a)")
+        XCTAssertEqual(last.a, "new_a", "last_a is wrong")
         
-        last.side_b = "edited"
+        last.b = "edited"
         data.update(card: last)
         
         let lasrReRead:Card = data.cards.last!
-        XCTAssertEqual(lasrReRead.side_b, last.side_b, "card was not updated")
+        XCTAssertEqual(lasrReRead.b, last.b, "card was not updated")
         
         
         data.removeCard(withId: last.id)

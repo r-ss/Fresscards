@@ -120,11 +120,11 @@ struct CardTile: View {
                     //                Text(card.side_a).offset(x: viewState.width, y: viewState.height)
                     VStack {
                         //                        Text(String(cardIndex))
-                        Text(card.side_a)
+                        Text(card.a)
                         Divider()
                         if (isTapped){
                             
-                            Text(card.side_b)
+                            Text(card.b)
                             
                         }
                     }.offset(x: self.translation.width, y: self.translation.height)

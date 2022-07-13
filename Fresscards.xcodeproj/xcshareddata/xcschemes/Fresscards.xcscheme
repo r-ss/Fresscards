@@ -38,16 +38,6 @@
                ReferencedContainer = "container:Fresscards.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D0D886CC286DA6500074506C"
-               BuildableName = "FresscardsUITests.xctest"
-               BlueprintName = "FresscardsUITests"
-               ReferencedContainer = "container:Fresscards.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

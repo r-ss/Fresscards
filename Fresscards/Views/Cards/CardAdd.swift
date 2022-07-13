@@ -20,7 +20,7 @@ struct CardAdd: View {
     
     private func createCardFromFields() {
         log("WOW")
-        let new:Card = Card(id:UUID(), side_a: self.side_a, side_b: self.side_b)
+        let new:Card = Card(id:UUID(), a: self.side_a, b: self.side_b)
 //        self.card.side_b = text
         jsonData.add(card: new)
         self.presentationMode.wrappedValue.dismiss()

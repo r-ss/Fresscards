@@ -14,9 +14,6 @@ struct ContentView: View {
     @EnvironmentObject var jsonData: jsonData
 //    @EnvironmentObject var modelData: CardRealmViewModel
     
-    let MypersistenceController = PersistenceController.shared
-    
-
     
     var body: some View {
         //let _ = print(ModelData().cards)
@@ -31,8 +28,6 @@ struct ContentView: View {
             NavigationView {
                 
                 VStack {
-                    
-                    CoreDataPlayground().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
                     
                     Rectangle().fill(Palette.a).frame(width: 200, height: 30)
                     Rectangle().fill(Palette.b).frame(width: 200, height: 30)
@@ -75,7 +70,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-//        ContentView().environmentObject(jsonData())
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView().environmentObject(jsonData())
     }
 }

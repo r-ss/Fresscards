@@ -24,9 +24,6 @@
 		D04F743E28744BFA00978D84 /* CardTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F743D28744BFA00978D84 /* CardTile.swift */; };
 		D06EF35F287596CA00489D4E /* Tiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06EF35E287596CA00489D4E /* Tiles.swift */; };
 		D0A8850C28736ADA0021A376 /* initial_cards.json in Resources */ = {isa = PBXBuildFile; fileRef = D0A8850B28736ADA0021A376 /* initial_cards.json */; };
-		D0C046AC287E20C300260476 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0C046AA287E20C300260476 /* DataModel.xcdatamodeld */; };
-		D0C046AE287E21E400260476 /* CoreDataPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C046AD287E21E400260476 /* CoreDataPlayground.swift */; };
-		D0C046B0287E228C00260476 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C046AF287E228C00260476 /* Persistence.swift */; };
 		D0C046B9287EA86000260476 /* AACard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C046B7287EA86000260476 /* AACard+CoreDataClass.swift */; };
 		D0D886B7286DA64F0074506C /* FresscardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D886B6286DA64F0074506C /* FresscardsApp.swift */; };
 		D0D886B9286DA64F0074506C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D886B8286DA64F0074506C /* ContentView.swift */; };
@@ -98,9 +95,6 @@
 		D04F743D28744BFA00978D84 /* CardTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTile.swift; sourceTree = "<group>"; };
 		D06EF35E287596CA00489D4E /* Tiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tiles.swift; sourceTree = "<group>"; };
 		D0A8850B28736ADA0021A376 /* initial_cards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = initial_cards.json; sourceTree = "<group>"; };
-		D0C046AB287E20C300260476 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		D0C046AD287E21E400260476 /* CoreDataPlayground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPlayground.swift; sourceTree = "<group>"; };
-		D0C046AF287E228C00260476 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D0C046B7287EA86000260476 /* AACard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AACard+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D0D886B3286DA64F0074506C /* Fresscards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fresscards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D886B6286DA64F0074506C /* FresscardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FresscardsApp.swift; sourceTree = "<group>"; };
@@ -150,7 +144,6 @@
 		D038702E287860540036A11F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D0C046AA287E20C300260476 /* DataModel.xcdatamodeld */,
 				D0DB5E1E2872F911003BF3A1 /* Card.swift */,
 				D03870352878BF200036A11F /* jsonData.swift */,
 				D0A8850B28736ADA0021A376 /* initial_cards.json */,
@@ -233,9 +226,7 @@
 				D04F743428743BB900978D84 /* Views */,
 				D0D886B8286DA64F0074506C /* ContentView.swift */,
 				D038703A287C29940036A11F /* TextFile.swift */,
-				D0C046AD287E21E400260476 /* CoreDataPlayground.swift */,
 				D038703C287C7C550036A11F /* ShareView.swift */,
-				D0C046AF287E228C00260476 /* Persistence.swift */,
 				D0D886BA286DA6500074506C /* Assets.xcassets */,
 				D0D886BC286DA6500074506C /* Preview Content */,
 			);
@@ -453,9 +444,6 @@
 				D0D886B9286DA64F0074506C /* ContentView.swift in Sources */,
 				D038703B287C29940036A11F /* TextFile.swift in Sources */,
 				D0DB5E1F2872F911003BF3A1 /* Card.swift in Sources */,
-				D0C046B0287E228C00260476 /* Persistence.swift in Sources */,
-				D0C046AE287E21E400260476 /* CoreDataPlayground.swift in Sources */,
-				D0C046AC287E20C300260476 /* DataModel.xcdatamodeld in Sources */,
 				D04F743A287448EC00978D84 /* FavoriteButton.swift in Sources */,
 				D03870362878BF200036A11F /* jsonData.swift in Sources */,
 				D04F743628743BCC00978D84 /* CardList.swift in Sources */,
@@ -874,19 +862,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D0C046AA287E20C300260476 /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D0C046AB287E20C300260476 /* DataModel.xcdatamodel */,
-			);
-			currentVersion = D0C046AB287E20C300260476 /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D0D886AB286DA64F0074506C /* Project object */;
 }

@@ -12,9 +12,9 @@ struct CardRow: View {
 
     var body: some View {
             HStack {
-                Text(card.side_a)
+                Text(card.a)
                 Spacer()
-                Text(card.side_b)
+                Text(card.b)
                 
 //                if card.isFavorite {
 //                    Spacer()

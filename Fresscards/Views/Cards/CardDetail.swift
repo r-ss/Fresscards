@@ -40,13 +40,13 @@ struct CardDetail: View {
 
     
     private func enter_side_a(text: String) {
-        self.card.side_a = text
+        self.card.a = text
 //        jsonData.cards[cardIndex] = card
         jsonData.update(card: self.card)
     }
     
     private func enter_side_b(text: String) {
-        self.card.side_b = text
+        self.card.b = text
         jsonData.update(card: self.card)
     }
     
@@ -67,13 +67,13 @@ struct CardDetail: View {
                                 
                 
                 Text("Side A:")
-                TextField("Enter text...", text: $card.side_a)
+                TextField("Enter text...", text: $card.a)
                 .onSubmit {
                     save_edited_fields()
                 }
                 Divider()
                 Text("Side B:")
-                TextField("Enter text...", text: $card.side_b)
+                TextField("Enter text...", text: $card.b)
                 .onSubmit {
                     save_edited_fields()
                 }

@@ -9,6 +9,6 @@ import Foundation
 
 struct Card: Codable, Hashable, Identifiable {
     var id: UUID
-    var side_a: String
-    var side_b: String
+    var a: String
+    var b: String
 }
