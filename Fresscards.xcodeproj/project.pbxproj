@@ -12,7 +12,6 @@
 		D03870342878A5E10036A11F /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03870332878A5E10036A11F /* PersistenceTests.swift */; };
 		D03870362878BF200036A11F /* jsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03870352878BF200036A11F /* jsonData.swift */; };
 		D038703828798C8F0036A11F /* CardAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D038703728798C8F0036A11F /* CardAdd.swift */; };
-		D038703B287C29940036A11F /* TextFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D038703A287C29940036A11F /* TextFile.swift */; };
 		D038703D287C7C550036A11F /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D038703C287C7C550036A11F /* ShareView.swift */; };
 		D0387058287C87450036A11F /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0387057287C87450036A11F /* ShareViewController.swift */; };
 		D038705B287C87450036A11F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0387059287C87450036A11F /* MainInterface.storyboard */; };
@@ -33,6 +32,9 @@
 		D0D886D2286DA6500074506C /* FresscardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D886D1286DA6500074506C /* FresscardsUITests.swift */; };
 		D0D886D4286DA6500074506C /* FresscardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D886D3286DA6500074506C /* FresscardsUITestsLaunchTests.swift */; };
 		D0DB5E1F2872F911003BF3A1 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB5E1E2872F911003BF3A1 /* Card.swift */; };
+		D0DBEF30287F524600AA10E4 /* RandomString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DBEF2F287F524600AA10E4 /* RandomString.swift */; };
+		D0DBEF32287F526000AA10E4 /* CardFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DBEF31287F526000AA10E4 /* CardFields.swift */; };
+		D0DBEF34287F551500AA10E4 /* RawJsonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DBEF33287F551500AA10E4 /* RawJsonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +82,6 @@
 		D03870352878BF200036A11F /* jsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonData.swift; sourceTree = "<group>"; };
 		D038703728798C8F0036A11F /* CardAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAdd.swift; sourceTree = "<group>"; };
 		D0387039287C24E80036A11F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		D038703A287C29940036A11F /* TextFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFile.swift; sourceTree = "<group>"; };
 		D038703C287C7C550036A11F /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		D0387055287C87450036A11F /* FresscardsShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FresscardsShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0387057287C87450036A11F /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +108,9 @@
 		D0D886D1286DA6500074506C /* FresscardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FresscardsUITests.swift; sourceTree = "<group>"; };
 		D0D886D3286DA6500074506C /* FresscardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FresscardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D0DB5E1E2872F911003BF3A1 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		D0DBEF2F287F524600AA10E4 /* RandomString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomString.swift; sourceTree = "<group>"; };
+		D0DBEF31287F526000AA10E4 /* CardFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFields.swift; sourceTree = "<group>"; };
+		D0DBEF33287F551500AA10E4 /* RawJsonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawJsonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +184,7 @@
 				D04F743528743BCC00978D84 /* CardList.swift */,
 				D04F743D28744BFA00978D84 /* CardTile.swift */,
 				D06EF35E287596CA00489D4E /* Tiles.swift */,
+				D0DBEF31287F526000AA10E4 /* CardFields.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 				D0387025287836E30036A11F /* Palette.swift */,
 				D04F7439287448EC00978D84 /* FavoriteButton.swift */,
 				D038702728783D8B0036A11F /* Log.swift */,
+				D0DBEF2F287F524600AA10E4 /* RandomString.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -225,7 +231,7 @@
 				D038702E287860540036A11F /* Models */,
 				D04F743428743BB900978D84 /* Views */,
 				D0D886B8286DA64F0074506C /* ContentView.swift */,
-				D038703A287C29940036A11F /* TextFile.swift */,
+				D0DBEF33287F551500AA10E4 /* RawJsonView.swift */,
 				D038703C287C7C550036A11F /* ShareView.swift */,
 				D0D886BA286DA6500074506C /* Assets.xcassets */,
 				D0D886BC286DA6500074506C /* Preview Content */,
@@ -434,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0DBEF32287F526000AA10E4 /* CardFields.swift in Sources */,
 				D038703D287C7C550036A11F /* ShareView.swift in Sources */,
 				D04F743828743DD100978D84 /* CardDetail.swift in Sources */,
 				D0C046B9287EA86000260476 /* AACard+CoreDataClass.swift in Sources */,
@@ -442,12 +449,13 @@
 				D038702828783D8B0036A11F /* Log.swift in Sources */,
 				D06EF35F287596CA00489D4E /* Tiles.swift in Sources */,
 				D0D886B9286DA64F0074506C /* ContentView.swift in Sources */,
-				D038703B287C29940036A11F /* TextFile.swift in Sources */,
+				D0DBEF30287F524600AA10E4 /* RandomString.swift in Sources */,
 				D0DB5E1F2872F911003BF3A1 /* Card.swift in Sources */,
 				D04F743A287448EC00978D84 /* FavoriteButton.swift in Sources */,
 				D03870362878BF200036A11F /* jsonData.swift in Sources */,
 				D04F743628743BCC00978D84 /* CardList.swift in Sources */,
 				D04F743E28744BFA00978D84 /* CardTile.swift in Sources */,
+				D0DBEF34287F551500AA10E4 /* RawJsonView.swift in Sources */,
 				D04F74332874396400978D84 /* CardRow.swift in Sources */,
 				D0D886B7286DA64F0074506C /* FresscardsApp.swift in Sources */,
 			);

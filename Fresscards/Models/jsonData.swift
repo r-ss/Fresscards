@@ -45,7 +45,9 @@ class jsonData: ObservableObject {
         let jsonURL = documentDirectory
             .appendingPathComponent("initial_cards")
             .appendingPathExtension("json")
-        try? JSONEncoder().encode(cards).write(to: jsonURL, options: .atomic)
+        let enc = JSONEncoder()
+        enc.dateEncodingStrategy = .iso8601 // https://tapadoo.com/swift-json-date-formatting/
+        try? enc.encode(cards).write(to: jsonURL, options: .atomic)
     }
 }
 
@@ -66,6 +68,8 @@ extension Bundle {
         }
         
         // returning the parsed data
-        return try! JSONDecoder().decode(T.self, from: Data(contentsOf: jsonURL))
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        return try! decoder.decode(T.self, from: Data(contentsOf: jsonURL))
     }
 }

@@ -36,6 +36,13 @@ struct ContentView: View {
                     Rectangle().fill(Palette.e).frame(width: 200, height: 30)
                     
                     ShareView()
+                    
+                    NavigationLink {
+                        RawJsonView()
+                    } label: {
+                        Text("RAW JSON")
+                    }
+                    .padding()
                 
                     NavigationLink {
                         Tiles(withCards: jsonData.cards)

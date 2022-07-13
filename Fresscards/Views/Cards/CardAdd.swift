@@ -20,7 +20,7 @@ struct CardAdd: View {
     
     private func createCardFromFields() {
         log("WOW")
-        let new:Card = Card(id:UUID(), a: self.side_a, b: self.side_b)
+        let new:Card = Card(id:UUID(), a: self.side_a, b: self.side_b, added: Date())
 //        self.card.side_b = text
         jsonData.add(card: new)
         self.presentationMode.wrappedValue.dismiss()
@@ -29,22 +29,10 @@ struct CardAdd: View {
     var body: some View {
         VStack {
             Text("Side A:")
-            TextField("Enter text...", text: $side_a)
-                .focused($keyboardFocused)
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        keyboardFocused = true
-                    }
-                }
+            CardTextField(content: $side_a)
             Divider()
             Text("Side B:")
-            TextField("Enter text...", text: $side_b)
-                .focused($keyboardFocused)
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        keyboardFocused = true
-                    }
-                }
+            CardTextField(content: $side_b)
             
             Button("Save", action: { self.createCardFromFields() })
         }.padding()
