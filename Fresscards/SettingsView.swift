@@ -9,8 +9,25 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    let settingsManager = SettingsManager()
+    
+    @State private var toggleAutoCapitalization = false
+    
+    func readSettings() {
+        self.toggleAutoCapitalization = settingsManager.getBoolValue(name: "AutoCapitalization")
+    }
+    
     var body: some View {
-        Text("Settings")
+        VStack {
+            Text("Settings")
+//            Text(String(settingsManager.getBoolValue(name: "AutoCapitalization")))
+            Toggle("Auto Capitalization", isOn: $toggleAutoCapitalization)
+                .onChange(of: toggleAutoCapitalization) { value in
+                    settingsManager.setValue(name: "AutoCapitalization", value: toggleAutoCapitalization)
+                }
+        }
+        .onAppear { self.readSettings() }
+        .padding()
     }
 }
 

@@ -21,7 +21,7 @@ struct RawJsonView: View {
     }
     
     var body: some View {
-        Text(content).font(.system(size: 11)).lineLimit(nil)
+        Text(content).font(.system(size: 11)).lineLimit(20)
     }
 }
 

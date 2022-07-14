@@ -23,6 +23,8 @@
 		D04F743E28744BFA00978D84 /* CardTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F743D28744BFA00978D84 /* CardTile.swift */; };
 		D06EF35F287596CA00489D4E /* Tiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06EF35E287596CA00489D4E /* Tiles.swift */; };
 		D0918EA6288057B5008FC0E4 /* BakedCards in Resources */ = {isa = PBXBuildFile; fileRef = D0918EA5288057B5008FC0E4 /* BakedCards */; };
+		D09CCF2F2880C30D0018B078 /* FirstRunSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09CCF2E2880C30D0018B078 /* FirstRunSetup.swift */; };
+		D09CCF312880C9BF0018B078 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09CCF302880C9BF0018B078 /* SettingsManager.swift */; };
 		D0A8850C28736ADA0021A376 /* initial_cards.json in Resources */ = {isa = PBXBuildFile; fileRef = D0A8850B28736ADA0021A376 /* initial_cards.json */; };
 		D0C9A435287FF67700F9426F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C9A434287FF67700F9426F /* SettingsView.swift */; };
 		D0C9A437287FF8BA00F9426F /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C9A436287FF8BA00F9426F /* DebugView.swift */; };
@@ -98,6 +100,8 @@
 		D04F743D28744BFA00978D84 /* CardTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTile.swift; sourceTree = "<group>"; };
 		D06EF35E287596CA00489D4E /* Tiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tiles.swift; sourceTree = "<group>"; };
 		D0918EA5288057B5008FC0E4 /* BakedCards */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BakedCards; path = Fresscards/BakedCards; sourceTree = SOURCE_ROOT; };
+		D09CCF2E2880C30D0018B078 /* FirstRunSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunSetup.swift; sourceTree = "<group>"; };
+		D09CCF302880C9BF0018B078 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		D0A8850B28736ADA0021A376 /* initial_cards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = initial_cards.json; sourceTree = "<group>"; };
 		D0C9A434287FF67700F9426F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D0C9A436287FF8BA00F9426F /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
@@ -232,6 +236,8 @@
 				D0387064287CAA280036A11F /* Fresscards.entitlements */,
 				D0387039287C24E80036A11F /* Info.plist */,
 				D0D886B6286DA64F0074506C /* FresscardsApp.swift */,
+				D09CCF302880C9BF0018B078 /* SettingsManager.swift */,
+				D09CCF2E2880C30D0018B078 /* FirstRunSetup.swift */,
 				D038702E287860540036A11F /* Models */,
 				D04F743428743BB900978D84 /* Views */,
 				D0D886B8286DA64F0074506C /* ContentView.swift */,
@@ -447,6 +453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D09CCF2F2880C30D0018B078 /* FirstRunSetup.swift in Sources */,
 				D0DBEF32287F526000AA10E4 /* CardTextField.swift in Sources */,
 				D038703D287C7C550036A11F /* ShareView.swift in Sources */,
 				D04F743828743DD100978D84 /* CardDetail.swift in Sources */,
@@ -463,6 +470,7 @@
 				D04F743628743BCC00978D84 /* CardList.swift in Sources */,
 				D04F743E28744BFA00978D84 /* CardTile.swift in Sources */,
 				D0DBEF34287F551500AA10E4 /* RawJsonView.swift in Sources */,
+				D09CCF312880C9BF0018B078 /* SettingsManager.swift in Sources */,
 				D0C9A437287FF8BA00F9426F /* DebugView.swift in Sources */,
 				D04F74332874396400978D84 /* CardRow.swift in Sources */,
 				D0D886B7286DA64F0074506C /* FresscardsApp.swift in Sources */,

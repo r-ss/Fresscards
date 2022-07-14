@@ -8,18 +8,28 @@
 import SwiftUI
 
 struct CardRow: View {
+    
+    let settingsManager = SettingsManager()
     var card: Card
+    
+    var aOptionallyCapitalized: String {
+        settingsManager.getBoolValue(name: "AutoCapitalization") ? card.a.initialUppercased() : card.a
+    }
+    
+    var bOptionallyCapitalized: String {
+        settingsManager.getBoolValue(name: "AutoCapitalization") ? card.b.initialUppercased() : card.a
+    }
 
     var body: some View {
             HStack(spacing: 0) {
                 Group {
-                    Text(card.a).font(.system(size: 16))
+                    Text(aOptionallyCapitalized).font(.system(size: 16))
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 
 //                Spacer()
                 Group {
-                    Text(card.b).font(.system(size: 16))
+                    Text(bOptionallyCapitalized).font(.system(size: 16))
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 

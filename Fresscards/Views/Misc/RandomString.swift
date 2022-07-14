@@ -12,3 +12,11 @@ extension String {
         return String((0..<length).map{ _ in base.randomElement()! })
     }
 }
+
+extension String {
+  func initialUppercased() -> String {
+      var components = self.components(separatedBy: " ")
+      components[0] = components[0].capitalized
+      return components.joined(separator: " ")
+  }
+}

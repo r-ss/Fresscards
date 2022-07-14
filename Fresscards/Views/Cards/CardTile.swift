@@ -27,6 +27,8 @@ struct CardTile: View {
     @GestureState private var fingerLocation: CGPoint? = nil
     @GestureState private var startLocation: CGPoint? = nil
     
+
+    
     func moveToCenterOnAppear(_ geometry: GeometryProxy){
         self.geometryWidth = geometry.size.width
         let x = geometry.size.width / 2
@@ -49,7 +51,10 @@ struct CardTile: View {
                 var newLocation = startLocation ?? location
                 newLocation.x += value.translation.width
                 newLocation.y += value.translation.height
-                self.location = newLocation
+                showSideB = true
+                withAnimation(.easeOut(duration: 0.1)) {
+                    self.location = newLocation
+                }
             }.updating($startLocation) { (value, startLocation, transaction) in
                 startLocation = startLocation ?? location
             }
@@ -70,12 +75,12 @@ struct CardTile: View {
             }
     }
     
-    var fingerDrag: some Gesture {
-        DragGesture(minimumDistance: 3, coordinateSpace: .local)
-            .updating($fingerLocation) { (value, fingerLocation, transaction) in
-                fingerLocation = value.location
-            }
-    }
+//    var fingerDrag: some Gesture {
+//        DragGesture(minimumDistance: 3, coordinateSpace: .local)
+//            .updating($fingerLocation) { (value, fingerLocation, transaction) in
+//                fingerLocation = value.location
+//            }
+//    }
     
     
     
@@ -94,6 +99,15 @@ struct CardTile: View {
     //    private var thresholdDragDistance: CGFloat = 220
     private var thresholdPercentage: CGFloat = 0.4 // when the user has draged 50% the width of the screen in either direction
     
+    let settingsManager = SettingsManager()
+    
+    var aOptionallyCapitalized: String {
+        settingsManager.getBoolValue(name: "AutoCapitalization") ? card.a.initialUppercased() : card.a
+    }
+    
+    var bOptionallyCapitalized: String {
+        settingsManager.getBoolValue(name: "AutoCapitalization") ? card.b.initialUppercased() : card.a
+    }
     
     init(card: Card, onRemove: @escaping (_ card: Card) -> Void) {
         self.card = card
@@ -146,13 +160,13 @@ struct CardTile: View {
                         // CONTENT
                         VStack(spacing: 14) {
                             
-                            Text(card.a)
+                            Text(aOptionallyCapitalized)
                                 .font(.system(size: 32, weight: .light, design: .serif))
                                 .foregroundColor(Palette.cardTextA)
 //                                .padding(.init(top: 0, leading: 20, bottom: 20, trailing: 20))
 //                                .background(.red)
                                 .frame(maxWidth: getMaxTextWidth(geometry))
-                            Text(card.b)
+                            Text(bOptionallyCapitalized)
                                 .font(.system(size: 24, weight: .light, design: .serif))
                                 .foregroundColor(Palette.cardTextB)
                                 .italic()
@@ -163,14 +177,14 @@ struct CardTile: View {
                         }.position(location)//.offset(x: self.translation.width, y: self.translation.height)
                             .offset(x:0,y:15)
                         
-                        Group {
-                            if let fingerLocation = fingerLocation {
-                                Circle()
-                                    .stroke(Color.red, lineWidth: 2)
-                                    .frame(width: 44, height: 44)
-                                    .position(fingerLocation)
-                            }
-                        }
+//                        Group {
+//                            if let fingerLocation = fingerLocation {
+//                                Circle()
+//                                    .stroke(Color.red, lineWidth: 2)
+//                                    .frame(width: 44, height: 44)
+//                                    .position(fingerLocation)
+//                            }
+//                        }
                     }
                     .confirmationDialog(
                         "Are you sure?",
@@ -185,8 +199,16 @@ struct CardTile: View {
                     }
                 } // ZStack
             } // Group
-            .gesture(TapGesture().onEnded { showSideB = !showSideB })
-            .gesture(simpleDrag.simultaneously(with: fingerDrag))
+            .gesture(TapGesture().onEnded {
+//                showSideB = !showSideB
+                if showSideB {
+                    withAnimation { self.onRemove(self.card) }
+                } else {
+                    showSideB = true
+                }
+                
+            })
+            .gesture(simpleDrag)//.simultaneously(with: fingerDrag))
         } // ZStack
     } // GeometryReader
 }

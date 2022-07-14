@@ -7,8 +7,6 @@
 
 import Foundation
 
-import TabularData
-
 // Our main data object
 class jsonData: ObservableObject {
     
@@ -16,44 +14,9 @@ class jsonData: ObservableObject {
     let mainContainerName = "db"                // main json file with user's saved data
     let testContainerName = "test_db"           // db for unit tests
     
-    let bakedCSVs: [String] = ["base", "ru_poliglot", "verbs"]
-//    let bakedCSVs: [String] = ["base"]
-    
     public var testMode = false
     
     @Published var cards : [Card] // The Published wrapper marks this value as a source of truth for the view
-    
-    //    init(previewMode: Bool = false) {
-    //        var previewCards: [Card] = []
-    //        for _ in 0..<10 {
-    //            previewCards.append(Card(id: UUID(), a: String.random(), b: String.random()))
-    //        }
-    //        self.cards = previewCards
-    //    }
-    
-    //    init(testMode:Bool = false) {
-    //        self.testMode = testMode
-    //        let filename = testMode ? self.testContainerName : self.mainContainerName
-    //
-    //        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    //        let jsonURL = documentDirectory.appendingPathComponent(filename).appendingPathExtension("json")
-    //        if !FileManager.default.fileExists(atPath: jsonURL.path) {
-    //            log("No database file found, make initial setup")
-    //            let initialURL = Bundle.main.url(forResource: self.initialContainerName, withExtension: "json")!
-    //            let decoder = JSONDecoder()
-    //            decoder.dateDecodingStrategy = .iso8601
-    //            let result = try! decoder.decode([CardWireframe].self, from: Data(contentsOf: initialURL))
-    //
-    //            var pile: [Card] = []
-    //            for r in result {
-    //                let c = Card(id: UUID(), a: r.a, b: r.b, added: Date())
-    //                pile.append(c)
-    //            }
-    //            self.cards = pile
-    //        } else {
-    //            self.cards = Bundle.load(containerFilename: filename, initialFilename: initialContainerName) // Initailizing the array from a json file
-    //        }
-    //    }
     
     init(testMode:Bool = false) {
         self.testMode = testMode
@@ -62,40 +25,12 @@ class jsonData: ObservableObject {
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let jsonURL = documentDirectory.appendingPathComponent(filename).appendingPathExtension("json")
         if !FileManager.default.fileExists(atPath: jsonURL.path) {
+            
             log("No database file found, make initial setup")
-            
-            let options = CSVReadingOptions(hasHeaderRow: true, delimiter: ",")
-            var pile: [Card] = []
-            for CSVFilename in self.bakedCSVs {
-                
-
-                
-                guard let fileUrl = Bundle.main.url(forResource: CSVFilename, withExtension: "csv", subdirectory: "BakedCards") else {
-                    self.cards = []
-                    return
-                }
-                
-                let result = try! DataFrame(contentsOfCSVFile: fileUrl, options: options)
-                
-                //        var bakedCards = [Card]
-                
-                
-                
-                
-                let stringColumns: [Column<String>] = result.columns.map {
-                    $0.assumingType(String.self)
-                }
-                for row in result.rows.indices {
-                    let r = stringColumns.map({ $0[row] })
-                    log("row: \(r)")
-                    let c = Card(id: UUID(), a: r[0]!, b: r[1]!, added: Date())
-                    pile.append(c)
-                }
-                
-            }
-            
-            self.cards = pile
+            let firstRun = FirstRunSetup()
+            self.cards = firstRun.loadBakedCards()
             self.saveJSON()
+            
         } else {
             self.cards = Bundle.load(containerFilename: filename, initialFilename: initialContainerName) // Initailizing the array from a json file
         }
