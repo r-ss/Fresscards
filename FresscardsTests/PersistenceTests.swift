@@ -22,10 +22,16 @@ class PersistenceTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
+    func testPersistenceTestModeIsOn() throws {
+        XCTAssertEqual(data.testMode, true, "Test mode is not true")
+    }
+    
     func testPersistenceOperations() throws {
 //        log("--- testPersistenceOperations ---")
         let initial_count: Int = data.cards.count
 //        log(String(initial_count))
+        
+        XCTAssertEqual(data.cards.count, 3, "Number of initial cards is not 3")
 
         let new:Card = Card(id:UUID(), a: "new_a", b: "new_b")
 
@@ -34,9 +40,7 @@ class PersistenceTests: XCTestCase {
         
         var last:Card = data.cards.last!
         
-//        let uuid_to_check = UUID(uuidString: last.id)
         XCTAssertNotEqual(last.id, nil, "item UUID is wrong")
-//        log("Last side_a: \(last.a)")
         XCTAssertEqual(last.a, "new_a", "last_a is wrong")
         
         last.b = "edited"
@@ -47,9 +51,6 @@ class PersistenceTests: XCTestCase {
         
         
         data.removeCard(withId: last.id)
-        
-        
-//        log(String(data.cards.count))
         XCTAssertEqual(data.cards.count, initial_count, "cards count is wrong")
     }
 

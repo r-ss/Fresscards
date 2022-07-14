@@ -12,67 +12,94 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var jsonData: jsonData
-//    @EnvironmentObject var modelData: CardRealmViewModel
-    
+    //    @EnvironmentObject var modelData: CardRealmViewModel
     
     var body: some View {
-        //let _ = print(ModelData().cards)
-        
-
+        //let _ = print(ModelData().cards
         
         VStack {
             Text("Fresscards")
                 .font(Font.system(Font.TextStyle.title))
-//                Divider()
-//
-            NavigationView {
-                
-                VStack {
-                    
-                    Rectangle().fill(Palette.a).frame(width: 200, height: 30)
-                    Rectangle().fill(Palette.b).frame(width: 200, height: 30)
-                    Rectangle().fill(Palette.c).frame(width: 200, height: 30)
-                    Rectangle().fill(Palette.d).frame(width: 200, height: 30)
-                    Rectangle().fill(Palette.e).frame(width: 200, height: 30)
-                    
-                    ShareView()
-                    
-                    NavigationLink {
-                        RawJsonView()
-                    } label: {
-                        Text("RAW JSON")
+            //                Divider()
+            
+            TabView {
+                Tiles()
+                    .badge(2)
+                    .tabItem {
+                        Label("Tiles", systemImage: "stop.fill")
                     }
-                    .padding()
-                
-                    NavigationLink {
-                        Tiles(withCards: jsonData.cards)
-                    } label: {
-                        Text("Tiles")
+                CardList()
+                    .tabItem {
+                        Label("List", systemImage: "tray.full")
                     }
-                    .padding()
-                    
-                    
-                    NavigationLink {
-                        CardList()
-                    } label: {
-                        Text("CardList")
+                DebugView()
+                    .tabItem {
+                        Label("Debug", systemImage: "cpu")
                     }
-                    .padding()
-                    
-                    
-                }
-                
-                
-                
+                SettingsView()
+                    .tabItem {
+                        Label("Settings", systemImage: "gearshape.fill")
+                    }
             }
-                
-
-                
-
-  
-    
         }.background(Palette.background)
+        
+        
+        
+        //        VStack {
+        //            Text("Fresscards")
+        //                .font(Font.system(Font.TextStyle.title))
+        ////                Divider()
+        
+        
+        //
+        //            NavigationView {
+        //
+        //                VStack {
+        //
+        //                    Rectangle().fill(Palette.a).frame(width: 200, height: 30)
+        //                    Rectangle().fill(Palette.b).frame(width: 200, height: 30)
+        //                    Rectangle().fill(Palette.c).frame(width: 200, height: 30)
+        //                    Rectangle().fill(Palette.d).frame(width: 200, height: 30)
+        //                    Rectangle().fill(Palette.e).frame(width: 200, height: 30)
+        //
+        //                    ShareView()
+        //
+        //                    NavigationLink {
+        //                        RawJsonView()
+        //                    } label: {
+        //                        Text("RAW JSON")
+        //                    }
+        //                    .padding()
+        //
+        //                    NavigationLink {
+        //                        Tiles(withCards: jsonData.cards)
+        //                    } label: {
+        //                        Text("Tiles")
+        //                    }
+        //                    .padding()
+        //
+        //
+        //                    NavigationLink {
+        //                        CardList()
+        //                    } label: {
+        //                        Text("CardList")
+        //                    }
+        //                    .padding()
+        //
+        //
+        //                }
+        //
+        //
+        //
+        //            }
+        //
+        
+        
+        
+        
+        
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {

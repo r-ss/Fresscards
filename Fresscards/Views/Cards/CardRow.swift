@@ -11,10 +11,17 @@ struct CardRow: View {
     var card: Card
 
     var body: some View {
-            HStack {
-                Text(card.a)
-                Spacer()
-                Text(card.b)
+            HStack(spacing: 0) {
+                Group {
+                    Text(card.a).font(.system(size: 16))
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                
+//                Spacer()
+                Group {
+                    Text(card.b).font(.system(size: 16))
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 
 //                if card.isFavorite {
 //                    Spacer()

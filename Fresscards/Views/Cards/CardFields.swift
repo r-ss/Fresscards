@@ -23,8 +23,8 @@ struct CardTextField: View {
     }
 }
 
-//struct CardTextField_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CardTextField()
-//    }
-//}
+struct CardTextField_Previews: PreviewProvider {
+    static var previews: some View {
+        Text("Enter text...")
+    }
+}

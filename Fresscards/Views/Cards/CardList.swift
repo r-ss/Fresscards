@@ -30,7 +30,7 @@ struct CardList: View {
     }
     
     var body: some View {
-        
+        NavigationView {
             VStack {
                 List {
                     ForEach(filteredCards) { card in
@@ -42,7 +42,7 @@ struct CardList: View {
                     }.onDelete(perform: deleteCard).listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                 }.listStyle(PlainListStyle())
 
-                .navigationBarTitle(Text("Cards"), displayMode: .inline)
+                .navigationBarTitle(Text("Cards List"), displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {
                       self.addMode = true
                     } ) {
@@ -54,6 +54,7 @@ struct CardList: View {
                 NavigationLink(destination: CardAdd(),
                     isActive: $addMode) { EmptyView() }
             }.padding(0)
+        }
     }
 }
         
