@@ -22,6 +22,7 @@
 		D04F743A287448EC00978D84 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F7439287448EC00978D84 /* FavoriteButton.swift */; };
 		D04F743E28744BFA00978D84 /* CardTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F743D28744BFA00978D84 /* CardTile.swift */; };
 		D06EF35F287596CA00489D4E /* Tiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06EF35E287596CA00489D4E /* Tiles.swift */; };
+		D0918EA6288057B5008FC0E4 /* BakedCards in Resources */ = {isa = PBXBuildFile; fileRef = D0918EA5288057B5008FC0E4 /* BakedCards */; };
 		D0A8850C28736ADA0021A376 /* initial_cards.json in Resources */ = {isa = PBXBuildFile; fileRef = D0A8850B28736ADA0021A376 /* initial_cards.json */; };
 		D0C9A435287FF67700F9426F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C9A434287FF67700F9426F /* SettingsView.swift */; };
 		D0C9A437287FF8BA00F9426F /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C9A436287FF8BA00F9426F /* DebugView.swift */; };
@@ -96,6 +97,7 @@
 		D04F7439287448EC00978D84 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		D04F743D28744BFA00978D84 /* CardTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTile.swift; sourceTree = "<group>"; };
 		D06EF35E287596CA00489D4E /* Tiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tiles.swift; sourceTree = "<group>"; };
+		D0918EA5288057B5008FC0E4 /* BakedCards */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BakedCards; path = Fresscards/BakedCards; sourceTree = SOURCE_ROOT; };
 		D0A8850B28736ADA0021A376 /* initial_cards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = initial_cards.json; sourceTree = "<group>"; };
 		D0C9A434287FF67700F9426F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D0C9A436287FF8BA00F9426F /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		D038702E287860540036A11F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D0918EA5288057B5008FC0E4 /* BakedCards */,
 				D0DB5E1E2872F911003BF3A1 /* Card.swift */,
 				D03870352878BF200036A11F /* jsonData.swift */,
 				D0A8850B28736ADA0021A376 /* initial_cards.json */,
@@ -410,6 +413,7 @@
 			files = (
 				D0A8850C28736ADA0021A376 /* initial_cards.json in Resources */,
 				D0D886BE286DA6500074506C /* Preview Assets.xcassets in Resources */,
+				D0918EA6288057B5008FC0E4 /* BakedCards in Resources */,
 				D0D886BB286DA6500074506C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

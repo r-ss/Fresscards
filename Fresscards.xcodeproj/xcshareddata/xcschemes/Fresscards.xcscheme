@@ -37,6 +37,11 @@
                BlueprintName = "FresscardsTests"
                ReferencedContainer = "container:Fresscards.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "FresscardsTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

@@ -24,11 +24,11 @@ struct ContentView: View {
             
             TabView {
                 Tiles()
-                    .badge(2)
                     .tabItem {
                         Label("Tiles", systemImage: "stop.fill")
                     }
                 CardList()
+                    .badge(jsonData.cards.count)
                     .tabItem {
                         Label("List", systemImage: "tray.full")
                     }

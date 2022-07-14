@@ -14,6 +14,30 @@ struct CardTile: View {
     //
     @EnvironmentObject var jsonData: jsonData
     
+    @State private var location: CGPoint = CGPoint(x: 20, y: 20)
+    @GestureState private var fingerLocation: CGPoint? = nil
+    @GestureState private var startLocation: CGPoint? = nil // 1
+    
+    var simpleDrag: some Gesture {
+        DragGesture()
+            .onChanged { value in
+                var newLocation = startLocation ?? location // 3
+                newLocation.x += value.translation.width
+                newLocation.y += value.translation.height
+                self.location = newLocation
+            }.updating($startLocation) { (value, startLocation, transaction) in
+                startLocation = startLocation ?? location // 2
+            }
+    }
+    
+    var fingerDrag: some Gesture {
+        DragGesture()
+            .updating($fingerLocation) { (value, fingerLocation, transaction) in
+                fingerLocation = value.location
+            }
+    }
+    
+    
     
     @State private var translation: CGSize = .zero
     //    @State private var cardIndex = 0 // Current card's index
@@ -25,7 +49,7 @@ struct CardTile: View {
     private var card: Card
     private var onRemove: (_ card: Card) -> Void
     //    private var thresholdDragDistance: CGFloat = 220
-    private var thresholdPercentage: CGFloat = 0.5 // when the user has draged 50% the width of the screen in either direction
+    private var thresholdPercentage: CGFloat = 0.4 // when the user has draged 50% the width of the screen in either direction
     
     
     init(card: Card, onRemove: @escaping (_ card: Card) -> Void) {
@@ -65,89 +89,87 @@ struct CardTile: View {
             ZStack {
                 
                 Group{
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Palette.a)
-                        .shadow(radius: 7)
-                    
-                        .offset(x: self.translation.width, y: self.translation.height)
-                        .gesture(
-                            TapGesture().onEnded {
-                                isTapped = !isTapped
-                            })
-                        .gesture(
-                            DragGesture(minimumDistance: 3, coordinateSpace: .local)
-                                .onChanged { value in
-                                    self.translation = value.translation
-                                    if !self.isTapped {
-                                        self.isTapped = true
-                                    }
-                                }
-                                .onEnded { value in
-                                    
-                                    let direction = self.judgeGesture(geometry, from: value)
-                                    log("Direction: \(direction)")
-                                    
-                                    switch direction {
-                                    case .none:
-                                        // if drag distance threshold is not reached, return tile to initial position
-                                        withAnimation(.interactiveSpring()) {
-                                            self.translation = .zero
-                                        }
-                                    case .up:
-                                        log("UP UP")
-                                        self.confirmationShown = true
-                                        withAnimation(.interactiveSpring()) {
-                                            self.translation = .zero
-                                        }
-                                        
-                                    default:
-                                        // in other cases we assume that drag threshold distance is reached and card swiped
-                                        self.onRemove(self.card)
-                                    }
-                                    
-                                    //                                    if (dir == .none){
-                                    //                                        withAnimation(.interactiveSpring()) {
-                                    //                                            self.translation = .zero
-                                    //                                        }
-                                    //                                    } else {
-                                    //                                        self.onRemove(self.card)
-                                    //                                    }
-                                    
-                                }
-                        )
-                    
-                    
-                    //                Text(card.side_a).offset(x: viewState.width, y: viewState.height)
-                    VStack {
-                        //                        Text(String(cardIndex))
-                        Text(card.a)
-                        Divider()
-                        if (isTapped){
-                            
-                            Text(card.b)
-                            
-                        }
-                    }.offset(x: self.translation.width, y: self.translation.height)
-                }
-                .confirmationDialog(
-                    "Are you sure?",
-                    isPresented: $confirmationShown
-                ) {
-                    Button("Delete this card?", role: .destructive) {
-                        log("Removing card")
-                        jsonData.removeCard(withId: card.id)
-                        withAnimation {
-                            self.onRemove(self.card)
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Palette.a)
+                            .frame(
+                                width:UIScreen.main.bounds.width / 1.2,
+                                height:UIScreen.main.bounds.width / 1.2
+                            )
+                            .shadow(radius: 7)
+//                            .offset(x: self.translation.width, y: self.translation.height)
+                            .position(location)
+                            .gesture(TapGesture().onEnded { isTapped = !isTapped })
+                            .gesture(
+                                simpleDrag.simultaneously(with: fingerDrag)
+//                                DragGesture(minimumDistance: 3, coordinateSpace: .local)
+//                                    .onChanged { value in
+//                                        self.translation = value.translation
+//                                        if !self.isTapped {
+//                                            self.isTapped = true
+//                                        }
+//                                    }
+//                                    .onEnded { value in
+//                                        let direction = self.judgeGesture(geometry, from: value)
+//                                        log("Direction: \(direction)")
+//                                        switch direction {
+//                                        case .none:
+//                                            // if drag distance threshold is not reached, return tile to initial position
+//                                            withAnimation(.interactiveSpring()) { self.translation = .zero }
+//                                        case .up:
+//                                            self.confirmationShown = true
+//                                            withAnimation(.interactiveSpring()) { self.translation = .zero }
+//                                        default:
+//                                            // in other cases we assume that drag threshold distance is reached and card swiped
+//                                            self.onRemove(self.card)
+//                                        }
+//                                    }
+                            )
+                        
+                        VStack {
+                            //                        Text(String(cardIndex))
+                            Text(card.a)
+                            Divider()
+                            if (isTapped){
+                                
+                                Text(card.b)
+                                
+                            }
+                        }.offset(x: self.translation.width, y: self.translation.height)
+                        
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(.pink)
+                                .frame(width: 100, height: 100)
+                                .position(location)
+                                .gesture(
+                                    simpleDrag.simultaneously(with: fingerDrag)
+                                )
+                            if let fingerLocation = fingerLocation {
+                                Circle()
+                                    .stroke(Color.green, lineWidth: 2)
+                                    .frame(width: 44, height: 44)
+                                    .position(fingerLocation)
+                            }
                         }
                     }
+                    .confirmationDialog(
+                        "Are you sure?",
+                        isPresented: $confirmationShown
+                    ) {
+                        Button("Delete this card?", role: .destructive) {
+                            log("Removing card")
+                            jsonData.removeCard(withId: card.id)
+                            withAnimation { self.onRemove(self.card) }
+                        }
+                    }
+                    //                .border(Color.red)
+                    //                .offset(x: self.translation.width, y: self.translation.height)
+                    //                .animation(nil, value: UUID())
                 }
-                //                .border(Color.red)
-                //                .offset(x: self.translation.width, y: self.translation.height)
-                //                .animation(nil, value: UUID())
             }
         }
     }
-    
     
 }
 

@@ -16,9 +16,9 @@ struct Tiles: View {
     
     @State var textObject: String = "no"
     
-//    init() {
-////        self.cards = jsonData.cards
-//    }
+    //    init() {
+    ////        self.cards = jsonData.cards
+    //    }
     
     private func readCards(){
         self.cards = jsonData.cards
@@ -41,6 +41,10 @@ struct Tiles: View {
         return CGFloat(cards.count - 1 - id) * tilesPadding
     }
     
+    //    private var maxID: Int {
+    //         return self.cards.map { $0.id }.max() ?? 0
+    //    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -48,14 +52,18 @@ struct Tiles: View {
                 GeometryReader { geometry in
                     ZStack {
                         ForEach(self.cards, id: \.self) { card in
-                            CardTile(card: card, onRemove: { removedCard in
-                                // Remove that user from our array
-                                withAnimation(.easeInOut(duration: 0.15)) { // add animation
-                                    self.cards.removeAll { $0.id == removedCard.id }
+                            Group {
+                                if (self.cards.count - 5)...self.cards.count ~= findCardIndex(for_card: card) {
+                                    CardTile(card: card, onRemove: { removedCard in
+                                        // Remove that user from our array
+                                        withAnimation(.easeInOut(duration: 0.15)) { // add animation
+                                            self.cards.removeAll { $0.id == removedCard.id }
+                                        }
+                                    })
+                                    .frame(width: self.getCardWidth(geometry, id: findCardIndex(for_card: card)), height: self.getCardWidth(geometry, id: findCardIndex(for_card: card)))
+                                    .offset(x: 0, y: self.getCardOffset(geometry, id: findCardIndex(for_card: card)))
                                 }
-                            })
-                            .frame(width: self.getCardWidth(geometry, id: findCardIndex(for_card: card)), height: self.getCardWidth(geometry, id: findCardIndex(for_card: card)))
-                            .offset(x: 0, y: self.getCardOffset(geometry, id: findCardIndex(for_card: card)))
+                            }
                         }
                     }
                     Spacer()

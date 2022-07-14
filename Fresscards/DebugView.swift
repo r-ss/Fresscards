@@ -7,18 +7,20 @@
 
 import SwiftUI
 
+
 struct DebugView: View {
     
     var body: some View {
         VStack {
             ShareView().padding()
             Text("Debug")
+            Group {
             Rectangle().fill(Palette.a).frame(width: 200, height: 30)
             Rectangle().fill(Palette.b).frame(width: 200, height: 30)
             Rectangle().fill(Palette.c).frame(width: 200, height: 30)
             Rectangle().fill(Palette.d).frame(width: 200, height: 30)
             Rectangle().fill(Palette.e).frame(width: 200, height: 30)
-            Divider()
+            }
             Text("RAW JSON:")
             RawJsonView()
         }
