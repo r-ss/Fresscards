@@ -14,18 +14,12 @@ struct Tiles: View {
     @State var cards: [Card] = []
     @State private var addMode = false
     
-    @State var textObject: String = "no"
-    
-    //    init() {
-    ////        self.cards = jsonData.cards
-    //    }
-    
     private func readCards(){
         self.cards = jsonData.cards
     }
     
     func findCardIndex(for_card:Card) -> Int {
-        log("findCardIndex forCard: \(for_card)")
+//        log("findCardIndex forCard: \(for_card)")
         return cards.firstIndex(where: { $0.id == for_card.id })!
     }
     
@@ -41,14 +35,9 @@ struct Tiles: View {
         return CGFloat(cards.count - 1 - id) * tilesPadding
     }
     
-    //    private var maxID: Int {
-    //         return self.cards.map { $0.id }.max() ?? 0
-    //    }
-    
     var body: some View {
         NavigationView {
             VStack {
-                Text(textObject)
                 GeometryReader { geometry in
                     ZStack {
                         ForEach(self.cards, id: \.self) { card in
@@ -60,8 +49,8 @@ struct Tiles: View {
                                             self.cards.removeAll { $0.id == removedCard.id }
                                         }
                                     })
-                                    .frame(width: self.getCardWidth(geometry, id: findCardIndex(for_card: card)), height: self.getCardWidth(geometry, id: findCardIndex(for_card: card)))
-                                    .offset(x: 0, y: self.getCardOffset(geometry, id: findCardIndex(for_card: card)))
+//                                    .frame(width: self.getCardWidth(geometry, id: findCardIndex(for_card: card)), height: self.getCardWidth(geometry, id: findCardIndex(for_card: card)))
+//                                    .offset(x: 0, y: self.getCardOffset(geometry, id: findCardIndex(for_card: card)))
                                 }
                             }
                         }
@@ -75,20 +64,14 @@ struct Tiles: View {
                     Image(systemName: "plus")
                         .padding([.leading, .top, .bottom])
                 } )
+                // invisible link inside NavigationView for add mode
                 NavigationLink(destination: CardAdd(), isActive: $addMode) { EmptyView() }
             }.onAppear {
                 self.readCards()
             }.padding()
-            
-            
-            // invisible link inside NavigationView for add mode
-            
         }
-        
     }
 }
-
-
 
 struct Tiles_Previews: PreviewProvider {
     static var cards = jsonData().cards
@@ -96,5 +79,3 @@ struct Tiles_Previews: PreviewProvider {
         CardTile(card: cards[0], onRemove: { _ in })
     }
 }
-
-

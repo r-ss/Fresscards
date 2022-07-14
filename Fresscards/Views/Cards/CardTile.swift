@@ -14,24 +14,60 @@ struct CardTile: View {
     //
     @EnvironmentObject var jsonData: jsonData
     
-    @State private var location: CGPoint = CGPoint(x: 20, y: 20)
+//    var initialCardPosition: CGPoint {
+//        let x = UIScreen.main.bounds.width / 2
+//        let y = UIScreen.main.bounds.height / 2
+//        return CGPoint(x:x,y:y)
+//    }
+//
+    @State var geometryWidth: CGFloat = 0.0 // sets on appear and used in judjeGesture()
+    
+    @State private var location: CGPoint = CGPoint(x: 0, y: 0)
     @GestureState private var fingerLocation: CGPoint? = nil
-    @GestureState private var startLocation: CGPoint? = nil // 1
+    @GestureState private var startLocation: CGPoint? = nil
+    
+    func moveToCenterOnAppear(_ geometry: GeometryProxy){
+        self.geometryWidth = geometry.size.width
+        let x = geometry.size.width / 2
+        let y = geometry.size.height / 2
+        self.location = CGPoint(x:x, y:y)
+    }
+    
+    func getTileWidth(_ geometry: GeometryProxy) -> CGFloat {
+        let width = max(geometry.size.width - 20.0, 0.0) // preventing negative values
+        log("tile width: \(width)")
+        return width
+    }
     
     var simpleDrag: some Gesture {
-        DragGesture()
+        DragGesture(minimumDistance: 3, coordinateSpace: .local)
             .onChanged { value in
-                var newLocation = startLocation ?? location // 3
+                var newLocation = startLocation ?? location
                 newLocation.x += value.translation.width
                 newLocation.y += value.translation.height
                 self.location = newLocation
             }.updating($startLocation) { (value, startLocation, transaction) in
-                startLocation = startLocation ?? location // 2
+                startLocation = startLocation ?? location
+            }
+            .onEnded { value in
+                let direction = self.judgeGesture(from: value)
+                log("Direction: \(direction)")
+                switch direction {
+                case .none:
+                    // if drag distance threshold is not reached, return tile to initial position
+                    withAnimation(.interactiveSpring()) { self.translation = .zero }
+                case .up:
+                    self.confirmationShown = true
+                    withAnimation(.interactiveSpring()) { self.translation = .zero }
+                default:
+                    // in other cases we assume that drag threshold distance is reached and card swiped
+                    self.onRemove(self.card)
+                }
             }
     }
     
     var fingerDrag: some Gesture {
-        DragGesture()
+        DragGesture(minimumDistance: 3, coordinateSpace: .local)
             .updating($fingerLocation) { (value, fingerLocation, transaction) in
                 fingerLocation = value.location
             }
@@ -62,12 +98,12 @@ struct CardTile: View {
         case up, down, left, right, none
     }
     
-    private func judgeGesture(_ geometry: GeometryProxy, from gesture: DragGesture.Value) -> Directions {
+    private func judgeGesture(from gesture: DragGesture.Value) -> Directions {
         
         let hDelta = gesture.translation.width
         let vDelta = gesture.translation.height
         
-        let thresholdDistance = geometry.size.width * self.thresholdPercentage
+        let thresholdDistance = self.geometryWidth * self.thresholdPercentage
         
         if (abs(hDelta) + abs(vDelta)) > thresholdDistance {
             //            log("distance: \(abs(hDelta) + abs(vDelta))")
@@ -93,58 +129,27 @@ struct CardTile: View {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Palette.a)
                             .frame(
-                                width:UIScreen.main.bounds.width / 1.2,
-                                height:UIScreen.main.bounds.width / 1.2
+                                width: getTileWidth(geometry),
+                                height: getTileWidth(geometry)
                             )
                             .shadow(radius: 7)
 //                            .offset(x: self.translation.width, y: self.translation.height)
                             .position(location)
+                            .onAppear { self.moveToCenterOnAppear(geometry) }
                             .gesture(TapGesture().onEnded { isTapped = !isTapped })
-                            .gesture(
-                                simpleDrag.simultaneously(with: fingerDrag)
-//                                DragGesture(minimumDistance: 3, coordinateSpace: .local)
-//                                    .onChanged { value in
-//                                        self.translation = value.translation
-//                                        if !self.isTapped {
-//                                            self.isTapped = true
-//                                        }
-//                                    }
-//                                    .onEnded { value in
-//                                        let direction = self.judgeGesture(geometry, from: value)
-//                                        log("Direction: \(direction)")
-//                                        switch direction {
-//                                        case .none:
-//                                            // if drag distance threshold is not reached, return tile to initial position
-//                                            withAnimation(.interactiveSpring()) { self.translation = .zero }
-//                                        case .up:
-//                                            self.confirmationShown = true
-//                                            withAnimation(.interactiveSpring()) { self.translation = .zero }
-//                                        default:
-//                                            // in other cases we assume that drag threshold distance is reached and card swiped
-//                                            self.onRemove(self.card)
-//                                        }
-//                                    }
-                            )
-                        
+                            .gesture(simpleDrag.simultaneously(with: fingerDrag))
                         VStack {
-                            //                        Text(String(cardIndex))
                             Text(card.a)
-                            Divider()
-                            if (isTapped){
-                                
-                                Text(card.b)
-                                
-                            }
-                        }.offset(x: self.translation.width, y: self.translation.height)
+//                            Divider()
+                            if (isTapped){ Text(card.b) }
+                        }.position(location)//.offset(x: self.translation.width, y: self.translation.height)
                         
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(.pink)
+                                .foregroundColor(.pink.opacity(0.6))
                                 .frame(width: 100, height: 100)
                                 .position(location)
-                                .gesture(
-                                    simpleDrag.simultaneously(with: fingerDrag)
-                                )
+                                .gesture(simpleDrag.simultaneously(with: fingerDrag))
                             if let fingerLocation = fingerLocation {
                                 Circle()
                                     .stroke(Color.green, lineWidth: 2)
@@ -163,14 +168,10 @@ struct CardTile: View {
                             withAnimation { self.onRemove(self.card) }
                         }
                     }
-                    //                .border(Color.red)
-                    //                .offset(x: self.translation.width, y: self.translation.height)
-                    //                .animation(nil, value: UUID())
-                }
-            }
-        }
-    }
-    
+                } // ZStack
+            } // Group
+        } // ZStack
+    } // GeometryReader
 }
 
 struct CardTile_Previews: PreviewProvider {

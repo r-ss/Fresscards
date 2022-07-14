@@ -38,7 +38,6 @@ struct ShareView: View {
     var body: some View {
         
         Button("Export words database", action: actionSheet)
-        .padding()
         
     }
     
