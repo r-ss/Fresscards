@@ -53,7 +53,9 @@ struct CardList: View {
                 // invisible link inside NavigationView for add mode
                 NavigationLink(destination: CardAdd(),
                     isActive: $addMode) { EmptyView() }
-            }.padding(0)
+            }
+            .padding(0)
+            //.background(Palette.background)
         }
     }
 }

@@ -15,8 +15,8 @@ struct CardWireframe: Codable {
 
 struct Card: Codable, Hashable, Identifiable {
     var id: UUID
-    var a: String
-    var b: String
+    var a: String // max 60
+    var b: String // max 60
     var added: Date?
 }
 

@@ -17,6 +17,7 @@ class jsonData: ObservableObject {
     let testContainerName = "test_db"           // db for unit tests
     
     let bakedCSVs: [String] = ["base", "ru_poliglot", "verbs"]
+//    let bakedCSVs: [String] = ["base"]
     
     public var testMode = false
     

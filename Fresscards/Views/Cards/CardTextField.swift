@@ -9,15 +9,19 @@ import SwiftUI
 
 struct CardTextField: View {
     
+    let characterLimit = 60 // Characters limit
     @Binding var content: String
     
     
     var body: some View {
         
         TextField("Enter text...", text: $content)
-//            .onSubmit {
-//                self.textValue = content
-//            }
+            .onReceive(content.publisher.collect()) {
+                let s = String($0.prefix(characterLimit))
+                if content != s {
+                    content = s
+                }
+            }
             .disableAutocorrection(true)
         
     }

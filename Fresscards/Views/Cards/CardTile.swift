@@ -14,13 +14,14 @@ struct CardTile: View {
     //
     @EnvironmentObject var jsonData: jsonData
     
-//    var initialCardPosition: CGPoint {
-//        let x = UIScreen.main.bounds.width / 2
-//        let y = UIScreen.main.bounds.height / 2
-//        return CGPoint(x:x,y:y)
-//    }
-//
+    //    var initialCardPosition: CGPoint {
+    //        let x = UIScreen.main.bounds.width / 2
+    //        let y = UIScreen.main.bounds.height / 2
+    //        return CGPoint(x:x,y:y)
+    //    }
+    //
     @State var geometryWidth: CGFloat = 0.0 // sets on appear and used in judjeGesture()
+    @State private var centerLocation: CGPoint = CGPoint(x: 0, y: 0) // used in dragJudge if threshhold not reached
     
     @State private var location: CGPoint = CGPoint(x: 0, y: 0)
     @GestureState private var fingerLocation: CGPoint? = nil
@@ -30,13 +31,16 @@ struct CardTile: View {
         self.geometryWidth = geometry.size.width
         let x = geometry.size.width / 2
         let y = geometry.size.height / 2
+        self.centerLocation = CGPoint(x:x, y:y)
         self.location = CGPoint(x:x, y:y)
     }
     
     func getTileWidth(_ geometry: GeometryProxy) -> CGFloat {
-        let width = max(geometry.size.width - 20.0, 0.0) // preventing negative values
-        log("tile width: \(width)")
-        return width
+        max(geometry.size.width - 20.0, 0.0) // preventing negative values
+    }
+    
+    func getMaxTextWidth(_ geometry: GeometryProxy) -> CGFloat {
+        max(geometry.size.width - 60.0, 80.0) // preventing negative values
     }
     
     var simpleDrag: some Gesture {
@@ -55,10 +59,10 @@ struct CardTile: View {
                 switch direction {
                 case .none:
                     // if drag distance threshold is not reached, return tile to initial position
-                    withAnimation(.interactiveSpring()) { self.translation = .zero }
+                    withAnimation(.interactiveSpring()) { self.location = self.centerLocation }
                 case .up:
                     self.confirmationShown = true
-                    withAnimation(.interactiveSpring()) { self.translation = .zero }
+                    withAnimation(.interactiveSpring()) { self.location = self.centerLocation }
                 default:
                     // in other cases we assume that drag threshold distance is reached and card swiped
                     self.onRemove(self.card)
@@ -77,7 +81,10 @@ struct CardTile: View {
     
     @State private var translation: CGSize = .zero
     //    @State private var cardIndex = 0 // Current card's index
-    @State var isTapped:Bool = false
+    @State var showSideB:Bool = false
+    var opacitySideB: Double {
+        showSideB ? 1.0 : 0.0
+    }
     
     @State private var confirmationShown = false
     
@@ -126,6 +133,7 @@ struct CardTile: View {
                 
                 Group{
                     ZStack {
+                        // BACKGROUND
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Palette.a)
                             .frame(
@@ -133,26 +141,32 @@ struct CardTile: View {
                                 height: getTileWidth(geometry)
                             )
                             .shadow(radius: 7)
-//                            .offset(x: self.translation.width, y: self.translation.height)
                             .position(location)
                             .onAppear { self.moveToCenterOnAppear(geometry) }
-                            .gesture(TapGesture().onEnded { isTapped = !isTapped })
-                            .gesture(simpleDrag.simultaneously(with: fingerDrag))
-                        VStack {
+                        // CONTENT
+                        VStack(spacing: 14) {
+                            
                             Text(card.a)
-//                            Divider()
-                            if (isTapped){ Text(card.b) }
+                                .font(.system(size: 32, weight: .light, design: .serif))
+                                .foregroundColor(Palette.cardTextA)
+//                                .padding(.init(top: 0, leading: 20, bottom: 20, trailing: 20))
+//                                .background(.red)
+                                .frame(maxWidth: getMaxTextWidth(geometry))
+                            Text(card.b)
+                                .font(.system(size: 24, weight: .light, design: .serif))
+                                .foregroundColor(Palette.cardTextB)
+                                .italic()
+                                .opacity(opacitySideB)
+//                                .padding(.init(top: 0, leading: 20, bottom: 10, trailing: 20))
+//                                .background(.blue)
+                                .frame(maxWidth: getMaxTextWidth(geometry))
                         }.position(location)//.offset(x: self.translation.width, y: self.translation.height)
+                            .offset(x:0,y:15)
                         
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(.pink.opacity(0.6))
-                                .frame(width: 100, height: 100)
-                                .position(location)
-                                .gesture(simpleDrag.simultaneously(with: fingerDrag))
+                        Group {
                             if let fingerLocation = fingerLocation {
                                 Circle()
-                                    .stroke(Color.green, lineWidth: 2)
+                                    .stroke(Color.red, lineWidth: 2)
                                     .frame(width: 44, height: 44)
                                     .position(fingerLocation)
                             }
@@ -167,9 +181,12 @@ struct CardTile: View {
                             jsonData.removeCard(withId: card.id)
                             withAnimation { self.onRemove(self.card) }
                         }
+                        // Button("No", role: .cancel) {} - cancel button added automatically
                     }
                 } // ZStack
             } // Group
+            .gesture(TapGesture().onEnded { showSideB = !showSideB })
+            .gesture(simpleDrag.simultaneously(with: fingerDrag))
         } // ZStack
     } // GeometryReader
 }

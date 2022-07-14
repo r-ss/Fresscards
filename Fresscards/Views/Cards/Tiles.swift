@@ -14,8 +14,9 @@ struct Tiles: View {
     @State var cards: [Card] = []
     @State private var addMode = false
     
-    private func readCards(){
+    private func readAndShuffleCards(){
         self.cards = jsonData.cards
+        self.cards.shuffle()
     }
     
     func findCardIndex(for_card:Card) -> Int {
@@ -50,7 +51,7 @@ struct Tiles: View {
                                         }
                                     })
 //                                    .frame(width: self.getCardWidth(geometry, id: findCardIndex(for_card: card)), height: self.getCardWidth(geometry, id: findCardIndex(for_card: card)))
-//                                    .offset(x: 0, y: self.getCardOffset(geometry, id: findCardIndex(for_card: card)))
+                                    .offset(x: 0, y: self.getCardOffset(geometry, id: findCardIndex(for_card: card)))
                                 }
                             }
                         }
@@ -67,8 +68,8 @@ struct Tiles: View {
                 // invisible link inside NavigationView for add mode
                 NavigationLink(destination: CardAdd(), isActive: $addMode) { EmptyView() }
             }.onAppear {
-                self.readCards()
-            }.padding()
+                self.readAndShuffleCards()
+            }.padding()//.background(Palette.background)
         }
     }
 }
