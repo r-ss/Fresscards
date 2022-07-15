@@ -13,11 +13,11 @@ struct CardRow: View {
     var card: Card
     
     var aOptionallyCapitalized: String {
-        settingsManager.getBoolValue(name: "AutoCapitalization") ? card.a.initialUppercased() : card.a
+        settingsManager.getBoolValue(name: "AutoCapitalization") ? card.a.firstWordCapitalization() : card.a
     }
     
     var bOptionallyCapitalized: String {
-        settingsManager.getBoolValue(name: "AutoCapitalization") ? card.b.initialUppercased() : card.a
+        settingsManager.getBoolValue(name: "AutoCapitalization") ? card.b.firstWordCapitalization() : card.b
     }
 
     var body: some View {

@@ -93,6 +93,10 @@ struct CardTile: View {
     
     @State private var confirmationShown = false
     
+    var calculateRotation: Double {
+        Double((self.location.x - self.centerLocation.x) / 30)
+    }
+    
     
     private var card: Card
     private var onRemove: (_ card: Card) -> Void
@@ -102,11 +106,11 @@ struct CardTile: View {
     let settingsManager = SettingsManager()
     
     var aOptionallyCapitalized: String {
-        settingsManager.getBoolValue(name: "AutoCapitalization") ? card.a.initialUppercased() : card.a
+        settingsManager.getBoolValue(name: "AutoCapitalization") ? card.a.firstWordCapitalization() : card.a
     }
     
     var bOptionallyCapitalized: String {
-        settingsManager.getBoolValue(name: "AutoCapitalization") ? card.b.initialUppercased() : card.a
+        settingsManager.getBoolValue(name: "AutoCapitalization") ? card.b.firstWordCapitalization() : card.b
     }
     
     init(card: Card, onRemove: @escaping (_ card: Card) -> Void) {
@@ -149,33 +153,40 @@ struct CardTile: View {
                     ZStack {
                         // BACKGROUND
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(Palette.a)
+                            .fill(Palette.cardBackground)
                             .frame(
                                 width: getTileWidth(geometry),
                                 height: getTileWidth(geometry)
                             )
                             .shadow(radius: 7)
-                            .position(location)
+//                            .position(location)
                             .onAppear { self.moveToCenterOnAppear(geometry) }
                         // CONTENT
-                        VStack(spacing: 14) {
+                        VStack(alignment: .center, spacing: 15) {
+                            
+//                            Text(aOptionallyCapitalized)
+//                                .font(.title)
+//                                .foregroundColor(Palette.cardTextA)
+//                                .frame(maxWidth: getMaxTextWidth(geometry))
+//                            Text(bOptionallyCapitalized)
+//                                .font(.subheadline)
+//                                .foregroundColor(Palette.cardTextB)
+//                                .opacity(opacitySideB)
+//                                .frame(maxWidth: getMaxTextWidth(geometry))
                             
                             Text(aOptionallyCapitalized)
-                                .font(.system(size: 32, weight: .light, design: .serif))
+                                .font(.system(size: 28, weight: .light, design: .serif))
                                 .foregroundColor(Palette.cardTextA)
-//                                .padding(.init(top: 0, leading: 20, bottom: 20, trailing: 20))
-//                                .background(.red)
                                 .frame(maxWidth: getMaxTextWidth(geometry))
                             Text(bOptionallyCapitalized)
-                                .font(.system(size: 24, weight: .light, design: .serif))
+                                .font(.system(size: 18, weight: .light, design: .serif))
                                 .foregroundColor(Palette.cardTextB)
-                                .italic()
+//                                .italic()
                                 .opacity(opacitySideB)
-//                                .padding(.init(top: 0, leading: 20, bottom: 10, trailing: 20))
-//                                .background(.blue)
                                 .frame(maxWidth: getMaxTextWidth(geometry))
-                        }.position(location)//.offset(x: self.translation.width, y: self.translation.height)
-                            .offset(x:0,y:15)
+                        }
+                        //.offset(x: self.translation.width, y: self.translation.height)
+                        .offset(x:0,y:15)
                         
 //                        Group {
 //                            if let fingerLocation = fingerLocation {
@@ -186,6 +197,8 @@ struct CardTile: View {
 //                            }
 //                        }
                     }
+                    .position(location)
+                    .rotationEffect(.degrees(calculateRotation), anchor: .bottom)
                     .confirmationDialog(
                         "Are you sure?",
                         isPresented: $confirmationShown
@@ -216,7 +229,7 @@ struct CardTile: View {
 struct CardTile_Previews: PreviewProvider {
     static var cards = jsonData().cards
     static var previews: some View {
-        CardTile(card: cards[0], onRemove: { _ in })
+        CardTile(card: cards[26], onRemove: { _ in }).environmentObject(jsonData())
     }
 }
 

@@ -14,6 +14,8 @@ struct ContentView: View {
     @EnvironmentObject var jsonData: jsonData
     //    @EnvironmentObject var modelData: CardRealmViewModel
     
+
+    
     var body: some View {
         //let _ = print(ModelData().cards
         

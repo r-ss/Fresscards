@@ -12,7 +12,7 @@ class FirstRunSetup {
     
     let settingsManager = SettingsManager()
     
-    let bakedCardsCSVsNames: [String] = ["base", "ru_poliglot", "verbs"]
+    let bakedCardsCSVsNames: [String] = ["base", "book_a1", "ru_poliglot", "verbs"]
 //    let bakedCardsCSVsNames: [String] = ["base"]
     
     init(){

@@ -17,7 +17,7 @@ class SettingsManager {
     
     private let defaults = UserDefaults.standard
     private var settings: [SettingsItem] = [
-        SettingsItem(name: "AutoCapitalization", type: "Bool", defaultValue: true)
+        SettingsItem(name: "AutoCapitalization", type: "Bool", defaultValue: false)
     ]
     
     

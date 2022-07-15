@@ -9,30 +9,59 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    @EnvironmentObject var jsonData: jsonData
+    
     let settingsManager = SettingsManager()
     
     @State private var toggleAutoCapitalization = false
+    
+    @State private var deleteAllCardsConfirmationShown = false
     
     func readSettings() {
         self.toggleAutoCapitalization = settingsManager.getBoolValue(name: "AutoCapitalization")
     }
     
+    func addBakedCards() {
+        let firstRun = FirstRunSetup()
+        let cards: [Card] = firstRun.loadBakedCards()
+        jsonData.cards = cards
+        jsonData.saveJSON()
+    }
+    
     var body: some View {
-        VStack {
-            Text("Settings")
-//            Text(String(settingsManager.getBoolValue(name: "AutoCapitalization")))
-            Toggle("Auto Capitalization", isOn: $toggleAutoCapitalization)
-                .onChange(of: toggleAutoCapitalization) { value in
-                    settingsManager.setValue(name: "AutoCapitalization", value: toggleAutoCapitalization)
+        GeometryReader { geometry in
+            VStack(alignment: .leading, spacing: 15) {
+                Text("Settings").font(.title).padding(.bottom)
+                Button("Delete all cards", action: { self.deleteAllCardsConfirmationShown = true }).foregroundColor(.red)
+                Button("Add baked cards", action: { self.addBakedCards() })
+                //            Text(String(settingsManager.getBoolValue(name: "AutoCapitalization")))
+                Toggle("Auto Capitalization", isOn: $toggleAutoCapitalization)
+                    .onChange(of: toggleAutoCapitalization) { value in
+                        settingsManager.setValue(name: "AutoCapitalization", value: toggleAutoCapitalization)
+                    }
+            }
+            .onAppear { self.readSettings() }
+            .padding()
+            .confirmationDialog(
+                "Are you sure?",
+                isPresented: $deleteAllCardsConfirmationShown
+            ) {
+                Button("Delete all cards?", role: .destructive) {
+                    log("Removing all card")
+                    // logic
+                    jsonData.removeAllCards()
                 }
+            } message: {
+                Text("This action cannot be undone")
+            }
+            .frame(width: geometry.size.width, alignment: .leading)
         }
-        .onAppear { self.readSettings() }
-        .padding()
+        
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        Text(String.random(length: 256)).font(.system(size: 12)).padding()
+        SettingsView()
     }
 }

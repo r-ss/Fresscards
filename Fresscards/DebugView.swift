@@ -14,28 +14,30 @@ struct DebugView: View {
     var screenHeight: String { String(format: "%.01f", UIScreen.main.bounds.height) }
     
     var body: some View {
-        ScrollView(.vertical) {
-            VStack(alignment: .leading, spacing: 6) {
-                ShareView()
-                Text("Debug")
-                Text("Screen: \(screenWidth)x\(screenHeight)")
-                Group {
-                    Rectangle().fill(Palette.a).frame(width: 200, height: 30)
-                    Rectangle().fill(Palette.b).frame(width: 200, height: 30)
-                    Rectangle().fill(Palette.c).frame(width: 200, height: 30)
-                    Rectangle().fill(Palette.d).frame(width: 200, height: 30)
-                    Rectangle().fill(Palette.e).frame(width: 200, height: 30)
+        GeometryReader { geometry in
+            ScrollView(.vertical) {
+                VStack(alignment: .leading, spacing: 15) {
+                    Text("Debug").font(.title)
+                    ShareView()
+                    Text("Screen: \(screenWidth)x\(screenHeight)")
+                    VStack(spacing: 2) {
+                        Rectangle().fill(Palette.a).frame(width: 200, height: 30)
+                        Rectangle().fill(Palette.b).frame(width: 200, height: 30)
+                        Rectangle().fill(Palette.c).frame(width: 200, height: 30)
+                        Rectangle().fill(Palette.d).frame(width: 200, height: 30)
+                        Rectangle().fill(Palette.e).frame(width: 200, height: 30)
+                    }
+                    Text("RAW JSON:")
+                    RawJsonView()
                 }
-                Text("RAW JSON:")
-                RawJsonView()
-            }.padding()
-        }
-    }
+                .padding()
+                .frame(width: geometry.size.width, alignment: .leading)
+            }
+        }}
 }
 
 struct DebugView_Previews: PreviewProvider {
     static var previews: some View {
-        Text("Debug")
-        Text(String.random(length: 256)).font(.system(size: 12)).padding()
+        DebugView()
     }
 }

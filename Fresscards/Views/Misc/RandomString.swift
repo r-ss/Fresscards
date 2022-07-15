@@ -14,7 +14,7 @@ extension String {
 }
 
 extension String {
-  func initialUppercased() -> String {
+  func firstWordCapitalization() -> String {
       var components = self.components(separatedBy: " ")
       components[0] = components[0].capitalized
       return components.joined(separator: " ")

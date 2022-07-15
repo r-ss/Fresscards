@@ -10,7 +10,7 @@ import Foundation
 // Our main data object
 class jsonData: ObservableObject {
     
-    let initialContainerName = "initial_cards"  // loads on first run and upon reset
+//    let initialContainerName = "initial_cards"  // loads on first run and upon reset
     let mainContainerName = "db"                // main json file with user's saved data
     let testContainerName = "test_db"           // db for unit tests
     
@@ -32,7 +32,7 @@ class jsonData: ObservableObject {
             self.saveJSON()
             
         } else {
-            self.cards = Bundle.load(containerFilename: filename, initialFilename: initialContainerName) // Initailizing the array from a json file
+            self.cards = Bundle.load(containerFilename: filename) // Initailizing the array from a json file
         }
     }
     
@@ -48,6 +48,11 @@ class jsonData: ObservableObject {
     
     public func removeCards(atIndexes: IndexSet){
         self.cards.remove(atOffsets: atIndexes)
+        self.saveJSON()
+    }
+    
+    public func removeAllCards(){
+        self.cards = []
         self.saveJSON()
     }
     
@@ -73,9 +78,9 @@ class jsonData: ObservableObject {
 
 // Function to load data
 extension Bundle {
-    static func load<T: Decodable>(containerFilename:String, initialFilename:String) -> T {
+    static func load<T: Decodable>(containerFilename:String) -> T {
         log("Loading JSON from: \(containerFilename)")
-        let initialURL = Bundle.main.url(forResource: initialFilename, withExtension: "json")! //Example json file in our bundle
+//        let initialURL = Bundle.main.url(forResource: initialFilename, withExtension: "json")! //Example json file in our bundle
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first! // Initializing the url for the location where we store our data in filemanager
         
         let jsonURL = documentDirectory.appendingPathComponent(containerFilename).appendingPathExtension("json")
@@ -84,9 +89,9 @@ extension Bundle {
         decoder.dateDecodingStrategy = .iso8601
         
         // The following condition copies the example file in our bundle to the correct location if it isnt present
-        if !FileManager.default.fileExists(atPath: jsonURL.path) {
-            try? FileManager.default.copyItem(at: initialURL, to: jsonURL)
-        }
+//        if !FileManager.default.fileExists(atPath: jsonURL.path) {
+//            try? FileManager.default.copyItem(at: initialURL, to: jsonURL)
+//        }
         // returning the parsed data
         return try! decoder.decode(T.self, from: Data(contentsOf: jsonURL))
     }

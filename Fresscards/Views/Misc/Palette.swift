@@ -31,8 +31,9 @@ struct Palette {
     static let e: Color = Color(hex: 0xF7E4BE)
     
     static let background = b
+    static let cardBackground = a
     static let cardTextA = e
-    static let cardTextB = d
+    static let cardTextB = e
     
     
 //    struct Gray {

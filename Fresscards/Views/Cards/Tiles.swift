@@ -41,6 +41,11 @@ struct Tiles: View {
             VStack {
                 GeometryReader { geometry in
                     ZStack {
+                        
+                        if (self.cards.count == 0) {
+                            Text("No cards")
+                        }
+                        
                         ForEach(self.cards, id: \.self) { card in
                             Group {
                                 if (self.cards.count - 5)...self.cards.count ~= findCardIndex(for_card: card) {
@@ -53,6 +58,8 @@ struct Tiles: View {
 //                                    .frame(width: self.getCardWidth(geometry, id: findCardIndex(for_card: card)), height: self.getCardWidth(geometry, id: findCardIndex(for_card: card)))
                                     .offset(x: 0, y: self.getCardOffset(geometry, id: findCardIndex(for_card: card)))
                                 }
+                                
+                                
                             }
                         }
                     }
@@ -77,6 +84,7 @@ struct Tiles: View {
 struct Tiles_Previews: PreviewProvider {
     static var cards = jsonData().cards
     static var previews: some View {
-        CardTile(card: cards[0], onRemove: { _ in })
+        Tiles().environmentObject(jsonData())
+//        CardTile(card: cards[0], onRemove: { _ in })
     }
 }

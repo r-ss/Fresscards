@@ -33,6 +33,9 @@ struct CardList: View {
         NavigationView {
             VStack {
                 List {
+//                    if (self.filteredCards.count == 0) {
+//                        Text("No cards, add some")
+//                    }
                     ForEach(filteredCards) { card in
                         NavigationLink {
                             CardDetail(with_card: card)
