@@ -12,8 +12,8 @@ class FirstRunSetup {
     
     let settingsManager = SettingsManager()
     
-    let bakedCardsCSVsNames: [String] = ["base", "book_a1", "ru_poliglot", "verbs"]
-//    let bakedCardsCSVsNames: [String] = ["base"]
+//    let bakedCardsCSVsNames: [String] = ["base", "book_a1", "ru_poliglot", "verbs"]
+    let bakedCardsCSVsNames: [String] = ["base"]
     
     init(){
         log("> class FirstRunSetup, init()")
@@ -40,8 +40,8 @@ class FirstRunSetup {
             }
             for row in result.rows.indices {
                 let r = stringColumns.map({ $0[row] })
-                log("row: \(r)")
-                let c = Card(id: UUID(), a: r[0]!, b: r[1]!, added: Date())
+//                log("row: \(r)")
+                let c = Card(id: UUID(), a: r[0]!, b: r[1]!, added: Date(), origin: .baked)
                 resultCards.append(c)
             }
             

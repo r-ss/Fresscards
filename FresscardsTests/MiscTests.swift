@@ -18,6 +18,27 @@ class MiscTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
+    func eventHander() {
+        log("EVENT WORKING")
+    }
+    
+    func testAListenToEvent() throws {
+        
+        
+        
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(eventHander(notification:self)), name: Notification.Name("NotificationIdentifier"), object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(eventHander),
+            name: Notification.Name("NotificationIdentifier"),
+            object: nil)
+    }
+    
+    func testBPostEvent() throws {
+        NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
+    }
+    
     func testStringCapitalization() throws {
         XCTAssertEqual("test caps".firstWordCapitalization(), "Test caps", "Capitalization fail")
         XCTAssertEqual("¡ven acá!".firstWordCapitalization(), "¡Ven acá!", "Capitalization fail")

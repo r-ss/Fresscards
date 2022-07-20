@@ -29,10 +29,31 @@ struct CardTile: View {
     
 
     
+//    dynamic func reactionEventHander(notification: NSNotification) {
+//        log("EVENT reactionEventHander WORKING")
+//    }
+//
+//    func addReactionEventListeners(){
+//
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(reactionEventHander(notification:)),
+//            name: NSNotification.Name.PizzaReadiness,
+//            object: nil)
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(reactionEventHander),
+//            name: Notification.Name("ReactionButtonPressedHard"),
+//            object: nil)
+//
+//    }
+    
+
+    
     func moveToCenterOnAppear(_ geometry: GeometryProxy){
         self.geometryWidth = geometry.size.width
         let x = geometry.size.width / 2
-        let y = geometry.size.height / 2
+        let y = geometry.size.height / 2 - (geometry.size.height / 10)
         self.centerLocation = CGPoint(x:x, y:y)
         self.location = CGPoint(x:x, y:y)
     }

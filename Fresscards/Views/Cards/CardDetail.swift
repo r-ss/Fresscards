@@ -68,12 +68,27 @@ struct CardDetail: View {
                 Text(card.printUUID).font(.system(size: 12))
                 Text(card.addedFormatted).font(.system(size: 12))
                 
+                if let origin = card.origin {
+                    Text(String("Origin: \(origin)")).font(.system(size: 12))
+                }
+//                if let answers = card.answers {
+//                    Text(String("Answers: \(answers)")).font(.system(size: 12))
+//                }
+                
+                if let easy = card.easyAnswers {
+                    Text(String("Easy: \(easy)")).font(.system(size: 12))
+                }
+                
+                if let hard = card.hardAnswers {
+                    Text(String("Hard: \(hard)")).font(.system(size: 12))
+                }
+                
                 Text("Side A:")
                 TextField("Enter text...", text: $card.a)
                 .onSubmit {
                     save_edited_fields()
                 }
-                Divider()
+//                Divider()/
                 Text("Side B:")
                 TextField("Enter text...", text: $card.b)
                 .onSubmit {

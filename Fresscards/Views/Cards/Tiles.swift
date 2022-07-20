@@ -7,33 +7,68 @@
 
 import SwiftUI
 
-struct Tiles: View {
+struct Tiles: View, EasyHardButtonsHandler {
     
     @EnvironmentObject var jsonData: jsonData
     
-    @State var cards: [Card] = []
+    @EnvironmentObject var logic: CardsLogic
+    
+    @State var tiles: [Card] = []
     @State private var addMode = false
     
     private func readAndShuffleCards(){
-        self.cards = jsonData.cards
-        self.cards.shuffle()
+        self.tiles = jsonData.cards
+        self.tiles.shuffle()
+        
+    }
+    
+    // protocol EasyHardButtonsHandler method
+    func reactionHandle(easy: Bool) {
+        log("reactionHandle, easy: \(easy)")
+        if let currentCard: Card = self.tiles.last {
+            log("current card: \(currentCard.a)")
+
+            
+            logic.addReaction(for_card: currentCard, easy: easy, jsonEngine: self.jsonData)
+            
+            withAnimation(.easeInOut(duration: 0.15)) { // add animation
+                self.tiles.removeAll { $0.id == currentCard.id }
+            }
+            
+        }
     }
     
     func findCardIndex(for_card:Card) -> Int {
 //        log("findCardIndex forCard: \(for_card)")
-        return cards.firstIndex(where: { $0.id == for_card.id })!
+        return tiles.firstIndex(where: { $0.id == for_card.id })!
     }
     
     let tilesPadding:CGFloat = 10
     
     // https://betterprogramming.pub/swiftui-create-a-tinder-style-swipeable-card-view-283e257cb102
     private func getCardWidth(_ geometry: GeometryProxy, id: Int) -> CGFloat {
-        let offset: CGFloat = CGFloat(cards.count - 1 - id) * tilesPadding
+        let offset: CGFloat = CGFloat(tiles.count - 1 - id) * tilesPadding
         return geometry.size.width - offset
     }
     
     private func getCardOffset(_ geometry: GeometryProxy, id: Int) -> CGFloat {
-        return CGFloat(cards.count - 1 - id) * tilesPadding
+        return CGFloat(tiles.count - 1 - id) * tilesPadding
+    }
+    
+//    func previewGetTileWidth(_ geometry: GeometryProxy) -> CGFloat {
+//        max(geometry.size.width - 20.0, 0.0) // preventing negative values
+//    }
+//    
+//    func previewCenterLocation(_ geometry: GeometryProxy) -> CGPoint {
+//        let x = geometry.size.width / 2
+//        let y = geometry.size.height / 2 - (geometry.size.height / 10)
+//        return CGPoint(x:x, y:y)
+//    }
+    
+    func easyHardButtonsPositions(_ geometry: GeometryProxy) -> CGPoint {
+        let x = geometry.size.width / 2
+        let y = geometry.size.height / 2 + (geometry.size.height / 2.5)
+        return CGPoint(x:x, y:y)
     }
     
     var body: some View {
@@ -42,28 +77,43 @@ struct Tiles: View {
                 GeometryReader { geometry in
                     ZStack {
                         
-                        if (self.cards.count == 0) {
+                        if (self.tiles.count == 0) {
                             Text("No cards")
                         }
                         
-                        ForEach(self.cards, id: \.self) { card in
+                        ForEach(self.tiles, id: \.self) { card in
                             Group {
-                                if (self.cards.count - 5)...self.cards.count ~= findCardIndex(for_card: card) {
-                                    CardTile(card: card, onRemove: { removedCard in
-                                        // Remove that user from our array
-                                        withAnimation(.easeInOut(duration: 0.15)) { // add animation
-                                            self.cards.removeAll { $0.id == removedCard.id }
-                                        }
-                                    })
-//                                    .frame(width: self.getCardWidth(geometry, id: findCardIndex(for_card: card)), height: self.getCardWidth(geometry, id: findCardIndex(for_card: card)))
-                                    .offset(x: 0, y: self.getCardOffset(geometry, id: findCardIndex(for_card: card)))
-                                }
+                                ZStack {
                                 
+                                if (self.tiles.count - 4)...self.tiles.count + 1 ~= findCardIndex(for_card: card) {
+                                    
+//                                    CardDummy().offset(x: 0, y: self.getCardOffset(geometry, id: findCardIndex(for_card: card)) - 5.0)
+//                                    CardTile(card: card, onRemove: { removedCard in
+//                                        // Remove that card from our array
+//                                        withAnimation(.easeInOut(duration: 0.15)) { // add animation
+//                                            self.cards.removeAll { $0.id == removedCard.id }
+//                                        }
+//                                    })
+//                                    .offset(x: 0, y: self.getCardOffset(geometry, id: findCardIndex(for_card: card)))
+                                    
+                                    if (self.tiles.count - 5)...self.tiles.count ~= findCardIndex(for_card: card) {
+                                        CardTile(card: card, onRemove: { removedCard in
+                                            // Remove that card from our array
+                                            withAnimation(.easeInOut(duration: 0.15)) { // add animation
+                                                self.tiles.removeAll { $0.id == removedCard.id }
+                                            }
+                                        })
+                                        .offset(x: 0, y: self.getCardOffset(geometry, id: findCardIndex(for_card: card)))
+                                    }
+                                }
+                                }
                                 
                             }
                         }
                     }
-                    Spacer()
+//                    Spacer()
+                    EasyHardButtons(reactionSubscriber: self)
+                        .position(easyHardButtonsPositions(geometry))
                 }
                 .navigationBarTitle(Text("Cards"), displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {
@@ -82,9 +132,11 @@ struct Tiles: View {
 }
 
 struct Tiles_Previews: PreviewProvider {
-    static var cards = jsonData().cards
+//    static var cards = jsonData().cards
     static var previews: some View {
-        Tiles().environmentObject(jsonData())
+        Group {
+            Tiles().environmentObject(jsonData())
+        }
 //        CardTile(card: cards[0], onRemove: { _ in })
     }
 }

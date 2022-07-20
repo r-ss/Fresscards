@@ -59,6 +59,7 @@ class jsonData: ObservableObject {
     public func update(card: Card){
         let index: Int = self.cards.firstIndex(where: { $0.id == card.id })!
         self.cards[index] = card
+//        log("answers: \(String(describing: card.answers))")
         self.saveJSON()
     }
     

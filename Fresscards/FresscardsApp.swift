@@ -27,7 +27,7 @@ struct FresscardsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(jsonData()) // necessary
+            ContentView().environmentObject(jsonData()).environmentObject(CardsLogic()) // necessary
         }
     }
 }

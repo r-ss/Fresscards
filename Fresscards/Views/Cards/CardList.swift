@@ -13,29 +13,36 @@ struct CardList: View {
     
     @EnvironmentObject var jsonData: jsonData
     
-//    @EnvironmentObject var modelData: CardRealmViewModel
-//    @State private var showFavoritesOnly = false
-//
-//    var filteredCards: [Card] {
-//        modelData.cards.filter { card in
-//            (!showFavoritesOnly || card.isFavorite)
-//        }
-//    }
+    //    @EnvironmentObject var modelData: CardRealmViewModel
+    @State private var showUserCardsOnly = false
+    
     var filteredCards: [Card] {
-        jsonData.cards
+        jsonData.cards.filter { card in
+            (!showUserCardsOnly || card.origin == .user)
+        }
     }
+    //    var filteredCards: [Card] {
+    //        jsonData.cards
+    //    }
     
     private func deleteCard(at offsets: IndexSet) {
-        jsonData.removeCards(atIndexes: offsets)
+        log("Deleting card at indexes: \(offsets)")
+//        jsonData.removeCards(atIndexes: offsets)
+        for i in offsets.makeIterator() {
+            jsonData.removeCard(withId: filteredCards[i].id)
+        }
     }
     
     var body: some View {
         NavigationView {
             VStack {
                 List {
-//                    if (self.filteredCards.count == 0) {
-//                        Text("No cards, add some")
-//                    }
+                    Toggle(isOn: $showUserCardsOnly) {
+                        Text("Only added by user")
+                    }
+                    //                    if (self.filteredCards.count == 0) {
+                    //                        Text("No cards, add some")
+                    //                    }
                     ForEach(filteredCards) { card in
                         NavigationLink {
                             CardDetail(with_card: card)
@@ -44,25 +51,25 @@ struct CardList: View {
                         }.listRowSeparator(.hidden)
                     }.onDelete(perform: deleteCard).listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                 }.listStyle(PlainListStyle())
-
-                .navigationBarTitle(Text("Cards List"), displayMode: .inline)
-                .navigationBarItems(trailing: Button(action: {
-                      self.addMode = true
+                
+                    .navigationBarTitle(Text("Cards List"), displayMode: .inline)
+                    .navigationBarItems(trailing: Button(action: {
+                        self.addMode = true
                     } ) {
-                    Image(systemName: "plus")
-                        .padding([.leading, .top, .bottom])
-                } )
-
+                        Image(systemName: "plus")
+                            .padding([.leading, .top, .bottom])
+                    } )
+                
                 // invisible link inside NavigationView for add mode
                 NavigationLink(destination: CardAdd(),
-                    isActive: $addMode) { EmptyView() }
+                               isActive: $addMode) { EmptyView() }
             }
             .padding(0)
             //.background(Palette.background)
         }
     }
 }
-        
+
 struct CardList_Previews: PreviewProvider {
     static var previews: some View {
         // ["iPhone SE (2nd generation)", "iPhone XS Max"]

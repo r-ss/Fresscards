@@ -7,10 +7,19 @@
 
 import Foundation
 
+enum CardOrigin: String, Codable {
+    case baked, user
+}
+
 struct CardWireframe: Codable {
     // Used only to parse initial cards with just 2 text fields
     var a: String
     var b: String
+}
+
+struct Answer: Codable, Hashable {
+    var easy: Bool
+    var commited: Date
 }
 
 struct Card: Codable, Hashable, Identifiable {
@@ -18,6 +27,26 @@ struct Card: Codable, Hashable, Identifiable {
     var a: String // max 60
     var b: String // max 60
     var added: Date?
+    var answers: [Answer]?
+    var origin: CardOrigin?
+    
+    var easyAnswers: Int {
+        if let a = self.answers {
+            return a.filter{$0.easy == true}.count
+        } else {
+            return 0
+        }
+    }
+    
+    var hardAnswers: Int {
+        if let a = self.answers {
+            return a.filter{$0.easy == false}.count
+        } else {
+            return 0
+        }
+    }
+    
+    
 }
 
 extension Card {

@@ -16,7 +16,8 @@
 		D0387058287C87450036A11F /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0387057287C87450036A11F /* ShareViewController.swift */; };
 		D038705B287C87450036A11F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0387059287C87450036A11F /* MainInterface.storyboard */; };
 		D038705F287C87450036A11F /* FresscardsShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D0387055287C87450036A11F /* FresscardsShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D04E6B7D28816D09000D6B08 /* MiscTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04E6B7C28816D09000D6B08 /* MiscTests.swift */; };
+		D03F86C228820EC50062CD7D /* CardDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F86C128820EC50062CD7D /* CardDummy.swift */; };
+		D03F86C428854AC10062CD7D /* CardsLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F86C328854AC10062CD7D /* CardsLogic.swift */; };
 		D04F74332874396400978D84 /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F74322874396400978D84 /* CardRow.swift */; };
 		D04F743628743BCC00978D84 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F743528743BCC00978D84 /* CardList.swift */; };
 		D04F743828743DD100978D84 /* CardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F743728743DD100978D84 /* CardDetail.swift */; };
@@ -26,6 +27,8 @@
 		D0918EA6288057B5008FC0E4 /* BakedCards in Resources */ = {isa = PBXBuildFile; fileRef = D0918EA5288057B5008FC0E4 /* BakedCards */; };
 		D09CCF2F2880C30D0018B078 /* FirstRunSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09CCF2E2880C30D0018B078 /* FirstRunSetup.swift */; };
 		D09CCF312880C9BF0018B078 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09CCF302880C9BF0018B078 /* SettingsManager.swift */; };
+		D0A908562881E005008F6384 /* MiscTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A908552881E005008F6384 /* MiscTests.swift */; };
+		D0A908582881E838008F6384 /* EasyHardButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A908572881E838008F6384 /* EasyHardButtons.swift */; };
 		D0C9A435287FF67700F9426F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C9A434287FF67700F9426F /* SettingsView.swift */; };
 		D0C9A437287FF8BA00F9426F /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C9A436287FF8BA00F9426F /* DebugView.swift */; };
 		D0D886B7286DA64F0074506C /* FresscardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D886B6286DA64F0074506C /* FresscardsApp.swift */; };
@@ -93,7 +96,8 @@
 		D038705C287C87450036A11F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0387063287CA9F40036A11F /* FresscardsShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FresscardsShareExtension.entitlements; sourceTree = "<group>"; };
 		D0387064287CAA280036A11F /* Fresscards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fresscards.entitlements; sourceTree = "<group>"; };
-		D04E6B7C28816D09000D6B08 /* MiscTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MiscTests.swift; path = Fresscards/MiscTests.swift; sourceTree = SOURCE_ROOT; };
+		D03F86C128820EC50062CD7D /* CardDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDummy.swift; sourceTree = "<group>"; };
+		D03F86C328854AC10062CD7D /* CardsLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsLogic.swift; sourceTree = "<group>"; };
 		D04F74322874396400978D84 /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
 		D04F743528743BCC00978D84 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
 		D04F743728743DD100978D84 /* CardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetail.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 		D0918EA5288057B5008FC0E4 /* BakedCards */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BakedCards; path = Fresscards/BakedCards; sourceTree = SOURCE_ROOT; };
 		D09CCF2E2880C30D0018B078 /* FirstRunSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunSetup.swift; sourceTree = "<group>"; };
 		D09CCF302880C9BF0018B078 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		D0A908552881E005008F6384 /* MiscTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiscTests.swift; sourceTree = "<group>"; };
+		D0A908572881E838008F6384 /* EasyHardButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyHardButtons.swift; sourceTree = "<group>"; };
 		D0C9A434287FF67700F9426F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D0C9A436287FF8BA00F9426F /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		D0D886B3286DA64F0074506C /* Fresscards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fresscards.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,10 +193,12 @@
 			isa = PBXGroup;
 			children = (
 				D04F74322874396400978D84 /* CardRow.swift */,
+				D0A908572881E838008F6384 /* EasyHardButtons.swift */,
 				D038703728798C8F0036A11F /* CardAdd.swift */,
 				D04F743728743DD100978D84 /* CardDetail.swift */,
 				D04F743528743BCC00978D84 /* CardList.swift */,
 				D04F743D28744BFA00978D84 /* CardTile.swift */,
+				D03F86C128820EC50062CD7D /* CardDummy.swift */,
 				D06EF35E287596CA00489D4E /* Tiles.swift */,
 				D0DBEF31287F526000AA10E4 /* CardTextField.swift */,
 			);
@@ -242,6 +250,7 @@
 				D0D886B8286DA64F0074506C /* ContentView.swift */,
 				D0DBEF33287F551500AA10E4 /* RawJsonView.swift */,
 				D0C9A434287FF67700F9426F /* SettingsView.swift */,
+				D03F86C328854AC10062CD7D /* CardsLogic.swift */,
 				D0C9A436287FF8BA00F9426F /* DebugView.swift */,
 				D038703C287C7C550036A11F /* ShareView.swift */,
 				D0D886BA286DA6500074506C /* Assets.xcassets */,
@@ -261,7 +270,7 @@
 		D0D886C6286DA6500074506C /* FresscardsTests */ = {
 			isa = PBXGroup;
 			children = (
-				D04E6B7C28816D09000D6B08 /* MiscTests.swift */,
+				D0A908552881E005008F6384 /* MiscTests.swift */,
 				D0D886C7286DA6500074506C /* FresscardsTests.swift */,
 				D03870332878A5E10036A11F /* PersistenceTests.swift */,
 				D0D886D0286DA6500074506C /* FresscardsUITests */,
@@ -458,10 +467,13 @@
 				D04F743828743DD100978D84 /* CardDetail.swift in Sources */,
 				D0387026287836E30036A11F /* Palette.swift in Sources */,
 				D038703828798C8F0036A11F /* CardAdd.swift in Sources */,
+				D03F86C428854AC10062CD7D /* CardsLogic.swift in Sources */,
 				D038702828783D8B0036A11F /* Log.swift in Sources */,
+				D03F86C228820EC50062CD7D /* CardDummy.swift in Sources */,
 				D0C9A435287FF67700F9426F /* SettingsView.swift in Sources */,
 				D06EF35F287596CA00489D4E /* Tiles.swift in Sources */,
 				D0D886B9286DA64F0074506C /* ContentView.swift in Sources */,
+				D0A908582881E838008F6384 /* EasyHardButtons.swift in Sources */,
 				D0DBEF30287F524600AA10E4 /* RandomString.swift in Sources */,
 				D0DB5E1F2872F911003BF3A1 /* Card.swift in Sources */,
 				D04F743A287448EC00978D84 /* FavoriteButton.swift in Sources */,
@@ -481,7 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0D886C8286DA6500074506C /* FresscardsTests.swift in Sources */,
-				D04E6B7D28816D09000D6B08 /* MiscTests.swift in Sources */,
+				D0A908562881E005008F6384 /* MiscTests.swift in Sources */,
 				D03870342878A5E10036A11F /* PersistenceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
