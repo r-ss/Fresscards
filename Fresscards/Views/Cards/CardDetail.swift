@@ -56,7 +56,8 @@ struct CardDetail: View {
     }
 
     var body: some View {
-            VStack {
+        GeometryReader { geometry in
+            VStack(alignment: .leading, spacing: 15) {
                 
 //                HStack {
 //                    Spacer()
@@ -126,8 +127,9 @@ struct CardDetail: View {
 //                        }
 //                Text(card.side_b)
                 
-            }.padding()
+            }.padding().frame(width: geometry.size.width, alignment: .leading)
         }
+    }
 }
 
 struct CardDetail_Previews: PreviewProvider {

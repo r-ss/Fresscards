@@ -43,7 +43,7 @@ struct CardList: View {
                     //                    if (self.filteredCards.count == 0) {
                     //                        Text("No cards, add some")
                     //                    }
-                    ForEach(filteredCards) { card in
+                    ForEach(filteredCards.reversed()) { card in
                         NavigationLink {
                             CardDetail(with_card: card)
                         } label: {

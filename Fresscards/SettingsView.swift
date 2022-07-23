@@ -24,7 +24,14 @@ struct SettingsView: View {
     func addBakedCards() {
         let firstRun = FirstRunSetup()
         let cards: [Card] = firstRun.loadBakedCards()
-        jsonData.cards = cards
+        jsonData.cards += cards
+        jsonData.saveJSON()
+    }
+    func removeBakedCards() {
+        let userCards = jsonData.cards.filter { card in
+            (card.origin == .user)
+        }
+        jsonData.cards = userCards
         jsonData.saveJSON()
     }
     
@@ -34,6 +41,7 @@ struct SettingsView: View {
                 Text("Settings").font(.title).padding(.bottom)
                 Button("Delete all cards", action: { self.deleteAllCardsConfirmationShown = true }).foregroundColor(.red)
                 Button("Add baked cards", action: { self.addBakedCards() })
+                Button("Remove baked cards", action: { self.removeBakedCards() })
                 //            Text(String(settingsManager.getBoolValue(name: "AutoCapitalization")))
                 Toggle("Auto Capitalization", isOn: $toggleAutoCapitalization)
                     .onChange(of: toggleAutoCapitalization) { value in

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CardTextField: View {
     
-    let characterLimit = 60 // Characters limit
     @Binding var content: String
     
     
@@ -17,7 +16,7 @@ struct CardTextField: View {
         
         TextField("Enter text...", text: $content)
             .onReceive(content.publisher.collect()) {
-                let s = String($0.prefix(characterLimit))
+                let s = String($0.prefix(Config.cardFieldCharacterLimit))
                 if content != s {
                     content = s
                 }
