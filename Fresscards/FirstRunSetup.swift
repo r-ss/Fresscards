@@ -12,9 +12,6 @@ class FirstRunSetup {
     
     let settingsManager = SettingsManager()
     
-//    let bakedCardsCSVsNames: [String] = ["base", "book_a1", "ru_poliglot", "verbs"]
-    let bakedCardsCSVsNames: [String] = ["base"]
-    
     init(){
         log("> class FirstRunSetup, init()")
         self.setDefaultSettings()
@@ -27,7 +24,7 @@ class FirstRunSetup {
     func loadBakedCards() -> [Card] {
         let options = CSVReadingOptions(hasHeaderRow: true, delimiter: ",")
         var resultCards: [Card] = []
-        for CSVFilename in self.bakedCardsCSVsNames {
+        for CSVFilename in Config.bakedCardsCSVsNames {
 
             guard let fileUrl = Bundle.main.url(forResource: CSVFilename, withExtension: "csv", subdirectory: "BakedCards") else {
                 return []

@@ -11,7 +11,7 @@ struct Tiles: View, EasyHardButtonsHandler {
     
     @EnvironmentObject var jsonData: jsonData
     
-    @EnvironmentObject var logic: CardsLogic
+//    @EnvironmentObject var logic: CardsLogic
     
     @State var tiles: [Card] = []
     @State private var addMode = false
@@ -25,11 +25,11 @@ struct Tiles: View, EasyHardButtonsHandler {
     // protocol EasyHardButtonsHandler method
     func reactionHandle(easy: Bool) {
         log("reactionHandle, easy: \(easy)")
-        if let currentCard: Card = self.tiles.last {
+        if var currentCard: Card = self.tiles.last {
             log("current card: \(currentCard.a)")
 
             
-            logic.addReaction(for_card: currentCard, easy: easy, jsonEngine: self.jsonData)
+            currentCard.addReaction(easy: easy, jsonEngine: self.jsonData)
             
             withAnimation(.easeInOut(duration: 0.15)) { // add animation
                 self.tiles.removeAll { $0.id == currentCard.id }

@@ -24,6 +24,7 @@
 		D04F743A287448EC00978D84 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F7439287448EC00978D84 /* FavoriteButton.swift */; };
 		D04F743E28744BFA00978D84 /* CardTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F743D28744BFA00978D84 /* CardTile.swift */; };
 		D06EF35F287596CA00489D4E /* Tiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06EF35E287596CA00489D4E /* Tiles.swift */; };
+		D08088FE288C026A00C8E806 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08088FD288C026A00C8E806 /* Config.swift */; };
 		D0918EA6288057B5008FC0E4 /* BakedCards in Resources */ = {isa = PBXBuildFile; fileRef = D0918EA5288057B5008FC0E4 /* BakedCards */; };
 		D09CCF2F2880C30D0018B078 /* FirstRunSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09CCF2E2880C30D0018B078 /* FirstRunSetup.swift */; };
 		D09CCF312880C9BF0018B078 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09CCF302880C9BF0018B078 /* SettingsManager.swift */; };
@@ -104,6 +105,7 @@
 		D04F7439287448EC00978D84 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		D04F743D28744BFA00978D84 /* CardTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTile.swift; sourceTree = "<group>"; };
 		D06EF35E287596CA00489D4E /* Tiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tiles.swift; sourceTree = "<group>"; };
+		D08088FD288C026A00C8E806 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		D0918EA5288057B5008FC0E4 /* BakedCards */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BakedCards; path = Fresscards/BakedCards; sourceTree = SOURCE_ROOT; };
 		D09CCF2E2880C30D0018B078 /* FirstRunSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstRunSetup.swift; sourceTree = "<group>"; };
 		D09CCF302880C9BF0018B078 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				D0C9A434287FF67700F9426F /* SettingsView.swift */,
 				D03F86C328854AC10062CD7D /* CardsLogic.swift */,
 				D0C9A436287FF8BA00F9426F /* DebugView.swift */,
+				D08088FD288C026A00C8E806 /* Config.swift */,
 				D038703C287C7C550036A11F /* ShareView.swift */,
 				D0D886BA286DA6500074506C /* Assets.xcassets */,
 				D0D886BC286DA6500074506C /* Preview Content */,
@@ -473,6 +476,7 @@
 				D0C9A435287FF67700F9426F /* SettingsView.swift in Sources */,
 				D06EF35F287596CA00489D4E /* Tiles.swift in Sources */,
 				D0D886B9286DA64F0074506C /* ContentView.swift in Sources */,
+				D08088FE288C026A00C8E806 /* Config.swift in Sources */,
 				D0A908582881E838008F6384 /* EasyHardButtons.swift in Sources */,
 				D0DBEF30287F524600AA10E4 /* RandomString.swift in Sources */,
 				D0DB5E1F2872F911003BF3A1 /* Card.swift in Sources */,

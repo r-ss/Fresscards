@@ -71,9 +71,25 @@ struct CardDetail: View {
                 if let origin = card.origin {
                     Text(String("Origin: \(origin)")).font(.system(size: 12))
                 }
-//                if let answers = card.answers {
-//                    Text(String("Answers: \(answers)")).font(.system(size: 12))
-//                }
+                if let answers = card.answers {
+                    Text(String("Answers: \(answers)")).font(.system(size: 12))
+                    
+                    List(answers, id: \.commited) { ans in
+                        HStack {
+                            Text("commited \(ans.commited))")
+                            Text(String(ans.easy))
+                        }
+                    }
+                    
+//                    List {
+//                        ForEach(answers) { ans in
+//                            HStack {
+//                                Text(ans.commited)
+//                                Text(ans.easy)
+//                            }
+//                        }
+//                    }
+                }
                 
                 if let easy = card.easyAnswers {
                     Text(String("Easy: \(easy)")).font(.system(size: 12))
