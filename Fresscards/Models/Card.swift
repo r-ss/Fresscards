@@ -70,21 +70,16 @@ extension Card {
         log("Card, addReaction, easy: \(easy)")
         log("for card: \(self.a)")
             
-//        var card: Card = for_card
         // Make Answer object to commit
         let answer = Answer(easy: easy, commited: Date())
-
         if self.answers != nil {
-            
             if self.answers!.count == Config.maximumAnswersItemsForCard {
                 self.answers!.removeFirst()
             }
-            
             self.answers!.append(answer)
         } else {
             self.answers = [answer]
         }
         jsonEngine.update(card: self)
-
     }
 }
