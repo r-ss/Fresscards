@@ -20,8 +20,8 @@ struct ContentView: View {
         //let _ = print(ModelData().cards
         
         VStack {
-            Text("Fresscards")
-                .font(Font.system(Font.TextStyle.title))
+//            Text("Fresscards")
+//                .font(Font.system(Font.TextStyle.title))
             //                Divider()
             
             TabView {
