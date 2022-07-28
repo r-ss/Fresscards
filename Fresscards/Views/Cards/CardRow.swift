@@ -22,24 +22,30 @@ struct CardRow: View {
 
     var body: some View {
             HStack(spacing: 0) {
+                
                 Group {
                     Text(aOptionallyCapitalized).font(.system(size: 16))
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 
-//                Spacer()
                 Group {
                     Text(bOptionallyCapitalized).font(.system(size: 16))
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 
-//                if card.isFavorite {
-//                    Spacer()
-//                    Image(systemName: "star.fill")
-//                        .foregroundColor(.yellow)
-//                }
-
-//                Spacer()
+                
+                Spacer()
+                if let color = card.difficultyColor {
+                    Circle()
+                        .fill(color)
+                        .frame(width: 10, height: 10)
+                } else {
+                    Circle()
+                        .fill(Color.red)
+                        .frame(width: 10, height: 10)
+                        .opacity(0)
+                }
+                
             }.padding()
         }
 }

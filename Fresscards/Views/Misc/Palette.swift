@@ -35,6 +35,10 @@ struct Palette {
     static let cardTextA = e
     static let cardTextB = e
     
+    static let difficultyEasy: Color = Color.green
+    static let difficultyMedium: Color = Color.orange
+    static let difficultyHard: Color = Color.red
+    
     
 //    struct Gray {
 //        static let Light = UIColor(netHex: 0x595959)

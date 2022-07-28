@@ -35,23 +35,33 @@ class FresscardsTests: XCTestCase {
         
         var card: Card = data.cards[0]
         
-        for i in 1...6 {
-            
-            log("FFFFF \(i)")
-//            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i)/20) {
-                card.addReaction(easy: true, jsonEngine: self.data)
-//            }
-//            sleep(UInt32(Double(i)/4))
-            
-         
-            
-        }
+//        for i in 1...6 {
+//            card.addReaction(easy: true, jsonEngine: self.data)
+//        }
         
-        if let ans = card.answers {
-            log("answers: \(ans.count)")
-        } else {
-            log("No answers")
-        }
+//        log("answers: \(card.answers)")
+        
+        XCTAssertEqual(card.difficulty, .none, "difficulty must be none (unset) here")
+        
+        card.addReaction(easy: false, jsonEngine: self.data)
+        
+        XCTAssertEqual(card.difficulty, .hard, "difficulty must be hard at this point")
+        
+        card.addReaction(easy: true, jsonEngine: self.data)
+        
+        XCTAssertEqual(card.difficulty, .medium, "difficulty must be medium at this point")
+        
+        card.addReaction(easy: true, jsonEngine: self.data)
+        
+        XCTAssertEqual(card.difficulty, .easy, "difficulty must be easy at this point")
+        
+        
+        
+//        if let ans = card.answers {
+//            log("answers: \(ans.count)")
+//        } else {
+//            log("No answers")
+//        }
         
         
         

@@ -16,8 +16,6 @@ struct EasyHardButtons: View {
     
     var reactionSubscriber: EasyHardButtonsHandler?
     
-    
-    
     var body: some View {
         HStack {
             

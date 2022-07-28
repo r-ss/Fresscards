@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum CardOrigin: String, Codable {
     case baked, user
+}
+
+enum CardDifficulty: String {
+    case none, easy, medium, hard
 }
 
 struct CardWireframe: Codable {
@@ -45,6 +50,43 @@ struct Card: Codable, Hashable, Identifiable {
             return 0
         }
     }
+    
+    var difficulty: CardDifficulty {
+        
+        let e = self.easyAnswers
+        let h = self.hardAnswers
+        let t = e+h
+        
+        if e > h {
+            return .easy
+        }
+        
+        if t>0 && e == h {
+            return .medium
+        }
+        
+        if e < h {
+            return .hard
+        }
+        
+        return .none
+    }
+    
+    var difficultyColor: Color? {
+        switch self.difficulty {
+        case .easy:
+            return Palette.difficultyEasy
+            
+        case .medium:
+            return Palette.difficultyMedium
+            
+        case .hard:
+            return Palette.difficultyHard
+            
+        default:
+            return nil
+        }
+    }
 }
 
 extension Card {
@@ -69,7 +111,7 @@ extension Card {
     mutating func addReaction(easy: Bool, jsonEngine:jsonData) {
         log("Card, addReaction, easy: \(easy)")
         log("for card: \(self.a)")
-            
+        
         // Make Answer object to commit
         let answer = Answer(easy: easy, commited: Date())
         if self.answers != nil {

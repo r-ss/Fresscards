@@ -9,17 +9,8 @@ import SwiftUI
 
 
 struct CardTile: View {
-    //    static let gradientStart = Color(red: 239.0 / 255, green: 120.0 / 255, blue: 221.0 / 255)
-    //    static let gradientEnd = Color(red: 239.0 / 255, green: 172.0 / 255, blue: 120.0 / 255)
-    //
     @EnvironmentObject var jsonData: jsonData
     
-    //    var initialCardPosition: CGPoint {
-    //        let x = UIScreen.main.bounds.width / 2
-    //        let y = UIScreen.main.bounds.height / 2
-    //        return CGPoint(x:x,y:y)
-    //    }
-    //
     @State var geometryWidth: CGFloat = 0.0 // sets on appear and used in judjeGesture()
     @State private var centerLocation: CGPoint = CGPoint(x: 0, y: 0) // used in dragJudge if threshhold not reached
     
@@ -27,28 +18,6 @@ struct CardTile: View {
     @GestureState private var fingerLocation: CGPoint? = nil
     @GestureState private var startLocation: CGPoint? = nil
     
-
-    
-//    dynamic func reactionEventHander(notification: NSNotification) {
-//        log("EVENT reactionEventHander WORKING")
-//    }
-//
-//    func addReactionEventListeners(){
-//
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(reactionEventHander(notification:)),
-//            name: NSNotification.Name.PizzaReadiness,
-//            object: nil)
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(reactionEventHander),
-//            name: Notification.Name("ReactionButtonPressedHard"),
-//            object: nil)
-//
-//    }
-    
-
     
     func moveToCenterOnAppear(_ geometry: GeometryProxy){
         self.geometryWidth = geometry.size.width
@@ -96,17 +65,8 @@ struct CardTile: View {
             }
     }
     
-//    var fingerDrag: some Gesture {
-//        DragGesture(minimumDistance: 3, coordinateSpace: .local)
-//            .updating($fingerLocation) { (value, fingerLocation, transaction) in
-//                fingerLocation = value.location
-//            }
-//    }
-    
-    
     
     @State private var translation: CGSize = .zero
-    //    @State private var cardIndex = 0 // Current card's index
     @State var showSideB:Bool = false
     var opacitySideB: Double {
         showSideB ? 1.0 : 0.0
@@ -118,10 +78,16 @@ struct CardTile: View {
         Double((self.location.x - self.centerLocation.x) / 30)
     }
     
+    var opacityGestureHintEasy: Double {
+        0.5
+    }
+    
+    var opacityGestureHintHard: Double {
+        0.5
+    }
     
     private var card: Card
     private var onRemove: (_ card: Card) -> Void
-    //    private var thresholdDragDistance: CGFloat = 220
     private var thresholdPercentage: CGFloat = 0.4 // when the user has draged 50% the width of the screen in either direction
     
     let settingsManager = SettingsManager()
@@ -139,7 +105,6 @@ struct CardTile: View {
         self.onRemove = onRemove
     }
     
-    //    private var handler: ((Directions) -> Void)?
     private enum Directions: Int {
         case up, down, left, right, none
     }
@@ -148,11 +113,9 @@ struct CardTile: View {
         
         let hDelta = gesture.translation.width
         let vDelta = gesture.translation.height
-        
         let thresholdDistance = self.geometryWidth * self.thresholdPercentage
         
         if (abs(hDelta) + abs(vDelta)) > thresholdDistance {
-            //            log("distance: \(abs(hDelta) + abs(vDelta))")
             if abs(hDelta) > abs(vDelta) {
                 return (hDelta < 0 ? .left : .right)
             } else {
@@ -163,13 +126,9 @@ struct CardTile: View {
         }
     }
     
-    
-    
     var body: some View {
-        
         GeometryReader { geometry in
             ZStack {
-                
                 Group{
                     ZStack {
                         // BACKGROUND
@@ -180,43 +139,32 @@ struct CardTile: View {
                                 height: getTileWidth(geometry)
                             )
                             .shadow(radius: 7)
-//                            .position(location)
                             .onAppear { self.moveToCenterOnAppear(geometry) }
                         // CONTENT
                         VStack(alignment: .center, spacing: 15) {
-                            
-//                            Text(aOptionallyCapitalized)
-//                                .font(.title)
-//                                .foregroundColor(Palette.cardTextA)
-//                                .frame(maxWidth: getMaxTextWidth(geometry))
-//                            Text(bOptionallyCapitalized)
-//                                .font(.subheadline)
-//                                .foregroundColor(Palette.cardTextB)
-//                                .opacity(opacitySideB)
-//                                .frame(maxWidth: getMaxTextWidth(geometry))
-                            
-                            Text(aOptionallyCapitalized)
-                                .font(.system(size: 28, weight: .light, design: .serif))
-                                .foregroundColor(Palette.cardTextA)
-                                .frame(maxWidth: getMaxTextWidth(geometry))
-                            Text(bOptionallyCapitalized)
-                                .font(.system(size: 18, weight: .light, design: .serif))
-                                .foregroundColor(Palette.cardTextB)
-//                                .italic()
-                                .opacity(opacitySideB)
-                                .frame(maxWidth: getMaxTextWidth(geometry))
+                                
+                                Text(aOptionallyCapitalized)
+                                    .font(.system(size: 28, weight: .light, design: .serif))
+                                    .foregroundColor(Palette.cardTextA)
+                                    .frame(maxWidth: getMaxTextWidth(geometry))
+                                Text(bOptionallyCapitalized)
+                                    .font(.system(size: 18, weight: .light, design: .serif))
+                                    .foregroundColor(Palette.cardTextB)
+                                //                                .italic()
+                                    .opacity(opacitySideB)
+                                    .frame(maxWidth: getMaxTextWidth(geometry))
                         }
-                        //.offset(x: self.translation.width, y: self.translation.height)
                         .offset(x:0,y:15)
-                        
-//                        Group {
-//                            if let fingerLocation = fingerLocation {
-//                                Circle()
-//                                    .stroke(Color.red, lineWidth: 2)
-//                                    .frame(width: 44, height: 44)
-//                                    .position(fingerLocation)
-//                            }
-//                        }
+                        HStack {
+                            
+                            Text("HARD").foregroundColor(Palette.difficultyHard)
+                                .position(x: -getTileWidth(geometry)/2 + 230, y: getTileWidth(geometry)/2 + 20)
+                                .opacity(opacityGestureHintEasy)
+                            
+                            Text("EASY").foregroundColor(Palette.difficultyEasy)
+                                .position(x: getTileWidth(geometry)/2 - 50, y: getTileWidth(geometry)/2 + 20)
+                                .opacity(opacityGestureHintHard)
+                        }
                     }
                     .position(location)
                     .rotationEffect(.degrees(calculateRotation), anchor: .bottom)
@@ -229,12 +177,10 @@ struct CardTile: View {
                             jsonData.removeCard(withId: card.id)
                             withAnimation { self.onRemove(self.card) }
                         }
-                        // Button("No", role: .cancel) {} - cancel button added automatically
                     }
                 } // ZStack
             } // Group
             .gesture(TapGesture().onEnded {
-//                showSideB = !showSideB
                 if showSideB {
                     withAnimation { self.onRemove(self.card) }
                 } else {
