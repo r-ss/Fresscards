@@ -97,7 +97,7 @@ struct Tiles: View, EasyHardButtonsHandler {
 //                                    .offset(x: 0, y: self.getCardOffset(geometry, id: findCardIndex(for_card: card)))
                                     
                                     if (self.tiles.count - 5)...self.tiles.count ~= findCardIndex(for_card: card) {
-                                        CardTile(card: card, onRemove: { removedCard in
+                                        CardTile(card: card, reactionSubscriber: self, onRemove: { removedCard in
                                             // Remove that card from our array
                                             withAnimation(.easeInOut(duration: 0.15)) { // add animation
                                                 self.tiles.removeAll { $0.id == removedCard.id }

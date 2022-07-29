@@ -14,14 +14,20 @@ struct ContentView: View {
     @EnvironmentObject var jsonData: jsonData
     //    @EnvironmentObject var modelData: CardRealmViewModel
     
+    // Solution to navigate on doble tap tab icon
+    // https://designcode.io/swiftui-handbook-tabbar-to-root-view
+    @State private var uuidTiles = UUID()
+    @State private var uuidList = UUID()
+    @State private var uuidDebug = UUID()
+    @State private var uuidSettings = UUID()
 
     
     var body: some View {
         //let _ = print(ModelData().cards
         
         VStack {
-//            Text("Fresscards")
-//                .font(Font.system(Font.TextStyle.title))
+            //            Text("Fresscards")
+            //                .font(Font.system(Font.TextStyle.title))
             //                Divider()
             
             TabView {
@@ -29,79 +35,34 @@ struct ContentView: View {
                     .tabItem {
                         Label("Tiles", systemImage: "tray.full")
                     }
+                    .tag(uuidTiles)
+                
+                
                 CardList()
                     .badge(jsonData.cards.count)
                     .tabItem {
                         Label("List", systemImage: "list.bullet.rectangle.portrait")
                     }
+                    .tag(uuidList)
+                
+                
                 DebugView()
                     .tabItem {
                         Label("Debug", systemImage: "cpu")
                     }
+                    .tag(uuidDebug)
+                
+                
                 SettingsView()
                     .tabItem {
                         Label("Settings", systemImage: "gearshape.fill")
                     }
+                    .tag(uuidSettings)
+                
+                
             }
         }.background(Palette.background)
-        
-        
-        
-        //        VStack {
-        //            Text("Fresscards")
-        //                .font(Font.system(Font.TextStyle.title))
-        ////                Divider()
-        
-        
-        //
-        //            NavigationView {
-        //
-        //                VStack {
-        //
-        //                    Rectangle().fill(Palette.a).frame(width: 200, height: 30)
-        //                    Rectangle().fill(Palette.b).frame(width: 200, height: 30)
-        //                    Rectangle().fill(Palette.c).frame(width: 200, height: 30)
-        //                    Rectangle().fill(Palette.d).frame(width: 200, height: 30)
-        //                    Rectangle().fill(Palette.e).frame(width: 200, height: 30)
-        //
-        //                    ShareView()
-        //
-        //                    NavigationLink {
-        //                        RawJsonView()
-        //                    } label: {
-        //                        Text("RAW JSON")
-        //                    }
-        //                    .padding()
-        //
-        //                    NavigationLink {
-        //                        Tiles(withCards: jsonData.cards)
-        //                    } label: {
-        //                        Text("Tiles")
-        //                    }
-        //                    .padding()
-        //
-        //
-        //                    NavigationLink {
-        //                        CardList()
-        //                    } label: {
-        //                        Text("CardList")
-        //                    }
-        //                    .padding()
-        //
-        //
-        //                }
-        //
-        //
-        //
-        //            }
-        //
-        
-        
-        
-        
-        
     }
-
 }
 
 struct ContentView_Previews: PreviewProvider {

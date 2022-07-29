@@ -11,6 +11,8 @@ import SwiftUI
 struct CardTile: View {
     @EnvironmentObject var jsonData: jsonData
     
+    
+    
     @State var geometryWidth: CGFloat = 0.0 // sets on appear and used in judjeGesture()
     @State private var centerLocation: CGPoint = CGPoint(x: 0, y: 0) // used in dragJudge if threshhold not reached
     
@@ -82,9 +84,19 @@ struct CardTile: View {
                 switch direction {
                 case .none:
                     // if drag distance threshold is not reached, return tile to initial position
-                    withAnimation(.interactiveSpring()) { self.location = self.centerLocation }
+                    withAnimation(.interactiveSpring()) {
+                        self.location = self.centerLocation
+                        opacityGestureHintEasy = 0.0
+                        opacityGestureHintHard = 0.0
+                    }
                 case .up:
                     self.confirmationShown = true
+                    withAnimation(.interactiveSpring()) { self.location = self.centerLocation }
+                case .left:
+                    reactionSubscriber?.reactionHandle(easy: true)
+                    withAnimation(.interactiveSpring()) { self.location = self.centerLocation }
+                case .right:
+                    reactionSubscriber?.reactionHandle(easy: false)
                     withAnimation(.interactiveSpring()) { self.location = self.centerLocation }
                 default:
                     // in other cases we assume that drag threshold distance is reached and card swiped
@@ -109,6 +121,7 @@ struct CardTile: View {
 
     
     private var card: Card
+    private var reactionSubscriber: EasyHardButtonsHandler?
     private var onRemove: (_ card: Card) -> Void
     private var thresholdPercentage: CGFloat = 0.4 // when the user has draged 50% the width of the screen in either direction
     
@@ -122,9 +135,10 @@ struct CardTile: View {
         settingsManager.getBoolValue(name: "AutoCapitalization") ? card.b.firstWordCapitalization() : card.b
     }
     
-    init(card: Card, onRemove: @escaping (_ card: Card) -> Void) {
+    init(card: Card, reactionSubscriber: Tiles?, onRemove: @escaping (_ card: Card) -> Void) {
         self.card = card
         self.onRemove = onRemove
+        self.reactionSubscriber = reactionSubscriber
     }
     
     private enum Directions: Int {
@@ -180,12 +194,16 @@ struct CardTile: View {
                         HStack {
                             
                             Text("HARD").foregroundColor(Palette.difficultyHard)
-                                .position(x: -getTileWidth(geometry)/2 + 230, y: getTileWidth(geometry)/2 + 20)
+                                .position(x: -getTileWidth(geometry)/2 + 228, y: getTileWidth(geometry)/2 + 20)
                                 .opacity(opacityGestureHintEasy)
                             
                             Text("EASY").foregroundColor(Palette.difficultyEasy)
                                 .position(x: getTileWidth(geometry)/2 - 50, y: getTileWidth(geometry)/2 + 20)
                                 .opacity(opacityGestureHintHard)
+                        }
+                        Group   {
+                        DifficultyIndicator(for_card: card)
+                            .position(x: getTileWidth(geometry)/2 + 10, y: getTileWidth(geometry)/2)
                         }
                     }
                     .position(location)
@@ -218,7 +236,7 @@ struct CardTile: View {
 struct CardTile_Previews: PreviewProvider {
     static var cards = jsonData().cards
     static var previews: some View {
-        CardTile(card: cards[26], onRemove: { _ in }).environmentObject(jsonData())
+        CardTile(card: cards[26], reactionSubscriber: nil, onRemove: { _ in }).environmentObject(jsonData())
     }
 }
 

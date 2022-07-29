@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D022051C289415DC0053B12E /* DifficultyIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D022051B289415DC0053B12E /* DifficultyIndicator.swift */; };
 		D0387026287836E30036A11F /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0387025287836E30036A11F /* Palette.swift */; };
 		D038702828783D8B0036A11F /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = D038702728783D8B0036A11F /* Log.swift */; };
 		D03870342878A5E10036A11F /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03870332878A5E10036A11F /* PersistenceTests.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D022051B289415DC0053B12E /* DifficultyIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyIndicator.swift; sourceTree = "<group>"; };
 		D0387025287836E30036A11F /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		D038702728783D8B0036A11F /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		D03870332878A5E10036A11F /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				D04F74322874396400978D84 /* CardRow.swift */,
+				D022051B289415DC0053B12E /* DifficultyIndicator.swift */,
 				D0A908572881E838008F6384 /* EasyHardButtons.swift */,
 				D038703728798C8F0036A11F /* CardAdd.swift */,
 				D04F743728743DD100978D84 /* CardDetail.swift */,
@@ -389,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D022051C289415DC0053B12E /* DifficultyIndicator.swift in Sources */,
 				D09CCF2F2880C30D0018B078 /* FirstRunSetup.swift in Sources */,
 				D0DBEF32287F526000AA10E4 /* CardTextField.swift in Sources */,
 				D038703D287C7C550036A11F /* ShareView.swift in Sources */,

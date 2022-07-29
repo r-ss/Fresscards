@@ -35,16 +35,7 @@ struct CardRow: View {
                 
                 
                 Spacer()
-                if let color = card.difficultyColor {
-                    Circle()
-                        .fill(color)
-                        .frame(width: 10, height: 10)
-                } else {
-                    Circle()
-                        .fill(Color.red)
-                        .frame(width: 10, height: 10)
-                        .opacity(0)
-                }
+                DifficultyIndicator(for_card: card)
                 
             }.padding()
         }

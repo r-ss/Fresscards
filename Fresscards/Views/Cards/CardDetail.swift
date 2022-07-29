@@ -75,12 +75,6 @@ struct CardDetail: View {
                 if let answers = card.answers {
                     Text(String("Answers: \(answers)")).font(.system(size: 12))
                     
-                    List(answers, id: \.commited) { ans in
-                        HStack {
-                            Text("commited \(ans.commited))")
-                            Text(String(ans.easy))
-                        }
-                    }
                     
 //                    List {
 //                        ForEach(answers) { ans in
