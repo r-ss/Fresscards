@@ -35,6 +35,9 @@ struct CardTile: View {
         max(geometry.size.width - 60.0, 80.0) // preventing negative values
     }
     
+    @State var opacityGestureHintEasy: Double = 0.0
+    @State var opacityGestureHintHard: Double = 0.0
+    
     var simpleDrag: some Gesture {
         DragGesture(minimumDistance: 3, coordinateSpace: .local)
             .onChanged { value in
@@ -42,6 +45,31 @@ struct CardTile: View {
                 newLocation.x += value.translation.width
                 newLocation.y += value.translation.height
                 showSideB = true
+                
+                let hDelta = value.translation.width
+                if (abs(hDelta) > 50){
+                    if (hDelta > 0) {
+                        withAnimation(.easeOut(duration: 0.2)) {
+                            opacityGestureHintEasy = 1.0
+                            opacityGestureHintHard = 0.0
+                        }
+                    } else {
+                        withAnimation(.easeOut(duration: 0.2)) {
+                            opacityGestureHintEasy = 0.0
+                            opacityGestureHintHard = 1.0
+                        }
+                    }
+                } else {
+                    withAnimation(.easeOut(duration: 0.2)) {
+                        opacityGestureHintEasy = 0.0
+                        opacityGestureHintHard = 0.0
+                    }
+                }
+
+                
+                
+                
+                
                 withAnimation(.easeOut(duration: 0.1)) {
                     self.location = newLocation
                 }
@@ -78,13 +106,7 @@ struct CardTile: View {
         Double((self.location.x - self.centerLocation.x) / 30)
     }
     
-    var opacityGestureHintEasy: Double {
-        0.5
-    }
-    
-    var opacityGestureHintHard: Double {
-        0.5
-    }
+
     
     private var card: Card
     private var onRemove: (_ card: Card) -> Void
