@@ -1,0 +1,45 @@
+{
+  "identifier" : "BD5F451B",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "8.99",
+      "familyShareable" : false,
+      "internalID" : "6447259693",
+      "localizations" : [
+        {
+          "description" : "Potente generador de flashcards sin límites",
+          "displayName" : "Generador ilimitado",
+          "locale" : "es_ES"
+        },
+        {
+          "description" : "Flashcards generator without limits",
+          "displayName" : "Unlimited Generator",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Мощный генератор карточек без лимитов",
+          "displayName" : "Безлимитный генератор",
+          "locale" : "ru"
+        }
+      ],
+      "productID" : "unlimited_generator",
+      "referenceName" : "Unlimited Generator",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6443642994",
+    "_developerTeamID" : "7R7Q2CDK95",
+    "_lastSynchronizedDate" : 702317387.10486698
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}
