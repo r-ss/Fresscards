@@ -66,7 +66,7 @@ extension FresscardsEndpoint: Endpoint {
     
     var host: String {
         return "https://fresscards.ress.ws/api/v1"
-//        return "http://127.0.0.1:8000"
+//        return "http://127.0.0.1:8000/api/v1"
     }
     
     

@@ -6,6 +6,10 @@
 import SwiftUI
 
 
+enum TabSelection {
+    case generator
+    case settings
+}
 
 struct ContentView: View {
     
@@ -13,31 +17,42 @@ struct ContentView: View {
     //    @State private var uuidLasttDayJson = UUID()
     //    @State private var uuidDebug = UUID()
     
+    @State private var selectedTab: TabSelection = .generator
+    
     
     //@StateObject var priceService = PriceService()
 //    @StateObject var dailyPlan = DailyPlan()
+    
+    public func changeTab(to: TabSelection) {
+        print("changing tab programmatically")
+        if self.selectedTab != to {
+            self.selectedTab = to
+        }
+    }
     
     
 
     var body: some View {
         VStack {
             // GenerateView()
-            TabView {
+            TabView(selection: $selectedTab) {
 
-                GenerateView()
+                GenerateView(changeTabFunction: changeTab)
                     .tabItem {
                         Label("Generator", systemImage: "brain")
                     }
+                    .tag(TabSelection.generator)
 
                 SettingsView()
                     .tabItem {
                         Label("Settings", systemImage: "gearshape.2.fill")
                     }
+                    .tag(TabSelection.settings)
                 
-                StoreView()
-                    .tabItem {
-                        Label("Store", systemImage: "gearshape.2.fill")
-                    }
+//                StoreView()
+//                    .tabItem {
+//                        Label("Store", systemImage: "gearshape.2.fill")
+//                    }
 
             }
         }

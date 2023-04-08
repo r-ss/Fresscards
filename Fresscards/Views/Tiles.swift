@@ -63,14 +63,14 @@ struct Tiles: View {
     //        return CGPoint(x:x, y:y)
     //    }
     
-    func easyHardButtonsPositions(_ geometry: GeometryProxy) -> CGPoint {
-        let x = geometry.size.width / 2
-        let y = geometry.size.height / 2 + (geometry.size.height / 2.5)
-        return CGPoint(x:x, y:y)
-    }
+//    func easyHardButtonsPositions(_ geometry: GeometryProxy) -> CGPoint {
+//        let x = geometry.size.width / 2
+//        let y = geometry.size.height / 2 + (geometry.size.height / 2.5)
+//        return CGPoint(x:x, y:y)
+//    }
     
     var body: some View {
-        //        NavigationView {
+//        NavigationStack {
         VStack {
             GeometryReader { geometry in
                 ZStack {
@@ -129,7 +129,17 @@ struct Tiles: View {
                 //                .background(.red)
                 //                    Spacer()
                 
-                NavigationLink(destination: CardsListView(response: cardsWorker.result, titleTheme: cardsWorker.result?.request.theme), isActive: $showTableScreen) { EmptyView() }
+//                NavigationLink(
+//                    destination: CardsListView(response: cardsWorker.result, titleTheme: cardsWorker.result?.request.theme), isActive: $showTableScreen) { }
+                
+//                NavigationLink(
+//                     destination: Verification(phoneLoginData: phoneLoginData),
+//                     isActive: $phoneLoginData.goToVerify) {
+//                          Text("")
+//                               .hidden()
+//                     }
+                
+                
             }
             .navigationBarTitle(Text( cardsWorker.result?.request.theme ?? ""))
             .toolbar {
@@ -139,11 +149,14 @@ struct Tiles: View {
                     Label("List", systemImage: "list.bullet.clipboard")
                 }
                 
-                
-                
-                
-                
             }
+            .navigationDestination(isPresented: $showTableScreen) {
+                CardsListView(response: cardsWorker.result, titleTheme: cardsWorker.result?.request.theme)
+            }
+            .navigationTitle( cardsWorker.result?.request.theme ?? "" )
+//            .navigationDestination(
+//                 isPresented: $showTableScreen) {
+//                 }
             //                .navigationBarItems(trailing: Button(action: {
             //                    self.addMode = true
             //                } ) {
@@ -161,7 +174,7 @@ struct Tiles: View {
         //            } else {
         //                print("nonon")
         //            }
-        //        }
+//                }
     }
 }
 

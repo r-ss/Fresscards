@@ -20,17 +20,6 @@ enum SettingsNames: String, CaseIterable {
     case existence = "SettingsExistence"
     
     case showDebugInfo = "SettingsShowDebugInfo"
-    case countryCode = "SettingsCountryCode"
-    case reservedPower = "SettingsReservedPower"
-    
-    case userEmail = "SettingsUserEmail"
-    case userId = "SettingsUserId"
-    case accessToken = "SettingsAccessToken"
-    case refreshToken = "SettingsRefreshToken"
-    case selectedCurrency = "SettingsSelectedCurrency"
-    case currencyLatestCZK = "SettingsCurrencyLatestCZK"
-    
-    case areAppliancesLabelsTouchLearned = "SettingsAppliancesLabesTouchLearned"
 }
 
 
@@ -48,18 +37,6 @@ struct SettingsManager {
         SettingsItem(name: SettingsNames.testParameter, type: "Bool", defaultValue: true), // Used only in tests
         SettingsItem(name: SettingsNames.existence, type: "Bool", defaultValue: true), // Used to determine existence of settings and writing default values routine if not
         SettingsItem(name: SettingsNames.showDebugInfo, type: "Bool", defaultValue: false),
-        SettingsItem(name: SettingsNames.countryCode, type: "String", defaultValue: "es"),
-        SettingsItem(name: SettingsNames.reservedPower, type: "Integer", defaultValue: 4600), // Watts
-        
-        SettingsItem(name: SettingsNames.userEmail, type: "String", defaultValue: ""),
-        SettingsItem(name: SettingsNames.userId, type: "String", defaultValue: ""),
-        SettingsItem(name: SettingsNames.accessToken, type: "String", defaultValue: ""),
-        SettingsItem(name: SettingsNames.refreshToken, type: "String", defaultValue: ""),
-        
-        SettingsItem(name: SettingsNames.selectedCurrency, type: "String", defaultValue: "eur"),
-        SettingsItem(name: SettingsNames.currencyLatestCZK, type: "Double", defaultValue: 23.0),
-        
-        SettingsItem(name: SettingsNames.areAppliancesLabelsTouchLearned, type: "Bool", defaultValue: false),
     ]
     
     
@@ -73,8 +50,6 @@ struct SettingsManager {
     
     
     func createAndSaveDefault() {
-        defaults.set(25, forKey: "Age")
-        
         for item in self.settings {
             print("Writing default setting for \(item.name)")
             defaults.set(item.defaultValue, forKey: item.name.rawValue)

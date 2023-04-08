@@ -27,8 +27,13 @@ struct GenerateView: View {
     
     @State private var generating: Bool = false
     
-    @State var lang_a = "Spanish"
-    @State var lang_b = "Russian"
+    @State var lang_a: String = "Spanish"
+    @State var lang_b: String = "English"
+    
+    
+    @AppStorage("lang_a_appstorage") var lang_a_appstorage: String = "Spanish"
+    @AppStorage("lang_b_appstorage") var lang_b_appstorage: String = "English"
+    
     @State var theme = "Formula-1"
     @State var count = 10
     
@@ -39,15 +44,35 @@ struct GenerateView: View {
     @State var resp: NeuralResponse?
     
     @State private var showAlert = false
+    @State private var showPaywallAlert = false
     @State private var alertMessage: String = "Error..."
+    
+    @State private var isPurchased: Bool = true
     
     var ready_cards: [NeuralResponseItem] = []
     
-    let languages = ["English", "Spanish", "French", "German", "Italian", "Chinese", "Japanese", "Korean", "Arabic", "Russian"]
+    var changeTabFunction: (_ to: TabSelection) -> Void
+    
+    var languages: [String] {
+        
+        var bin = Config.baseLanguages
+        
+        if isPurchased {
+            bin += Config.additionalLanguages
+        }
+        
+        return bin
+    }
     
     let themes = [
-        "Food", "Travel", "Business", "School", "Nature", "Hospital", "Family", "Formula-1", "Airport", "Sports", "Entertainment", "Music", "Fashion", "Finance", "Shopping", "House and Home", "Time and Calendar", "Weather and Climate", "Geography and Landmarks", "Football","Art and Design", "Religion and Spirituality", "Social Issues", "Communication and Media", "Science and Technology", "Transport", "Law and Justice", "History and Heritage", "Emotions and Feelings", "Language and Linguistics"
+        "Food", "Travel", "Business", "School", "Nature", "Hospital", "Family", "Formula-1", "Airport", "Sports", "Entertainment", "Music", "Fashion", "Finance", "Shopping", "House", "Time and Calendar", "Weather and Climate", "Geography and Landmarks", "Football","Art and Design", "Social Issues", "Communication and Media", "Science and Technology", "Transport", "Law and Justice", "History and Heritage", "Emotions and Feelings", "Language and Linguistics"
     ]
+    
+    private func readPurchasesFromDefaults(){
+        
+        self.isPurchased = UserDefaults.standard.bool(forKey: "unlimited_generator")
+//        print(isPurchased)
+    }
     
     
     private func makeAlert(message: String) {
@@ -60,6 +85,16 @@ struct GenerateView: View {
             GeometryReader { maingeometry in
                 
                 VStack(alignment: .leading, spacing: 15) {
+                    
+                    //                    Button("Switch View") {
+                    //                        changeTabFunction(.settings)
+                    //                            }
+                    //
+//                                        Text(isPurchased ? "yes" : "no")
+                    //                    Text("Generations used: \(generationsUsed)")
+//                    Text("show_results_screen: \( String(isPurchased))")
+                    
+                    
                     Group {
                         
                         Form {
@@ -67,7 +102,6 @@ struct GenerateView: View {
                                 VStack(alignment: .center) {
                                     Text("Choose languages")
                                     HStack(spacing: 10){
-                                        //                                        Text("From")
                                         Picker(selection: $lang_a, label: Text("A")) {
                                             ForEach(languages, id: \.self) {
                                                 Text($0)
@@ -76,7 +110,11 @@ struct GenerateView: View {
                                         .pickerStyle(MenuPickerStyle())
                                         .labelsHidden()
                                         .frame(minWidth: 120)
-                                        //                                        Text("To")"
+                                        .onChange(of: lang_a) { lang in
+                                            print("lang a: \(lang)")
+                                            lang_a_appstorage = lang_a
+                                        }
+                                        
                                         
                                         Image(systemName: "arrow.forward")
                                         
@@ -88,12 +126,18 @@ struct GenerateView: View {
                                         .pickerStyle(MenuPickerStyle())
                                         .labelsHidden()
                                         .frame(minWidth: 120)
+                                        .onChange(of: lang_b) { lang in
+                                            print("lang b: \(lang)")
+                                            lang_b_appstorage = lang_b
+                                        }
                                     }
                                 }
                                 
-                                .frame(width: maingeometry.size.width - 80)
+                                .frame(width: max(maingeometry.size.width - 80, 0))
                                 //                                .background(.red)
                             }
+                            
+                            
                             Section {
                                 VStack(alignment: .center) {
                                     Text("Type any theme")
@@ -118,11 +162,10 @@ struct GenerateView: View {
                                         Label("Random Theme", systemImage: "dice")
                                     }
                                 }
-                                .frame(width: maingeometry.size.width - 80)
-                                //                                .background(.red)
-                                
+                                .frame(width: max(maingeometry.size.width - 80, 0))
                                 
                             }
+                            
                             
                             Section {
                                 VStack(alignment: .center) {
@@ -134,63 +177,119 @@ struct GenerateView: View {
                                     }
                                     .pickerStyle(SegmentedPickerStyle())
                                 }
-                                .frame(width: maingeometry.size.width - 80)
+                                .frame(width: max(maingeometry.size.width - 80, 0))
                                 //                                .background(.red)
                                 
                             }
                             
-                            Section {
-                                
-                                Button() {
-                                    Task { await generateCardsAction() }
-                                } label: {
-                                    if generating {
-                                        LoaderSpinner()
-                                    } else {
-                                        Label("Generate", systemImage: "brain")
-                                    }
-                                }
-                            }
-                            
-                            Section {
-                                if generationsUsed >= 0 {
-                                    PurchaseView()
+                            Button() {
+                                Task { await generateCardsAction() }
+                            } label: {
+                                if generating {
+                                    LoaderSpinner()
                                 } else {
-                                    Text("Generations used: \(generationsUsed)")
+                                    Label("Generate", systemImage: "brain")
                                 }
                             }
                             
                         }
+                        
                     }
+                    
+                    
                 }
                 .frame(width: maingeometry.size.width, height: maingeometry.size.height, alignment: .leading)
             }
-            .navigationBarTitle("Generate flashcards")
+            .navigationDestination(isPresented: $show_results_screen) {
+                Tiles(cardsWorker: cardsWorker)
+                
+            }
+            .navigationTitle("Generate flashcards")
+            .onAppear {
+                self.isPurchased = UserDefaults.standard.bool(forKey: "unlimited_generator")
+                
+                lang_a = lang_a_appstorage
+                lang_b = lang_b_appstorage
+                
+                self.theme = self.themes.randomElement()!
+                
+            }
             
             
-            NavigationLink(destination: Tiles(cardsWorker: cardsWorker), isActive: $show_results_screen) { EmptyView() }
+            //            NavigationLink(destination: Tiles(cardsWorker: cardsWorker), isActive: $show_results_screen) { EmptyView() }
             
-        }
-        .onAppear {
-            self.theme = self.themes.randomElement()!
         }
         .alert(alertMessage, isPresented: $showAlert) {
             Button("OK", role: .cancel) { }
         }
+        .alert(alertMessage, isPresented: $showPaywallAlert) {
+            Button("OK", role: .cancel) {
+                
+                changeTabFunction(.settings) // going to Settings tab with a in-app purchase
+                
+            }
+        }
         .environmentObject(cardsWorker)
+        
     }
     
     private func generateCardsAction() async {
+        
+        self.readPurchasesFromDefaults()
+        
+
+        if generationsUsed >= Config.allowedGenerationsBeforePaywall && !isPurchased {
+            alertMessage = "We are paying costs for cards generations, please support us with one-time purchase to use generator without limit."
+            showPaywallAlert = true
+            return()
+        }
+
+        
+        if theme == "" {
+            makeAlert(message: "Please enter theme. Any you can imagine!")
+            return()
+        }
+        
+        let identifier = UIDevice.current.identifierForVendor?.uuidString ?? "unknown"
+        
+        
+//        struct DeviceInfo: Codable {
+//            var name: String?
+//            var model: String?
+//            var systemName: String?
+//            var systemVersion: String?
+//            var identifier: String?
+//            var languageCode: String?
+//        }
+
+        
+        let device = DeviceInfo(
+            name: UIDevice.current.name,
+            model: UIDevice.current.model,
+            systemName: UIDevice.current.systemName,
+            systemVersion: UIDevice.current.systemVersion,
+            identifier: UIDevice.current.identifierForVendor?.uuidString ?? "unknown",
+            languageCode: Locale.current.language.languageCode?.identifier ?? "unknown"
+        )
+        
         generating = true
         Task(priority: .background) {
             
-            let req_construct = NeuralRequest(lang_a: lang_a, lang_b: lang_b, theme: theme, count: count)
+            
+            
+            let req_construct = NeuralRequest(
+                lang_a: lang_a,
+                lang_b: lang_b,
+                theme: theme,
+                count: count,
+                device: device
+            )
             
             
             let response = await FresscardsService().generateCards(request: req_construct)
             switch response {
             case .success(let result):
-                //                print(result)
+                //                                print(result)
                 resp = result
                 //                    dailyPlan.priceReceived(price: result)
                 //                    pricesLoading = false
@@ -198,7 +297,12 @@ struct GenerateView: View {
                 cardsWorker.resultReceived(resp!)
                 //                }
                 generating = false
+                
+                
                 show_results_screen = true
+                
+                
+                
                 generationsUsed = generationsUsed + 1
             case .failure(let error):
                 print("Request failed with error: \(error.customMessage)")
@@ -214,7 +318,9 @@ struct GenerateView: View {
 
 struct GenerateView_Previews: PreviewProvider {
     static var previews: some View {
-        GenerateView(resp: NeuralResponse.mocked.response1)
+        GenerateView(resp: NeuralResponse.mocked.response1, changeTabFunction: { _ in
+            
+        })
     }
 }
 

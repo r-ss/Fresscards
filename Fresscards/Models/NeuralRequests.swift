@@ -13,6 +13,7 @@ struct NeuralRequest: Codable {
     var lang_b: String
     var theme: String
     var count: Int = 10
+    var device: DeviceInfo?
 }
 
 struct NeuralResponseItem: Decodable, Hashable {

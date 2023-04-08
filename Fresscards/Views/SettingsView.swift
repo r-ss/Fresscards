@@ -18,7 +18,11 @@ struct SettingsView: View {
     /// Settings
     @State private var showDebugInfo: Bool = false
     
+    @AppStorage("generations_used") var generationsUsed: Int = 0
+    
 //    @ObservedObject var currency: Currency
+    
+//    @State private var identifier: String = "unknown"
     
     
     private func readSettings() {
@@ -29,6 +33,8 @@ struct SettingsView: View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 15) {
                 Text("Settings").font(.headlineCustom).padding(.bottom)
+                
+//                Text("Device Identifier: \(identifier)")
                 
                 //Text("Currency: \(currency.symbol)")
                 
@@ -86,9 +92,22 @@ struct SettingsView: View {
                         }
                     }
                 }
+                
+                
+//                    .background(.red)
+                HStack(alignment: .lastTextBaseline, spacing:5){
+                    Text("Generations:")
+                    Text("\(generationsUsed)").font(.system(size: 20))
+                    
+                }
+                Divider()
+                
+                StoreView()
+                    .padding(0)
             }
             .onAppear {
                 self.readSettings()
+            
             }
             .padding()
             .frame(width: geometry.size.width, alignment: .leading)
