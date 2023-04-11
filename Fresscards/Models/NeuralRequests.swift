@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct NeuralRequest: Codable {
     var lang_a: String
     var lang_b: String
@@ -17,11 +16,8 @@ struct NeuralRequest: Codable {
 }
 
 struct NeuralResponseItem: Decodable, Hashable {
-//    var id: UUID? = UUID()
     var side_a: String
     var side_b: String
-    
-    
 }
 
 struct NeuralResponse: Decodable {

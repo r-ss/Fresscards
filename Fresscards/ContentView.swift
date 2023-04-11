@@ -8,6 +8,7 @@ import SwiftUI
 
 enum TabSelection {
     case generator
+    case savedCards
     case settings
 }
 
@@ -36,12 +37,20 @@ struct ContentView: View {
         VStack {
             // GenerateView()
             TabView(selection: $selectedTab) {
-
+                
                 GenerateView(changeTabFunction: changeTab)
                     .tabItem {
                         Label("Generator", systemImage: "brain")
                     }
                     .tag(TabSelection.generator)
+                
+                SavedCardsListView()
+                    .tabItem {
+                        Label("Saved cards", systemImage: "tray.full")
+                    }
+                    .tag(TabSelection.savedCards)
+
+                
 
                 SettingsView()
                     .tabItem {

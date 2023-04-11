@@ -2,8 +2,6 @@
 
 import Foundation
 
-
-
 protocol FresscardsServiceable {
 //    func fetchLatestPrice(forCountry code: String) async -> Result<DayPrice, RequestError>
 //    func fetchPrices(forCountry code: String) async -> Result<[DayPrice], RequestError>
@@ -12,11 +10,7 @@ protocol FresscardsServiceable {
     func generateCards(request: NeuralRequest) async -> Result<NeuralResponse, RequestError>
 }
 
-
-
 struct FresscardsService: HTTPClient, FresscardsServiceable {
-
-    
     
     func fetchApiInfo() async -> Result<String, RequestError> {
         return await getPrettyPrintedJSONResponse(endpoint: FresscardsEndpoint.apiInfo)
@@ -37,6 +31,5 @@ struct FresscardsService: HTTPClient, FresscardsServiceable {
 //    func fetchAppliances() async -> Result<[Appliance], RequestError> {
 //        return await sendRequest(endpoint: EnergramEndpoint.appliances, responseModel: [Appliance].self)
 //    }
-    
     
 }

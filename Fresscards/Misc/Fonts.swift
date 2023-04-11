@@ -10,9 +10,10 @@ import SwiftUI
 // https://stackoverflow.com/questions/58842643/change-default-system-font-in-swiftui
 
 extension Font {
-//    static let headlineCustom = Font.custom("ArgentumSans-Bold", size: 32)
-    static let headlineCustom = Font.custom("ArgentumSans-Medium", size: 28)
-    static let regularCustom = Font.custom("ArgentumSans-Regular", size: 16)
+    static let headline = Font.system(size: 32)
+    static let biggerTextField = Font.system(size: 24)
+//    static let headlineCustom = Font.custom("ArgentumSans-Medium", size: 28)
+//    static let regularCustom = Font.custom("ArgentumSans-Regular", size: 16)
 }
 
 //extension Font.TextStyle {

@@ -20,6 +20,14 @@ struct SettingsView: View {
     
     @AppStorage("generations_used") var generationsUsed: Int = 0
     
+    // To have previews for both Purchased and not Purchased states
+    private var forcePayedLayout: Bool = false
+    init(withForcePayedLayout: Bool = false) {
+        if withForcePayedLayout {
+            self.forcePayedLayout = true
+        }
+    }
+    
 //    @ObservedObject var currency: Currency
     
 //    @State private var identifier: String = "unknown"
@@ -32,7 +40,7 @@ struct SettingsView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 15) {
-                Text("Settings").font(.headlineCustom).padding(.bottom)
+                Text("Settings").font(.headline).padding(.bottom)
                 
 //                Text("Device Identifier: \(identifier)")
                 
@@ -86,7 +94,7 @@ struct SettingsView: View {
                             .onChange(of: showDebugInfo) { value in
                                 showDebugInfo.toggle()
                                 SettingsManager.shared.setValue(name: SettingsNames.showDebugInfo, value: showDebugInfo)
-                            }.font(.regularCustom)
+                            }
                         if showDebugInfo {
                             DebugView()
                         }
@@ -102,7 +110,7 @@ struct SettingsView: View {
                 }
                 Divider()
                 
-                StoreView()
+                StoreView(withForcePayedLayout: forcePayedLayout)
                     .padding(0)
             }
             .onAppear {
@@ -115,8 +123,14 @@ struct SettingsView: View {
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
+struct SettingsView_Unpayed: PreviewProvider {
     static var previews: some View {
         SettingsView()
+    }
+}
+
+struct SettingsView_Payed: PreviewProvider {
+    static var previews: some View {
+        SettingsView(withForcePayedLayout: true)
     }
 }

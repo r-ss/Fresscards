@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardsListView: View {
+struct GeneratedCardsReviewView: View {
     
     let response: NeuralResponse?
     let titleTheme: String?
@@ -45,8 +45,8 @@ struct CardsListView: View {
     }
 }
 
-struct CardsListView_Previews: PreviewProvider {
+struct GeneratedCardsReviewView_Previews: PreviewProvider {
     static var previews: some View {
-        CardsListView(response: NeuralResponse.mocked.response1, titleTheme: "Example theme")
+        GeneratedCardsReviewView(response: NeuralResponse.mocked.response1, titleTheme: "Example theme")
     }
 }

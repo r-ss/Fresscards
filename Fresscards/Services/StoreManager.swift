@@ -27,21 +27,6 @@ class StoreManager: NSObject, ObservableObject {
         case failed
     }
     
-//    override init() {
-//        super.init()
-//        //      productIdentifiers = productIds
-//        for productIdentifier in productIdentifiers {
-//            let purchased = UserDefaults.standard.bool(forKey: productIdentifier)
-//            if purchased {
-//                self.purchasedProductIdentifiers.insert(productIdentifier)
-//                print("Previously purchased: \(productIdentifier)")
-//            } else {
-//                print("Not purchased: \(productIdentifier)")
-//            }
-//        }
-//        //      super.init()
-//    }
-    
     func lookup() {
         for productIdentifier in productIdentifiers {
             let purchased = UserDefaults.standard.bool(forKey: productIdentifier)

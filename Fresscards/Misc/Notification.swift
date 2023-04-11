@@ -5,20 +5,13 @@
 //  Created by Alex Antipov on 19.02.2023.
 //
 
+
 import Foundation
 
 extension Notification.Name {
     static var appLaunching = Notification.Name("app.launching")
     static var appClosing = Notification.Name("app.closing")
-    static var latestPriceRecieved = Notification.Name("data.prices.latest.recieved")
-    
-    static var countrySettingChanged = Notification.Name("country.setting.changed")
-    //static var currencySettingChanged = Notification.Name("currency.setting.changed")
-    static var latestCurrencyRatesRecieved = Notification.Name("data.currencyrates.latest.recieved")
-    
-    static var someApplianceLabelLongTapEvent = Notification.Name("event.longtap.on.some.appliance.label")
-    static var applianceModified = Notification.Name("appliance.modified")
-    static var applianceWillBeRemoved = Notification.Name("appliance.will.be.removed")
+    static var cardSavedFromGenerator = Notification.Name("action.card.saved.from.generator")
 }
 
 // Method to fire notifications
@@ -52,3 +45,4 @@ extension NotificationCenter {
         }
     }
 }
+

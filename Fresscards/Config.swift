@@ -15,10 +15,6 @@ struct Config {
     
     static let allowedGenerationsBeforePaywall: Int = 10
     
-//    static let urlApiInfo: String = urlApi + "/info"
-//    static let urlLatestPrice: String = urlApi + "/price/latest"
-//    static let urlMultiplePrices: String = urlApi + "/price/all"
-    
     static let baseLanguages = [
         "English",
         "Spanish",
