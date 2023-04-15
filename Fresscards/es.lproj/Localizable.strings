@@ -1,0 +1,129 @@
+/* No comment provided by engineer. */
+"%lld more languages: %@ — %lld languages total in any direction!" = "%lld mas lenguas: %@ — %lld idiomas en total en cualquier dirección!";
+
+/* No comment provided by engineer. */
+"Add" = "Añada";
+
+/* No comment provided by engineer. */
+"API info:" = "";
+
+/* No comment provided by engineer. */
+"Back" = "Volver";
+
+/* No comment provided by engineer. */
+"Choose languages" = "Elegir idiomas";
+
+/* No comment provided by engineer. */
+"Delete" = "Borrar";
+
+/* No comment provided by engineer. */
+"Enter text..." = "Introduzca el texto...";
+
+/* No comment provided by engineer. */
+"Generate" = "Genere";
+
+/* No comment provided by engineer. */
+"Generate flashcards" = "Generar flashcards";
+
+/* No comment provided by engineer. */
+"Generations:" = "Generaciones:";
+
+/* No comment provided by engineer. */
+"Generator" = "Generador";
+
+/* Localizable.strings
+  Fresscards
+
+  Created by Alex Antipov on 15.04.2023. */
+"hello" = "Hola!";
+
+/* No comment provided by engineer. */
+"How many cards" = "Cuántas tarjetas";
+
+/* No comment provided by engineer. */
+"List" = "Lista";
+
+/* No comment provided by engineer. */
+"No cards saved" = "No hay tarjetas guardadas";
+
+/* No comment provided by engineer. */
+"Palette:" = "Paleta";
+
+/* No comment provided by engineer. */
+"Pick color" = "Elige el color";
+
+/* No comment provided by engineer. */
+"Purchase Failed!" = "¡Compra fallida!";
+
+/* No comment provided by engineer. */
+"Purchase Successful!" = "¡Compra realizada con éxito!";
+
+/* No comment provided by engineer. */
+"Purchase unlocks:" = "Compra añade:";
+
+/* No comment provided by engineer. */
+"Purchasing..." = "Compra...";
+
+/* No comment provided by engineer. */
+"Random Theme" = "Tema aleatorio";
+
+/* No comment provided by engineer. */
+"Restore Purchases" = "Restaurar compras";
+
+/* No comment provided by engineer. */
+"Review" = "Revisión";
+
+/* No comment provided by engineer. */
+"Save" = "Guardar";
+
+/* No comment provided by engineer. */
+"Saved cards" = "Tarjetas";
+
+/* No comment provided by engineer. */
+"Saved Cards" = "Tarjetas";
+
+/* No comment provided by engineer. */
+"Select cards count" = "Seleccionar recuento de tarjetas";
+
+/* No comment provided by engineer. */
+"Settings" = "Configuración";
+
+/* No comment provided by engineer. */
+"Show flashcards" = "Mostrar tarjetas";
+
+/* No comment provided by engineer. */
+"Side A" = "Lado A";
+
+/* No comment provided by engineer. */
+"Side A:" = "Lado A:";
+
+/* No comment provided by engineer. */
+"Side B" = "Lado B";
+
+/* No comment provided by engineer. */
+"Side B:" = "Lado B:";
+
+/* No comment provided by engineer. */
+"Swipe card down to save on your list" = "Pase la tarjeta hacia abajo para ahorrar en su lista";
+
+/* No comment provided by engineer. */
+"Theme" = "Tema";
+
+/* No comment provided by engineer. */
+"Type any theme" = "Escriba cualquier tema";
+
+/* No comment provided by engineer. */
+"Unlimited AI-powered generator on any topic of your choice" = "Generador ilimitado basado en IA sobre cualquier tema de su elección";
+
+/* No comment provided by engineer. */
+"Unlimited slots for saved card to repeat complex words" = "Ranuras ilimitadas para tarjetas guardadas para repetir palabras complejas";
+
+/* No comment provided by engineer. */
+"We are paying costs for cards generations, please support us with one-time purchase to continue use generator." = "Estamos pagando los costes de las generaciones de tarjetas, por favor apóyenos con una compra única para seguir utilizando el generador.";
+
+/* No comment provided by engineer. */
+"We are paying costs for cards generations, please support us with one-time purchase to use generator without limit." = "Estamos pagando los costes de las generaciones de tarjetas, por favor apóyenos con una compra única para usar el generador sin límite.";
+
+/* No comment provided by engineer. */
+"You have a full version. Thank you for your support! We are working on more features right now" = "Tienes una versión completa. Gracias por tu apoyo. Estamos trabajando en más características en este momento";
+

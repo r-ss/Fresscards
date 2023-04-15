@@ -42,6 +42,7 @@ struct SettingsView: View {
             VStack(alignment: .leading, spacing: 15) {
                 Text("Settings").font(.headline).padding(.bottom)
                 
+                
 //                Text("Device Identifier: \(identifier)")
                 
                 //Text("Currency: \(currency.symbol)")
@@ -125,12 +126,12 @@ struct SettingsView: View {
 
 struct SettingsView_Unpayed: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView().environment(\.locale, .init(identifier: "ru"))
     }
 }
 
 struct SettingsView_Payed: PreviewProvider {
     static var previews: some View {
-        SettingsView(withForcePayedLayout: true)
+        SettingsView(withForcePayedLayout: true).environment(\.locale, .init(identifier: "ru"))
     }
 }

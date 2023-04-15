@@ -25,6 +25,7 @@
 		D091E74629DC80EF00AC9400 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091E74529DC80EF00AC9400 /* StoreManager.swift */; };
 		D091E74829DC813200AC9400 /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091E74729DC813200AC9400 /* StoreView.swift */; };
 		D091E74C29DC842500AC9400 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = D091E74B29DC842500AC9400 /* StoreKitTestCertificate.cer */; };
+		D0BCC73A29EB17C90040B3C7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0BCC73C29EB17C90040B3C7 /* Localizable.strings */; };
 		D0C2A80C29D89412009828FA /* FresscardsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2A7CF29D89412009828FA /* FresscardsEndpoint.swift */; };
 		D0C2A80E29D89412009828FA /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2A7D229D89412009828FA /* HTTPClient.swift */; };
 		D0C2A80F29D89412009828FA /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2A7D329D89412009828FA /* RequestError.swift */; };
@@ -73,6 +74,8 @@
 		D091E74A29DC834800AC9400 /* storekit_configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = storekit_configuration.storekit; sourceTree = "<group>"; };
 		D091E74B29DC842500AC9400 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		D0AD525129D8939600B46ED3 /* Fresscards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fresscards.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0BCC73D29EB17F40040B3C7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D0C1BB7929EB1E6F0047C901 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D0C2A7CF29D89412009828FA /* FresscardsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FresscardsEndpoint.swift; sourceTree = "<group>"; };
 		D0C2A7D229D89412009828FA /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		D0C2A7D329D89412009828FA /* RequestError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
@@ -159,6 +162,7 @@
 				D0C2A7FB29D89412009828FA /* Config.swift */,
 				D0C2A80029D89412009828FA /* ContentView.swift */,
 				D0C2A7FC29D89412009828FA /* FresscardsApp.swift */,
+				D0BCC73C29EB17C90040B3C7 /* Localizable.strings */,
 				D0C2A7D929D89412009828FA /* Misc */,
 				D0C2A7C029D89412009828FA /* Models */,
 				D0C2A7FE29D89412009828FA /* Preview Content */,
@@ -297,6 +301,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
+				es,
 			);
 			mainGroup = D0AD524829D8939600B46ED3;
 			packageReferences = (
@@ -317,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0C2A83329D89412009828FA /* Preview Assets.xcassets in Resources */,
+				D0BCC73A29EB17C90040B3C7 /* Localizable.strings in Resources */,
 				D091E74C29DC842500AC9400 /* StoreKitTestCertificate.cer in Resources */,
 				D0C2A83229D89412009828FA /* Assets.xcassets in Resources */,
 			);
@@ -372,11 +379,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		D0BCC73C29EB17C90040B3C7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0BCC73D29EB17F40040B3C7 /* ru */,
+				D0C1BB7929EB1E6F0047C901 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		D0AD525D29D8939700B46ED3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -437,6 +457,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

@@ -68,10 +68,34 @@ struct GenerateView: View {
         "Food", "Travel", "Business", "School", "Nature", "Hospital", "Family", "Formula-1", "Airport", "Sports", "Entertainment", "Music", "Fashion", "Finance", "Shopping", "House", "Time and Calendar", "Weather and Climate", "Football", "Art and Design", "Social Issues", "Communication and Media", "Science and Technology", "Transport", "Law and Justice", "History and Heritage", "Emotions and Feelings", "Language and Linguistics"
     ]
     
+    let themes_ru = ["Еда", "Путешествия", "Бизнес", "Школа", "Природа", "Больница", "Семья", "Формула-1", "Аэропорт", "Спорт", "Развлечения", "Музыка", "Мода", "Финансы", "Шопинг", "Дом", "Время и календарь", "Погода и климат", "Футбол", "Искусство и дизайн", "Социальные вопросы", "Коммуникация и СМИ", "Наука и техника", "Транспорт", "Закон и правосудие", "История и наследие", "Эмоции и чувства", "Язык и лингвистика"]
+    
+    let themes_es = ["Comida", "Viajes", "Negocios", "Escuela", "Naturaleza", "Hospital", "Familia", "Fórmula-1", "Aeropuerto", "Deportes", "Entretenimiento", "Música", "Moda", "Finanzas", "Compras", "Casa", "Tiempo y calendario", "Tiempo y clima", "Fútbol", "Arte y diseño", "Cuestiones sociales", "Comunicación y medios de comunicación", "Ciencia y tecnología", "Transporte", "Derecho y justicia", "Historia y patrimonio", "Emociones y sentimientos", "Lengua y lingüística"]
+    
     private func readPurchasesFromDefaults(){
         
         self.isPurchased = UserDefaults.standard.bool(forKey: "unlimited_generator")
         //        print(isPurchased)
+    }
+    
+    private func setRandomTheme(){
+        
+        let locale = Locale.current.language.languageCode?.identifier ?? "en"
+        var t = self.themes
+        
+        if locale == "ru" {
+            t = self.themes_ru
+        }
+        if locale == "es" {
+            t = self.themes_es
+        }
+        
+        let candidate: String = t.randomElement()!
+        if self.theme != candidate {
+            self.theme = candidate
+        } else {
+            self.theme = t.randomElement()!
+        }
     }
     
     
@@ -168,13 +192,9 @@ struct GenerateView: View {
                                         })
                                         
                                         Button() {
-                                            let candidate: String = self.themes.randomElement()!
-                                            if self.theme != candidate {
-                                                self.theme = candidate
-                                            } else {
-                                                self.theme = self.themes.randomElement()!
-                                            }
+                                            
                                             //self.endTextEditing()
+                                            self.setRandomTheme()
                                         } label: {
                                             Label("Random Theme", systemImage: "dice")
                                         }
@@ -238,7 +258,7 @@ struct GenerateView: View {
                 }
             }
             .onAppear {
-                self.theme = self.themes.randomElement()!
+                self.setRandomTheme()
             }
             .environmentObject(cardsWorker)
 //            .simultaneousGesture(
