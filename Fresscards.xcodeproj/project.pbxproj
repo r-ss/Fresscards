@@ -18,7 +18,6 @@
 		D06CF4B629E34C9300251644 /* SavedCardsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CF4B529E34C9300251644 /* SavedCardsListView.swift */; };
 		D06E5B4329E3E5D100CE11F9 /* CardEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06E5B4229E3E5D100CE11F9 /* CardEditorViewModel.swift */; };
 		D079BA5329E3524200363829 /* CardAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079BA5229E3524200363829 /* CardAdd.swift */; };
-		D079BA5529E352EA00363829 /* CardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079BA5429E352EA00363829 /* CardDetail.swift */; };
 		D08E30BE29D8A4DE00603EB5 /* NeuralRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E30BD29D8A4DE00603EB5 /* NeuralRequests.swift */; };
 		D08E30C029D8A7C100603EB5 /* GenerateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E30BF29D8A7C100603EB5 /* GenerateView.swift */; };
 		D091E74129DC7D0300AC9400 /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091E74029DC7D0300AC9400 /* PurchaseView.swift */; };
@@ -64,7 +63,6 @@
 		D06CF4B529E34C9300251644 /* SavedCardsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCardsListView.swift; sourceTree = "<group>"; };
 		D06E5B4229E3E5D100CE11F9 /* CardEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditorViewModel.swift; sourceTree = "<group>"; };
 		D079BA5229E3524200363829 /* CardAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAdd.swift; sourceTree = "<group>"; };
-		D079BA5429E352EA00363829 /* CardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetail.swift; sourceTree = "<group>"; };
 		D08E30BD29D8A4DE00603EB5 /* NeuralRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuralRequests.swift; sourceTree = "<group>"; };
 		D08E30BF29D8A7C100603EB5 /* GenerateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateView.swift; sourceTree = "<group>"; };
 		D091E74029DC7D0300AC9400 /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
@@ -226,7 +224,6 @@
 				D0C2A7EE29D89412009828FA /* DebugView.swift */,
 				D091E74029DC7D0300AC9400 /* PurchaseView.swift */,
 				D0C2A7FA29D89412009828FA /* AnimationPlayground.swift */,
-				D079BA5429E352EA00363829 /* CardDetail.swift */,
 				D08E30BF29D8A7C100603EB5 /* GenerateView.swift */,
 				D021200029DAAF43002955AD /* GeneratedCardsReviewView.swift */,
 				D06CF4B529E34C9300251644 /* SavedCardsListView.swift */,
@@ -359,7 +356,6 @@
 				D0C2A82029D89412009828FA /* LoaderSpinner.swift in Sources */,
 				D0C2A81929D89412009828FA /* Notification.swift in Sources */,
 				D06E5B4329E3E5D100CE11F9 /* CardEditorViewModel.swift in Sources */,
-				D079BA5529E352EA00363829 /* CardDetail.swift in Sources */,
 				D079BA5329E3524200363829 /* CardAdd.swift in Sources */,
 				D0C2A82229D89412009828FA /* SettingsView.swift in Sources */,
 				D02AFFD229E010E50073DAF5 /* Device.swift in Sources */,

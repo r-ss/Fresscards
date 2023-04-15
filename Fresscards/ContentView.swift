@@ -25,28 +25,62 @@ struct ContentView: View {
 //    @StateObject var dailyPlan = DailyPlan()
     
     public func changeTab(to: TabSelection) {
-        print("changing tab programmatically")
+//        print("changing tab programmatically")
         if self.selectedTab != to {
             self.selectedTab = to
         }
     }
+    
+    @State private var cardSaveVisualFeedback: Bool = false
+    
+    
     
     
 
     var body: some View {
         VStack {
             // GenerateView()
+            
+//            VStack {
+//                Image(systemName: "exclamationmark.triangle")
+//                    .font(Font.system(size: 50))
+//                    .offset(x: start ? 12 : 0)
+//                    .padding()
+//
+//                Button("Shake") {
+//                    start = true
+//                    withAnimation(Animation.spring(response: 0.2, dampingFraction: 0.2, blendDuration: 0.2)) {
+//                        start = false
+//                    }
+//                }
+//            }
+            
+            
             TabView(selection: $selectedTab) {
                 
                 GenerateView(changeTabFunction: changeTab)
                     .tabItem {
-                        Label("Generator", systemImage: "brain")
+                            
+                            Label("Generator", systemImage: "brain")
+                            
+//                            .offset(x: cardSaveVisualFeedback ? 10 : 0)
+                            
+                           
                     }
                     .tag(TabSelection.generator)
+                    
+                    
                 
                 SavedCardsListView()
                     .tabItem {
-                        Label("Saved cards", systemImage: "tray.full")
+                        
+                        if cardSaveVisualFeedback {
+                            Label("Saved cards", systemImage: "plus.rectangle.fill")
+                        } else {
+                            Label("Saved cards", systemImage: "tray.full")
+                        }
+                            
+                            
                     }
                     .tag(TabSelection.savedCards)
 
@@ -68,6 +102,22 @@ struct ContentView: View {
         .background(Palette.background)
         .onAppear {
             //userAuthState.checkAuth()
+            
+            NotificationCenter.simple(name: .cardSavedFromGenerator){
+//                print("Card saved notification")
+                cardSaveVisualFeedback = true
+//                withAnimation(.linear(duration: 1)) {
+//                    cardSaveVisualFeedback = false
+//                }
+//
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.55) {
+                    cardSaveVisualFeedback = false
+                    
+                    
+                }
+                
+            }
+            
         }
             
             //self.country_code = SettingsManager.shared.getStringValue(name: "CountryCode")
