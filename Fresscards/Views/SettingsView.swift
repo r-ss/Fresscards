@@ -9,6 +9,8 @@ import Foundation
 
 import SwiftUI
 
+import Firebase
+
 
 
 
@@ -116,6 +118,11 @@ struct SettingsView: View {
             }
             .onAppear {
                 self.readSettings()
+                
+                // Google Analytics
+                Analytics.logEvent(AnalyticsEventScreenView,
+                                   parameters: [AnalyticsParameterScreenName: "\(SettingsView.self)",
+                                               AnalyticsParameterScreenClass: "\(SettingsView.self)"])
             
             }
             .padding()

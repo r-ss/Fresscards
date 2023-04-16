@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import Firebase
+
 
 struct GenerateView: View {
     
@@ -108,173 +110,180 @@ struct GenerateView: View {
     var body: some View {
         NavigationStack {
             
-                GeometryReader { maingeometry in
+            GeometryReader { maingeometry in
+                
+                VStack(alignment: .leading, spacing: 15) {
                     
-                    VStack(alignment: .leading, spacing: 15) {
+                    //                    Button("Switch View") {
+                    //                        changeTabFunction(.settings)
+                    //                            }
+                    //
+                    //                                        Text(isPurchased ? "yes" : "no")
+                    //                    Text("Generations used: \(generationsUsed)")
+                    //                    Text("show_results_screen: \( String(isPurchased))")
+                    
+                    
+                    Group {
                         
-                        //                    Button("Switch View") {
-                        //                        changeTabFunction(.settings)
-                        //                            }
-                        //
-                        //                                        Text(isPurchased ? "yes" : "no")
-                        //                    Text("Generations used: \(generationsUsed)")
-                        //                    Text("show_results_screen: \( String(isPurchased))")
-                        
-                        
-                        Group {
-                            
-                            Form {
-                                Section {
-                                    VStack(alignment: .center) {
-                                        Text("Choose languages")
-                                        HStack(spacing: 10){
-                                            Picker(selection: $lang_a, label: Text("A")) {
-                                                ForEach(languages, id: \.self) {
-                                                    Text($0)
-                                                }
-                                            }
-                                            .pickerStyle(MenuPickerStyle())
-                                            .labelsHidden()
-                                            .frame(minWidth: 120)
-                                            .onChange(of: lang_a) { lang in
-                                                print("lang a: \(lang)")
-                                                lang_a_appstorage = lang_a
-                                            }
-                                            
-                                            // Button reversing languages
-                                            Button() {
-                                                let temp_a = lang_a
-                                                let temp_b = lang_b
-                                                
-                                                lang_a = temp_b
-                                                lang_b = temp_a
-                                                
-                                                lang_a_appstorage = lang_a
-                                                lang_b_appstorage = lang_b
-                                            } label: {
-                                                Image(systemName: "arrow.forward")
-                                                    .foregroundColor(.primary)
-                                            }
-                                            
-                                            Picker(selection: $lang_b, label: Text("B")) {
-                                                ForEach(languages, id: \.self) {
-                                                    Text($0)
-                                                }
-                                            }
-                                            .pickerStyle(MenuPickerStyle())
-                                            .labelsHidden()
-                                            .frame(minWidth: 120)
-                                            .onChange(of: lang_b) { lang in
-                                                print("lang b: \(lang)")
-                                                lang_b_appstorage = lang_b
+                        Form {
+                            Section {
+                                VStack(alignment: .center) {
+                                    Text("Choose languages")
+                                    HStack(spacing: 10){
+                                        Picker(selection: $lang_a, label: Text("A")) {
+                                            ForEach(languages, id: \.self) {
+                                                Text($0)
                                             }
                                         }
-                                    }
-                                    
-                                    .frame(width: max(maingeometry.size.width - 80, 0))
-                                }
-                                
-                                
-                                Section {
-                                    VStack(alignment: .center) {
-                                        Text("Type any theme")
-                                        TextField("Theme",
-                                                  text: $theme,
-                                                  onCommit: {
-                                            //                                        self.endTextEditing()
-                                            Task { await generateCardsAction() }
+                                        .pickerStyle(MenuPickerStyle())
+                                        .labelsHidden()
+                                        .frame(minWidth: 120)
+                                        .onChange(of: lang_a) { lang in
+                                            print("lang a: \(lang)")
+                                            lang_a_appstorage = lang_a
                                         }
-                                        )
-                                        .submitLabel(.done)
-                                        .disableAutocorrection(true)
-                                        .simultaneousGesture(TapGesture().onEnded {
-                                            theme = ""
-                                        })
                                         
+                                        // Button reversing languages
                                         Button() {
+                                            let temp_a = lang_a
+                                            let temp_b = lang_b
                                             
-                                            //self.endTextEditing()
-                                            self.setRandomTheme()
+                                            lang_a = temp_b
+                                            lang_b = temp_a
+                                            
+                                            lang_a_appstorage = lang_a
+                                            lang_b_appstorage = lang_b
                                         } label: {
-                                            Label("Random Theme", systemImage: "dice")
+                                            Image(systemName: "arrow.forward")
+                                                .foregroundColor(.primary)
                                         }
-                                    }
-                                    .frame(width: max(maingeometry.size.width - 80, 0))
-                                    
-                                }
-                                
-                                
-                                Section {
-                                    VStack(alignment: .center) {
-                                        Text("How many cards")
-                                        Picker("Select cards count", selection: $count) {
-                                            ForEach(count_cases, id: \.self) { selection in
-                                                Text("\(selection)")
+                                        
+                                        Picker(selection: $lang_b, label: Text("B")) {
+                                            ForEach(languages, id: \.self) {
+                                                Text($0)
                                             }
                                         }
-                                        .pickerStyle(SegmentedPickerStyle())
+                                        .pickerStyle(MenuPickerStyle())
+                                        .labelsHidden()
+                                        .frame(minWidth: 120)
+                                        .onChange(of: lang_b) { lang in
+                                            print("lang b: \(lang)")
+                                            lang_b_appstorage = lang_b
+                                        }
                                     }
-                                    .frame(width: max(maingeometry.size.width - 80, 0))
-                                    
                                 }
                                 
-                                Button() {
-                                    
-                                    Task { await generateCardsAction() }
-                                } label: {
-                                    if generating {
-                                        LoaderSpinner()
-                                    } else {
-                                        Label("Generate", systemImage: "brain")
+                                .frame(width: max(maingeometry.size.width - 80, 0))
+                            }
+                            
+                            
+                            Section {
+                                VStack(alignment: .center) {
+                                    Text("Type any theme")
+                                    TextField("Theme",
+                                              text: $theme,
+                                              onCommit: {
+                                        //                                        self.endTextEditing()
+                                        Task { await generateCardsAction() }
                                     }
+                                    )
+                                    .submitLabel(.done)
+                                    .disableAutocorrection(true)
+                                    .simultaneousGesture(TapGesture().onEnded {
+                                        theme = ""
+                                    })
+                                    
+                                    Button() {
+                                        
+                                        //self.endTextEditing()
+                                        self.setRandomTheme()
+                                    } label: {
+                                        Label("Random Theme", systemImage: "dice")
+                                    }
+                                }
+                                .frame(width: max(maingeometry.size.width - 80, 0))
+                                
+                            }
+                            
+                            
+                            Section {
+                                VStack(alignment: .center) {
+                                    Text("How many cards")
+                                    Picker("Select cards count", selection: $count) {
+                                        ForEach(count_cases, id: \.self) { selection in
+                                            Text("\(selection)")
+                                        }
+                                    }
+                                    .pickerStyle(SegmentedPickerStyle())
+                                }
+                                .frame(width: max(maingeometry.size.width - 80, 0))
+                                
+                            }
+                            
+                            Button() {
+                                
+                                Task { await generateCardsAction() }
+                            } label: {
+                                if generating {
+                                    LoaderSpinner()
+                                } else {
+                                    Label("Generate", systemImage: "brain")
                                 }
                             }
                         }
                     }
-                    .frame(width: maingeometry.size.width, height: maingeometry.size.height, alignment: .leading)
                 }
-                .navigationDestination(isPresented: $show_results_screen) {
-                    CardsView(cardsWorker: cardsWorker)
-                    
-                }
-                .navigationTitle("Generate flashcards")
-                .onAppear {
-                    self.isPurchased = UserDefaults.standard.bool(forKey: "unlimited_generator")
-                    lang_a = lang_a_appstorage
-                    lang_b = lang_b_appstorage
-                }
-                //            .simultaneousGesture(LongPressGesture().onEnded {
-                //
-                //                              self.endTextEditing()
-                //                        })
+                .frame(width: maingeometry.size.width, height: maingeometry.size.height, alignment: .leading)
+            }
+            .navigationDestination(isPresented: $show_results_screen) {
+                CardsView(cardsWorker: cardsWorker)
                 
             }
-            .alert(alertMessage, isPresented: $showAlert) {
-                Button("OK", role: .cancel) { }
-            }
-            .alert(alertMessage, isPresented: $showPaywallAlert) {
-                Button("OK", role: .cancel) {
-                    changeTabFunction(.settings) // going to Settings tab with a in-app purchase
-                }
-            }
+            .navigationTitle("Generate flashcards")
             .onAppear {
-                self.setRandomTheme()
+                self.isPurchased = UserDefaults.standard.bool(forKey: "unlimited_generator")
+                lang_a = lang_a_appstorage
+                lang_b = lang_b_appstorage
             }
-            .environmentObject(cardsWorker)
-//            .simultaneousGesture(
-//                // Hide the keyboard on scroll
-//                DragGesture().onChanged { _ in
-//                    UIApplication.shared.sendAction(
-//                        #selector(UIResponder.resignFirstResponder),
-//                        to: nil,
-//                        from: nil,
-//                        for: nil
-//                    )
-//                }
-//            )
+            //            .simultaneousGesture(LongPressGesture().onEnded {
+            //
+            //                              self.endTextEditing()
+            //                        })
+            
+        }
+        .alert(alertMessage, isPresented: $showAlert) {
+            Button("OK", role: .cancel) { }
+        }
+        .alert(alertMessage, isPresented: $showPaywallAlert) {
+            Button("OK", role: .cancel) {
+                changeTabFunction(.settings) // going to Settings tab with a in-app purchase
+            }
+        }
+        .onAppear {
+            self.setRandomTheme()
+            
+            // Google Analytics
+            Analytics.logEvent(AnalyticsEventScreenView,
+                               parameters: [AnalyticsParameterScreenName: "\(GenerateView.self)",
+                                           AnalyticsParameterScreenClass: "\(GenerateView.self)"])
             
             
-            
+        }
+        .environmentObject(cardsWorker)
+        //            .simultaneousGesture(
+        //                // Hide the keyboard on scroll
+        //                DragGesture().onChanged { _ in
+        //                    UIApplication.shared.sendAction(
+        //                        #selector(UIResponder.resignFirstResponder),
+        //                        to: nil,
+        //                        from: nil,
+        //                        for: nil
+        //                    )
+        //                }
+        //            )
+        
+        
+        
         
     }
     
@@ -302,8 +311,15 @@ struct GenerateView: View {
             languageCode: Locale.current.language.languageCode?.identifier ?? "unknown"
         )
         
+        Task(priority: .background) {
+            // Google Analytics
+            Analytics.logEvent("generator_request", parameters: ["lang_a": "\(lang_a)", "lang_b": "\(lang_b)", "theme": "\(theme)", "cards_count": "\(count)"])
+        }
+        
         generating = true
         Task(priority: .background) {
+            
+            
             
             let req_construct = NeuralRequest(
                 lang_a: lang_a,

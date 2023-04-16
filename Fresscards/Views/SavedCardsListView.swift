@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct SavedCardsListView: View {
     
@@ -119,6 +120,13 @@ struct SavedCardsListView: View {
             .navigationDestination(isPresented: $show_as_cards_screen) {
                 CardsView(cardsWorker: cardsWorker, savingDisabled: true)
                 
+            }
+            .onAppear {
+                
+                // Google Analytics
+                Analytics.logEvent(AnalyticsEventScreenView,
+                                   parameters: [AnalyticsParameterScreenName: "\(SavedCardsListView.self)",
+                                               AnalyticsParameterScreenClass: "\(SavedCardsListView.self)"])
             }
         }
     }

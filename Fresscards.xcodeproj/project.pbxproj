@@ -17,6 +17,8 @@
 		D06CF4B429E34A4300251644 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = D06CF4B329E34A4300251644 /* OrderedCollections */; };
 		D06CF4B629E34C9300251644 /* SavedCardsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06CF4B529E34C9300251644 /* SavedCardsListView.swift */; };
 		D06E5B4329E3E5D100CE11F9 /* CardEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06E5B4229E3E5D100CE11F9 /* CardEditorViewModel.swift */; };
+		D070ABF529EBE4460007F12F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D070ABF429EBE4460007F12F /* GoogleService-Info.plist */; };
+		D070ABF829EBE5AD0007F12F /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D070ABF729EBE5AD0007F12F /* FirebaseAnalyticsSwift */; };
 		D079BA5329E3524200363829 /* CardAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079BA5229E3524200363829 /* CardAdd.swift */; };
 		D08E30BE29D8A4DE00603EB5 /* NeuralRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E30BD29D8A4DE00603EB5 /* NeuralRequests.swift */; };
 		D08E30C029D8A7C100603EB5 /* GenerateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08E30BF29D8A7C100603EB5 /* GenerateView.swift */; };
@@ -63,6 +65,7 @@
 		D06CF4B029E349E200251644 /* CardsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsListViewModel.swift; sourceTree = "<group>"; };
 		D06CF4B529E34C9300251644 /* SavedCardsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCardsListView.swift; sourceTree = "<group>"; };
 		D06E5B4229E3E5D100CE11F9 /* CardEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEditorViewModel.swift; sourceTree = "<group>"; };
+		D070ABF429EBE4460007F12F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D079BA5229E3524200363829 /* CardAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAdd.swift; sourceTree = "<group>"; };
 		D08E30BD29D8A4DE00603EB5 /* NeuralRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeuralRequests.swift; sourceTree = "<group>"; };
 		D08E30BF29D8A7C100603EB5 /* GenerateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateView.swift; sourceTree = "<group>"; };
@@ -108,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D070ABF829EBE5AD0007F12F /* FirebaseAnalyticsSwift in Frameworks */,
 				D06CF4B429E34A4300251644 /* OrderedCollections in Frameworks */,
 				D091E74429DC803E00AC9400 /* StoreKit.framework in Frameworks */,
 			);
@@ -116,6 +120,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D02DE0FA29EB240B003BA009 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				D0BCC73C29EB17C90040B3C7 /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		D06CF4A829E348A200251644 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,13 +168,14 @@
 		D0AD525329D8939600B46ED3 /* Fresscards */ = {
 			isa = PBXGroup;
 			children = (
+				D070ABF429EBE4460007F12F /* GoogleService-Info.plist */,
 				D06CF4A829E348A200251644 /* CoreData */,
 				D091E74929DC819800AC9400 /* Info.plist */,
 				D0C2A7FD29D89412009828FA /* Assets.xcassets */,
 				D0C2A7FB29D89412009828FA /* Config.swift */,
 				D0C2A80029D89412009828FA /* ContentView.swift */,
 				D0C2A7FC29D89412009828FA /* FresscardsApp.swift */,
-				D0BCC73C29EB17C90040B3C7 /* Localizable.strings */,
+				D02DE0FA29EB240B003BA009 /* Localization */,
 				D0C2A7D929D89412009828FA /* Misc */,
 				D0C2A7C029D89412009828FA /* Models */,
 				D0C2A7FE29D89412009828FA /* Preview Content */,
@@ -274,6 +287,7 @@
 			name = Fresscards;
 			packageProductDependencies = (
 				D06CF4B329E34A4300251644 /* OrderedCollections */,
+				D070ABF729EBE5AD0007F12F /* FirebaseAnalyticsSwift */,
 			);
 			productName = Fresscards;
 			productReference = D0AD525129D8939600B46ED3 /* Fresscards.app */;
@@ -307,6 +321,7 @@
 			mainGroup = D0AD524829D8939600B46ED3;
 			packageReferences = (
 				D06CF4B229E34A4300251644 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				D070ABF629EBE5AD0007F12F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = D0AD525229D8939600B46ED3 /* Products */;
 			projectDirPath = "";
@@ -324,6 +339,7 @@
 			files = (
 				D0C2A83329D89412009828FA /* Preview Assets.xcassets in Resources */,
 				D0BCC73A29EB17C90040B3C7 /* Localizable.strings in Resources */,
+				D070ABF529EBE4460007F12F /* GoogleService-Info.plist in Resources */,
 				D091E74C29DC842500AC9400 /* StoreKitTestCertificate.cer in Resources */,
 				D0C2A83229D89412009828FA /* Assets.xcassets in Resources */,
 			);
@@ -530,7 +546,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ress.Fresscards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -561,7 +577,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ress.Fresscards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -602,6 +618,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		D070ABF629EBE5AD0007F12F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -609,6 +633,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D06CF4B229E34A4300251644 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
+		};
+		D070ABF729EBE5AD0007F12F /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D070ABF629EBE5AD0007F12F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

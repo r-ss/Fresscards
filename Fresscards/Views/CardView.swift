@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CardView: View {
     
-    private let vibration = UIImpactFeedbackGenerator(style: .medium)
+    private let vibration = UIImpactFeedbackGenerator(style: .light)
     
     @State var geometryWidth: CGFloat = 0.0 // sets on appear and used in judgeGesture()
     @State private var centerLocation: CGPoint = CGPoint(x: 0, y: 0) // used in dragJudge if threshhold not reached

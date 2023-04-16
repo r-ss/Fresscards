@@ -6,6 +6,7 @@
 import SwiftUI
 
 
+
 enum TabSelection {
     case generator
     case savedCards
@@ -75,7 +76,7 @@ struct ContentView: View {
                     .tabItem {
                         
                         if cardSaveVisualFeedback {
-                            Label("Saved cards", systemImage: "plus.rectangle.fill")
+                            Label("Saved cards", systemImage: "checkmark.rectangle.fill")
                         } else {
                             Label("Saved cards", systemImage: "tray.full")
                         }
@@ -117,6 +118,8 @@ struct ContentView: View {
                 }
                 
             }
+            
+            
             
         }
             
