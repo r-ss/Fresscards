@@ -38,11 +38,30 @@ struct SettingsView: View {
     private func readSettings() {
         self.showDebugInfo = SettingsManager.shared.getBoolValue(name: SettingsNames.showDebugInfo)
     }
+    
+    @State private var appSelectedLanguage: String = "en"
+    private let appLanguagesAvailable = ["en", "es", "ru"]
 
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 15) {
                 Text("Settings").font(.headline).padding(.bottom)
+                
+//                
+//                Picker(selection: $appSelectedLanguage, label: Text("Language")) {
+//                    ForEach(appLanguagesAvailable, id: \.self) {
+//                        Text($0)
+//                    }
+//                }
+//                .pickerStyle(MenuPickerStyle())
+//                .labelsHidden()
+//                .frame(minWidth: 120)
+//                .onChange(of: appSelectedLanguage) { lang in
+//                    print("lang selected: \(lang)")
+////                    lang_a_appstorage = lang_a
+////                    Locale.setCurrentLanguage(appSelectedLanguage)
+//                    LocalizationManager.shared.setCurrentLanguage(.spanish)
+//                }
                 
                 
 //                Text("Device Identifier: \(identifier)")

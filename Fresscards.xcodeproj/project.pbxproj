@@ -76,6 +76,7 @@
 		D091E74929DC819800AC9400 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D091E74A29DC834800AC9400 /* storekit_configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = storekit_configuration.storekit; sourceTree = "<group>"; };
 		D091E74B29DC842500AC9400 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
+		D095791629F06192002F6514 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D0AD525129D8939600B46ED3 /* Fresscards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fresscards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BCC73D29EB17F40040B3C7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D0C1BB7929EB1E6F0047C901 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -401,6 +402,7 @@
 			children = (
 				D0BCC73D29EB17F40040B3C7 /* ru */,
 				D0C1BB7929EB1E6F0047C901 /* es */,
+				D095791629F06192002F6514 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -530,7 +532,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fresscards/Preview Content\"";
 				DEVELOPMENT_TEAM = 7R7Q2CDK95;
 				ENABLE_PREVIEWS = YES;
@@ -546,7 +547,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.61;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ress.Fresscards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -561,7 +562,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fresscards/Preview Content\"";
 				DEVELOPMENT_TEAM = 7R7Q2CDK95;
 				ENABLE_PREVIEWS = YES;
@@ -577,7 +577,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.61;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ress.Fresscards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -8,6 +8,8 @@
 //import Foundation
 import StoreKit
 
+import Firebase
+
 class StoreManager: NSObject, ObservableObject {
     
     // Set your in-app purchase product identifiers here
@@ -56,11 +58,24 @@ class StoreManager: NSObject, ObservableObject {
             return
         }
         
+        Task(priority: .background) {
+            // Google Analytics
+            
+            let checkoutParams: [String: Any] = [
+                  AnalyticsParameterCurrency: "USD",
+                  AnalyticsParameterValue: 4.99
+                ];
+            
+            Analytics.logEvent(AnalyticsEventBeginCheckout, parameters: checkoutParams)
+        }
+        
         purchaseStatus = .purchasing
         
         let payment = SKPayment(product: product)
         SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().add(payment)
+        
+        
     }
     
     func restorePurchases() {
